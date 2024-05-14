@@ -1,0 +1,36 @@
+{
+  "name": "reactive-vscode-demo",
+  "displayName": "demo",
+  "type": "module",
+  "version": "0.0.1",
+  "private": true,
+  "description": "The demo for reactive-vscode",
+  "categories": [
+    "Other"
+  ],
+  "main": "./dist/index.cjs",
+  "engines": {
+    "vscode": "^1.89.0"
+  },
+  "activationEvents": [
+    "onStartupFinished"
+  ],
+  "contributes": {
+    "commands": [
+      {
+        "command": "reactive-vscode-demo.helloWorld",
+        "title": "Hello World"
+      }
+    ]
+  },
+  "scripts": {
+    "build": "tsup --env.NODE_ENV production",
+    "dev": "nr build --watch"
+  },
+  "devDependencies": {
+    "@types/node": "18.x",
+    "@types/vscode": "^1.89.0",
+    "reactive-vscode": "link:..",
+    "tsup": "^8.0.2"
+  }
+}
