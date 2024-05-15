@@ -1,3 +1,4 @@
+export * from './useActiveColorTheme'
 export * from './useActiveTextEditor'
 export * from './useCommand'
 export * from './useDisposable'

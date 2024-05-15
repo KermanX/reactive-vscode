@@ -1,4 +1,5 @@
-import { createExtension, createLogger, useCommand } from 'reactive-vscode'
+import { watchEffect } from '@vue/runtime-core'
+import { createExtension, createLogger, useCommand, useIsDarkTheme } from 'reactive-vscode'
 import { window } from 'vscode'
 
 const useLogger = createLogger('Reactive VSCode')
@@ -10,6 +11,11 @@ const { activate, deactivate } = createExtension(() => {
 
   useCommand('reactive-vscode-demo.helloWorld', () => {
     window.showInformationMessage('Hello World!')
+  })
+
+  const isDark = useIsDarkTheme()
+  watchEffect(() => {
+    logger.info('Is Dark Theme:', isDark.value)
   })
 })
 
