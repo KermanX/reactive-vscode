@@ -1,14 +1,10 @@
-import { computed, shallowRef } from '@vue/runtime-core'
-import { ColorThemeKind, window } from 'vscode'
+import { shallowRef } from '@vue/runtime-core'
+import { window } from 'vscode'
+import { createSingletonComposable } from '../utils/singletonComposable'
 import { useDisposable } from './useDisposable'
 
-export function useActiveColorTheme() {
+export const useActiveColorTheme = createSingletonComposable(() => {
   const result = shallowRef(window.activeColorTheme)
   useDisposable(window.onDidChangeActiveColorTheme(theme => (result.value = theme)))
   return result
-}
-
-export function useIsDarkTheme() {
-  const theme = useActiveColorTheme()
-  return computed(() => theme.value.kind === ColorThemeKind.Dark || theme.value.kind === ColorThemeKind.HighContrast)
-}
+})
