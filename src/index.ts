@@ -1,10 +1,7 @@
-import { effectScope, shallowRef } from '@vue/runtime-core'
 import type { ExtensionContext } from 'vscode'
-
-export const context = shallowRef<ExtensionContext | null>(null!)
+import { context, scope } from './context'
 
 export function createExtension(setup: () => void) {
-  const scope = effectScope()
   return {
     activate: (extCtx: ExtensionContext) => {
       context.value = extCtx
