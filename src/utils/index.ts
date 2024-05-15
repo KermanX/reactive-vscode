@@ -1,5 +1,4 @@
 export * from './commands'
-export * from './createLogger'
 export * from './keyedComposable'
 export * from './lifecycle'
 export * from './singletonComposable'
