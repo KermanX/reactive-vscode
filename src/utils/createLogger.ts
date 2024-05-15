@@ -17,8 +17,8 @@ export function createLogger(name: string, getPrefix = defaultGetPrefix) {
   return createSingletonComposable(() => {
     const outputChannel = useOutputChennel(name)
 
-    const createLoggerFunc = (type: string) => (message: string) => {
-      outputChannel.appendLine(getPrefix(type) + message)
+    const createLoggerFunc = (type: string) => (...message: any[]) => {
+      outputChannel.appendLine(getPrefix(type) + message.join(' '))
     }
 
     return {
