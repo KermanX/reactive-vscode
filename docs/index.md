@@ -7,7 +7,7 @@ hero:
   text: "Extension API"
   tagline: |
     Develop <span class="i-vscode-icons:file-type-vscode text-2xl"></span> <span class="text-vscode">Extension</span> with <span class="i-vscode-icons:file-type-vue text-2xl"></span> <span class="text-reactive">Composition</span> API
-  image: /reactive-vscode/logo.svg
+  image: /logo.svg
   actions:
     - theme: brand
       text: Get Started
