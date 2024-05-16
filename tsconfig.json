@@ -6,6 +6,7 @@
     ]
   },
   "exclude": [
-    "demo"
+    "demo",
+    "docs"
   ]
 }

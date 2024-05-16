@@ -6,6 +6,7 @@
 [![JSDocs][jsdocs-src]][jsdocs-href]
 [![License][license-src]][license-href]
 
+![Header](./docs/public/header.png)
 Develop VSCode extension with Vue 3 Composition API
 
 ## License
