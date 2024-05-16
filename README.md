@@ -9,6 +9,10 @@
 ![Header](./docs/public/header.png)
 Develop VSCode extension with Vue 3 Composition API
 
+[Documentation](https://kermanx.github.io/reactive-vscode/) | [Why reactive-vscode](https://kermanx.github.io/reactive-vscode/guide/why)
+
+🚧 _**WIP**, not plublished yet_ 🚧
+
 ## License
 
 [MIT](./LICENSE) License © 2024-PRESENT [_Kerman](https://github.com/KermanX)
