@@ -1,25 +1,27 @@
-import type { Ref } from '@vue/runtime-core'
-import { readonly, ref } from '@vue/runtime-core'
+import type { ComputedRef, MaybeRefOrGetter } from '@vue/runtime-core'
+import { computed, ref, toValue, watchEffect } from '@vue/runtime-core'
 import type { TreeView, WebviewView } from 'vscode'
-import { createKeyedComposable } from '../utils'
-import { useDisposable } from './useDisposable'
+import type { Nullable } from '../utils/types'
 
-type ViewWithVisibility = TreeView<unknown> | WebviewView
+type ViewWithVisibility = Pick<TreeView<unknown> | WebviewView, 'visible' | 'onDidChangeVisibility'>
 
-const map = new WeakMap<ViewWithVisibility, Readonly<Ref<boolean>>>()
+export function useViewVisibility(view: MaybeRefOrGetter<Nullable<ViewWithVisibility>>): ComputedRef<boolean> {
+  const visible = ref(toValue(view)?.visible)
 
-export const useViewVisibility = createKeyedComposable(
-  (view: ViewWithVisibility) => {
-    const existing = map.get(view)
-    if (existing)
-      return existing
+  function update() {
+    visible.value = toValue(view)?.visible
+  }
 
-    const visible = ref(view.visible)
-    useDisposable(view.onDidChangeVisibility(() => visible.value = view.visible))
+  watchEffect((onCleanup) => {
+    const viewValue = toValue(view)
+    if (viewValue) {
+      const disposable = viewValue.onDidChangeVisibility(update)
+      onCleanup(() => disposable.dispose())
+    }
+  })
 
-    const result = readonly(visible)
-    map.set(view, result)
-    return result
-  },
-  view => view,
-)
+  watchEffect(update)
+
+  // Visiblility should be readonly
+  return computed(() => !!visible.value)
+}
