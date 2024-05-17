@@ -1,4 +1,5 @@
 export * from './useActiveColorTheme'
+export * from './useActiveDebugSession'
 export * from './useActiveEditorDecorations'
 export * from './useActiveTextEditor'
 export * from './useCommand'
