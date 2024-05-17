@@ -1,13 +1,14 @@
-import { shallowRef } from '@vue/runtime-core'
+import { effectScope, shallowRef } from '@vue/runtime-core'
 import type { ExtensionContext } from 'vscode'
 
-export const context = shallowRef<ExtensionContext | null>(null!)
+export const extensionContext = shallowRef<ExtensionContext | null>(null!)
+export const extensionScope = effectScope()
 
 type OnActivateCb = (context: ExtensionContext) => void
 const activateCbs: OnActivateCb[] = []
 export function onActivate(fn: OnActivateCb) {
-  if (context.value)
-    fn(context.value)
+  if (extensionContext.value)
+    fn(extensionContext.value)
   else
     activateCbs.push(fn)
 }
@@ -21,12 +22,15 @@ export function onDeactivate(fn: OnDeactivateCb) {
 export function createExtension(setup: () => void) {
   return {
     activate: (extCtx: ExtensionContext) => {
-      context.value = extCtx
-      activateCbs.map(fn => fn(extCtx))
-      setup()
+      extensionContext.value = extCtx
+      extensionScope.run(() => {
+        activateCbs.map(fn => fn(extCtx))
+        setup()
+      })
     },
     deactivate: () => {
       deactivateCbs.map(fn => fn())
+      extensionScope.stop()
     },
   }
 }
