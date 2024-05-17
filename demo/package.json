@@ -25,7 +25,7 @@
   },
   "scripts": {
     "build": "tsup --env.NODE_ENV production",
-    "dev": "nr build --watch"
+    "dev": "tsup --watch ../src --watch ./src"
   },
   "devDependencies": {
     "@types/node": "18.x",
