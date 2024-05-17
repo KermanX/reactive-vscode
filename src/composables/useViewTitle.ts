@@ -1,9 +1,12 @@
 import type { MaybeRefOrGetter } from '@vue/runtime-core'
 import { toValue, watchEffect } from '@vue/runtime-core'
 import type { TreeView, WebviewView } from 'vscode'
+import type { Nullable } from '../utils/types'
+
+type ViewWithTitle = Pick<TreeView<unknown> | WebviewView, 'title'>
 
 export function useViewTitle(
-  view: MaybeRefOrGetter<TreeView<unknown> | WebviewView | null | undefined>,
+  view: MaybeRefOrGetter<Nullable<ViewWithTitle>>,
   title: MaybeRefOrGetter<string | undefined>,
 ) {
   watchEffect(() => {
