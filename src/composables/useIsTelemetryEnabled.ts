@@ -1,8 +1,9 @@
 import { computed, shallowRef } from '@vue/runtime-core'
 import { env } from 'vscode'
+import { createSingletonComposable } from '../utils'
 import { useDisposable } from './useDisposable'
 
-export function useIsTelemetryEnabled() {
+export const useIsTelemetryEnabled = createSingletonComposable(() => {
   const isTelemetryEnabled = shallowRef(env.isTelemetryEnabled)
 
   useDisposable(env.onDidChangeTelemetryEnabled((ev) => {
@@ -10,4 +11,4 @@ export function useIsTelemetryEnabled() {
   }))
 
   return computed(() => isTelemetryEnabled.value)
-}
+})
