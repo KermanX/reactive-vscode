@@ -25,12 +25,14 @@
   },
   "scripts": {
     "build": "tsup --env.NODE_ENV production",
-    "dev": "tsup --watch ../src --watch ./src"
+    "dev": "tsup --watch ../src --watch ./src",
+    "typecheck": "tsc --noEmit"
   },
   "devDependencies": {
     "@types/node": "18.x",
     "@types/vscode": "^1.89.0",
-    "reactive-vscode": "link:..",
-    "tsup": "^8.0.2"
+    "reactive-vscode": "workspace:*",
+    "tsup": "^8.0.2",
+    "typescript": "^5.4.5"
   }
 }

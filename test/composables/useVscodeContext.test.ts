@@ -1,7 +1,6 @@
-import type { ComputedRef, Ref, WritableComputedRef } from '@vue/runtime-core'
-import { computed, ref } from '@vue/runtime-core'
+import type { ComputedRef, Ref, WritableComputedRef } from 'reactive-vscode'
+import { computed, ref, useVscodeContext } from 'reactive-vscode'
 import { describe, expectTypeOf, it } from 'vitest'
-import { useVscodeContext } from '../../src/composables/useVscodeContext'
 
 describe('useVscodeContext', () => {
   it.skip('should have correct types', () => {

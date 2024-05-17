@@ -11,3 +11,4 @@ node_modules
 temp
 docs/.vitepress/dist
 docs/.vitepress/cache
+packages/reactive-vscode/README.md

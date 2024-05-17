@@ -1,5 +1,5 @@
 import { describe, expect, it, vi } from 'vitest'
-import { createKeyedComposable } from '../../src/utils/keyedComposable'
+import { createKeyedComposable } from 'reactive-vscode'
 
 const fnImpl = (a: number) => ({ a })
 

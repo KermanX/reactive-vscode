@@ -4,9 +4,9 @@ import { defineConfig } from 'vite'
 
 export default defineConfig({
   test: {
-    include: ['test/**/*.test.ts'],
+    include: ['**/*.test.ts'],
     alias: {
-      vscode: resolve('./test/mock/vscode.ts'),
+      vscode: resolve('./mock/vscode.ts'),
     },
   },
 })
