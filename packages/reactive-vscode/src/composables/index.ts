@@ -1,6 +1,7 @@
 export * from './useActiveColorTheme'
 export * from './useActiveDebugSession'
 export * from './useActiveEditorDecorations'
+export * from './useActiveNotebookEditor'
 export * from './useActiveTextEditor'
 export * from './useAllExtensions'
 export * from './useCommand'
