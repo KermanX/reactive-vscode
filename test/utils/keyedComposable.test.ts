@@ -1,5 +1,5 @@
 import { describe, expect, it, vi } from 'vitest'
-import { createKeyedComposable } from 'reactive-vscode'
+import { createKeyedComposable, effectScope } from 'reactive-vscode'
 
 const fnImpl = (a: number) => ({ a })
 
@@ -18,6 +18,25 @@ describe('keyedComposable', () => {
     const result3 = composable(2)
 
     expect(result3.a).toBe(2)
+    expect(fn).toBeCalledTimes(2)
+  })
+
+  it('should release data when all scopes disposed', () => {
+    const fn = vi.fn(fnImpl)
+    const composable = createKeyedComposable(fn, a => a)
+
+    const scope1 = effectScope()
+    scope1.run(() => {
+      composable(1)
+    })
+    scope1.stop()
+
+    const scope2 = effectScope()
+    scope2.run(() => {
+      composable(1)
+    })
+    scope2.stop()
+
     expect(fn).toBeCalledTimes(2)
   })
 })

@@ -1,14 +1,15 @@
+import type { ComputedRef } from '@vue/runtime-core'
 import { tryOnScopeDispose } from './tryOnScopeDispose'
 
-export function createKeyedComposable<T extends (...args: any) => any, K extends object>(
-  fn: T,
-  key: NoInfer<(...args: Parameters<T>) => K>,
-): T {
+export function createKeyedComposable<P extends unknown[], R, K>(
+  fn: (...args: P) => R,
+  key: NoInfer<(...args: P) => K>,
+): (...args: P) => R {
   const cache = new Map<K, {
-    data: ReturnType<T>
+    data: R
     refCount: number
   }>()
-  return ((...args: Parameters<T>) => {
+  return (...args: P): R => {
     const k = key(...args)
 
     let cached = cache.get(k)
@@ -29,5 +30,5 @@ export function createKeyedComposable<T extends (...args: any) => any, K extends
     })
 
     return cached.data
-  }) as T
+  }
 }
