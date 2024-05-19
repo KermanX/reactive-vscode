@@ -1,7 +1,7 @@
 {
   "type": "module",
   "version": "0.0.0",
-  "packageManager": "pnpm@9.1.0",
+  "packageManager": "pnpm@9.1.1",
   "scripts": {
     "dev": "nr -C demo dev",
     "lint": "eslint .",
@@ -20,7 +20,7 @@
     "bumpp": "^9.4.1",
     "eslint": "^9.2.0",
     "lint-staged": "^15.2.2",
-    "pnpm": "^9.1.0",
+    "pnpm": "^9.1.1",
     "simple-git-hooks": "^2.11.1",
     "typescript": "^5.4.5"
   },

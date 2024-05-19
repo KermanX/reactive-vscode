@@ -24,8 +24,8 @@ importers:
         specifier: ^15.2.2
         version: 15.2.2
       pnpm:
-        specifier: ^9.1.0
-        version: 9.1.0
+        specifier: ^9.1.1
+        version: 9.1.1
       simple-git-hooks:
         specifier: ^2.11.1
         version: 2.11.1
@@ -2402,8 +2402,8 @@ packages:
     resolution: {integrity: sha512-Nc3IT5yHzflTfbjgqWcCPpo7DaKy4FnpB0l/zCAW0Tc7jxAiuqSxHasntB3D7887LSrA93kDJ9IXovxJYxyLCA==}
     engines: {node: '>=4'}
 
-  pnpm@9.1.0:
-    resolution: {integrity: sha512-Z/WHmRapKT5c8FnCOFPVcb6vT3U8cH9AyyK+1fsVeMaq07bEEHzLO6CzW+AD62IaFkcayDbIe+tT+dVLtGEnJA==}
+  pnpm@9.1.1:
+    resolution: {integrity: sha512-FOkVdZwR936sB/q6TQGcGT7IY3Ip5i7Jnu+3zzw7dcZER4grfEhRQkUe46a0CAWc37e3+gNBuXXxLQ92KccRlQ==}
     engines: {node: '>=18.12'}
     hasBin: true
 
@@ -5458,7 +5458,7 @@ snapshots:
 
   pluralize@8.0.0: {}
 
-  pnpm@9.1.0: {}
+  pnpm@9.1.1: {}
 
   postcss-load-config@4.0.2(postcss@8.4.38):
     dependencies:
