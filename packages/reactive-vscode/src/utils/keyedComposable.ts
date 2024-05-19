@@ -1,4 +1,3 @@
-import type { ComputedRef } from '@vue/runtime-core'
 import { tryOnScopeDispose } from './tryOnScopeDispose'
 
 export function createKeyedComposable<P extends unknown[], R, K>(
