@@ -1,25 +1,33 @@
-import { onScopeDispose } from '@vue/runtime-core'
+import { tryOnScopeDispose } from './tryOnScopeDispose'
 
-export function createKeyedComposable<T extends (...args: any) => any>(
+export function createKeyedComposable<T extends (...args: any) => any, K extends object>(
   fn: T,
-  key: NoInfer<(...args: Parameters<T>) => any>,
+  key: NoInfer<(...args: Parameters<T>) => K>,
 ): T {
-  const cache = new Map<any, ReturnType<T>>()
-  let firstCall = true
+  const cache = new Map<K, {
+    data: ReturnType<T>
+    refCount: number
+  }>()
   return ((...args: Parameters<T>) => {
     const k = key(...args)
-    const existing = cache.get(k)
-    if (existing)
-      return existing
-    const result = fn(...args)
-    cache.set(k, result)
-    if (firstCall) {
-      firstCall = false
-      onScopeDispose(() => {
-        cache.clear()
-        firstCall = true
-      })
+
+    let cached = cache.get(k)
+    if (cached) {
+      cached.refCount++
     }
-    return result
+    else {
+      cached = {
+        data: fn(...args),
+        refCount: 1,
+      }
+      cache.set(k, cached)
+    }
+
+    tryOnScopeDispose(() => {
+      if (--cached.refCount === 0)
+        cache.delete(k)
+    })
+
+    return cached.data
   }) as T
 }

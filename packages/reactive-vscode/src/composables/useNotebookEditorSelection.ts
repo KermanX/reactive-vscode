@@ -1,23 +1,27 @@
 import { computed, shallowRef } from '@vue/runtime-core'
 import type { NotebookEditor } from 'vscode'
 import { window } from 'vscode'
+import { createKeyedComposable } from '../utils'
 import { useDisposable } from './useDisposable'
 
-export function useNotebookEditorSelection(notebookEditor: NotebookEditor) {
-  const selection = shallowRef(notebookEditor.selection)
+export const useNotebookEditorSelection = createKeyedComposable(
+  (notebookEditor: NotebookEditor) => {
+    const selection = shallowRef(notebookEditor.selection)
 
-  useDisposable(window.onDidChangeNotebookEditorSelection((ev) => {
-    if (ev.notebookEditor === notebookEditor)
-      selection.value = ev.selections[0]
-  }))
+    useDisposable(window.onDidChangeNotebookEditorSelection((ev) => {
+      if (ev.notebookEditor === notebookEditor)
+        selection.value = ev.selections[0]
+    }))
 
-  return computed({
-    get() {
-      return selection.value
-    },
-    set(newSelection) {
-      selection.value = newSelection
-      notebookEditor.selection = newSelection
-    },
-  })
-}
+    return computed({
+      get() {
+        return selection.value
+      },
+      set(newSelection) {
+        selection.value = newSelection
+        notebookEditor.selection = newSelection
+      },
+    })
+  },
+  notebookEditor => notebookEditor,
+)
