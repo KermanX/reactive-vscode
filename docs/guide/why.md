@@ -20,6 +20,10 @@ Disposables are everywhere in a VSCode extension. You have to store all of them 
 
 Views in a VSCode extension are created lazily. If you want to access a view instance, you have to store it, and even listen to a event which is fired when the view is created.
 
+### Want to use Vue
+
+Vue's reactivity system is powerful. It's much easier to watch states and update views with Vue's reactivity system. But VSCode APIs are not designed to work with Vue.
+
 ## The solution
 
 [Vue's Reactivity API](https://vuejs.org/api/reactivity-core.html) is all you need. This library wraps most of the VSCode APIs into [Vue Composables](https://vuejs.org/guide/reusability/composables.html). You can use them as you use Vue 3 Composition API, which is familiar to Vue developers.
@@ -75,11 +79,11 @@ export = defineExtension(() => {
 })
 ```
 
-As you can see, after using `reactive-vscode`, the code is much cleaner and easier to understand. You can use Vue's reactivity API like `watchEffect` to watch states, and use Vue composables like `useActiveTextEditor` to access the active text editor.
+As you can see, after using `reactive-vscode`, the code is much cleaner and easier to understand. With composables like `useActiveTextEditor` provided by this library, you can use Vue's reactivity API like `watchEffect` smoothly when developing a VSCode extension.
 
 ## FAQ
 
-### Why use `@vue/runtime-core`?
+### Why use `@vue/runtime-core` internally?
 
 This library is built on top of `@vue/runtime-core`. This is because `@vue/reactivity` doesn't provide the `watch` and `watchEffect` function, which is essential in a VSCode extension.
 

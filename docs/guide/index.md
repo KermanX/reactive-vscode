@@ -20,6 +20,17 @@ yarn add reacive-vscode --save-dev
 
 :::
 
+## Package Exports
+
+The package exports the following:
+
+- Utility functions and types, like `defineExtension`
+- Wrappers of VSCode APIs as composables, like `useActiveTextEditor`
+- All exports from `@vue/reactivity`, like `ref`
+- Exports that are useful for VSCode extension from `@vue/runtime-core`, like `watchEffect`
+
+Here you can find all the [implemented composables](https://github.com/KermanX/reactive-vscode/tree/main/packages/reactive-vscode/src/composables). They will be documented in the future.
+
 ---
 
 🚧 *UNDER CONSTRUCTION* 🚧
