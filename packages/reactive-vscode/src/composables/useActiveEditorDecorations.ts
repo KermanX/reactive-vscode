@@ -8,5 +8,6 @@ export function useActiveEditorDecorations(
   rangesOrOptions: MaybeRefOrGetter<readonly Range[] | readonly DecorationOptions[]>,
 ) {
   const activeEditor = useActiveTextEditor()
+
   useEditorDecorations(options, activeEditor, rangesOrOptions)
 }

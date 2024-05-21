@@ -10,6 +10,7 @@ export function useEditorDecorations(
   rangesOrOptions: MaybeRefOrGetter<readonly Range[] | readonly DecorationOptions[]>,
 ) {
   const decorationType = window.createTextEditorDecorationType(options)
+
   watchEffect(() => {
     toValue(editor)?.setDecorations(decorationType, toValue(rangesOrOptions))
   })

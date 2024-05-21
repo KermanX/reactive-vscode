@@ -5,5 +5,6 @@ import { useActiveColorTheme } from './useActiveColorTheme'
 
 export const useIsDarkTheme = createSingletonComposable(() => {
   const theme = useActiveColorTheme()
+
   return computed(() => theme.value.kind === ColorThemeKind.Dark || theme.value.kind === ColorThemeKind.HighContrast)
 })

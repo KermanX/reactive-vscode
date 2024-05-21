@@ -5,6 +5,10 @@ import { useDisposable } from './useDisposable'
 
 export const useActiveColorTheme = createSingletonComposable(() => {
   const result = shallowRef(window.activeColorTheme)
-  useDisposable(window.onDidChangeActiveColorTheme(theme => (result.value = theme)))
+
+  useDisposable(window.onDidChangeActiveColorTheme((theme) => {
+    result.value = theme
+  }))
+
   return result
 })
