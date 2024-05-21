@@ -1,4 +1,4 @@
-import { shallowRef } from '@vue/runtime-core'
+import { computed, shallowRef } from '@vue/runtime-core'
 import { window } from 'vscode'
 import { createSingletonComposable } from '../utils/singletonComposable'
 import { useDisposable } from './useDisposable'
@@ -10,5 +10,8 @@ export const useWindowState = createSingletonComposable(() => {
     windowState.value = state
   }))
 
-  return windowState
+  return {
+    focused: computed(() => windowState.value.focused),
+    active: computed(() => windowState.value.active),
+  }
 })
