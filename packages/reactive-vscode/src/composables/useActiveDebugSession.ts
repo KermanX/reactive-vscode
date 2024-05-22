@@ -3,6 +3,9 @@ import { debug } from 'vscode'
 import { createSingletonComposable } from '../utils'
 import { useDisposable } from './useDisposable'
 
+/**
+ * @reactive `debug.activeDebugSession`
+ */
 export const useActiveDebugSession = createSingletonComposable(() => {
   const session = shallowRef(debug.activeDebugSession)
 

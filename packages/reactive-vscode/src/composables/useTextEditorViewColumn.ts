@@ -4,6 +4,9 @@ import { window } from 'vscode'
 import { createKeyedComposable } from '../utils'
 import { useDisposable } from './useDisposable'
 
+/**
+ * @reactive `TextEditor.viewColumn`
+ */
 export const useTextEditorViewColumn = createKeyedComposable(
   (textEditor: TextEditor) => {
     const viewColumn = shallowRef(textEditor.viewColumn)

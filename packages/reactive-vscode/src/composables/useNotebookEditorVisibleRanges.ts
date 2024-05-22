@@ -4,6 +4,9 @@ import { window } from 'vscode'
 import { createKeyedComposable } from '../utils'
 import { useDisposable } from './useDisposable'
 
+/**
+ * @reactive `NotebookEditor.visibleRanges`
+ */
 export const useNotebookEditorVisibleRanges = createKeyedComposable(
   (notebookEditor: NotebookEditor) => {
     const ranges = shallowRef(notebookEditor.visibleRanges)

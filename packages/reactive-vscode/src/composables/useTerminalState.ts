@@ -4,6 +4,9 @@ import { window } from 'vscode'
 import { createKeyedComposable } from '../utils'
 import { useDisposable } from './useDisposable'
 
+/**
+ * @reactive `Terminal.state`
+ */
 export const useTerminalState = createKeyedComposable(
   (terminal: Terminal) => {
     const state = shallowRef(terminal.state)

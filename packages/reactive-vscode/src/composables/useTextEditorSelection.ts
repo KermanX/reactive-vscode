@@ -4,6 +4,9 @@ import { window } from 'vscode'
 import { createKeyedComposable } from '../utils'
 import { useDisposable } from './useDisposable'
 
+/**
+ * @reactive `TextEditor.selection`
+ */
 export const useTextEditorSelection = createKeyedComposable(
   (textEditor: TextEditor) => {
     const selection = shallowRef(textEditor.selection)

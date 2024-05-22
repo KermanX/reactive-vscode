@@ -3,6 +3,9 @@ import { window } from 'vscode'
 import { createSingletonComposable } from '../utils/singletonComposable'
 import { useDisposable } from './useDisposable'
 
+/**
+ * @reactive `window.visibleNotebookEditors`
+ */
 export const useVisibleNotebookEditors = createSingletonComposable(() => {
   const visibleNotebookEditors = shallowRef(window.visibleNotebookEditors)
 

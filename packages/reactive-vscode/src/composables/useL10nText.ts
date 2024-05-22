@@ -2,6 +2,9 @@ import type { ComputedRef, MaybeRefOrGetter } from '@vue/runtime-core'
 import { computed, toRaw, toValue } from '@vue/runtime-core'
 import { l10n } from 'vscode'
 
+/**
+ * @reactive `l10n.t`
+ */
 export function useL10nText(message: MaybeRefOrGetter<string>, ...args: Array<MaybeRefOrGetter<string | number | boolean>>): ComputedRef<string>
 export function useL10nText(message: MaybeRefOrGetter<string>, args: Record<string, any>): ComputedRef<string>
 export function useL10nText(message: MaybeRefOrGetter<string>, ...args: Array<MaybeRefOrGetter<string | number | boolean>> | [Record<string, any>]) {

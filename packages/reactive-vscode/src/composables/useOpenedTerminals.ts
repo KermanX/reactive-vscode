@@ -3,6 +3,9 @@ import { window } from 'vscode'
 import { createSingletonComposable } from '../utils/singletonComposable'
 import { useDisposable } from './useDisposable'
 
+/**
+ * @reactive `window.terminals`
+ */
 export const useOpenedTerminals = createSingletonComposable(() => {
   const openedTerminals = shallowRef(window.terminals)
 

@@ -3,6 +3,9 @@ import { computed, toValue } from '@vue/runtime-core'
 import type { TaskFilter } from 'vscode'
 import { tasks } from 'vscode'
 
+/**
+ * @reactive `tasks.fetchTasks`
+ */
 export function useFetchTasks(filter?: MaybeRefOrGetter<TaskFilter | undefined>) {
   return computed(() => tasks.fetchTasks(toValue(filter)))
 }

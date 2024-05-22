@@ -4,6 +4,9 @@ import type { TextDocument } from 'vscode'
 import { workspace } from 'vscode'
 import { useDisposable } from './useDisposable'
 
+/**
+ * @reactive `TextDocument.getText`
+ */
 export function useDocumentText(doc: MaybeRefOrGetter<TextDocument | undefined>) {
   const text = shallowRef(toValue(doc)?.getText())
 

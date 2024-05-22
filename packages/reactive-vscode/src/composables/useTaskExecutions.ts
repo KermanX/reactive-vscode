@@ -3,6 +3,9 @@ import { tasks } from 'vscode'
 import { createSingletonComposable } from '../utils'
 import { useDisposable } from './useDisposable'
 
+/**
+ * @reactive `tasks.taskExecutions`
+ */
 export const useTaskExecutions = createSingletonComposable(() => {
   const taskExecutions = shallowRef(tasks.taskExecutions)
 
