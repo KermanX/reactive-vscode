@@ -30,10 +30,13 @@
     "src"
   ],
   "scripts": {
-    "typecheck": "tsc --noEmit",
-    "dev": "nodemon -w ../reactive-vscode/** -w ./scripts/** -w ./src/** -e ts --exec \"tsx scripts/update.ts\""
+    "typecheck": "nr update && tsc --noEmit",
+    "update": "tsx scripts/update.ts",
+    "build": "nr update",
+    "dev": "nodemon -w ../reactive-vscode/** -w ./scripts/** -w ./src/** -e ts --exec \"nr update\""
   },
   "devDependencies": {
+    "@antfu/ni": "^0.21.12",
     "@types/node": "18.x",
     "fast-glob": "^3.3.2",
     "nodemon": "^3.1.0",

@@ -10,7 +10,7 @@
     "typecheck": "nr -r --parallel typecheck",
     "prepare": "simple-git-hooks",
     "docs:dev": "nr -C docs dev",
-    "docs:build": "nr -C docs build",
+    "docs:build": "nr -C packages/metadata build && nr -C docs build",
     "docs:preview": "nr -C docs preview",
     "prepublishOnly": "node ./scripts/prepublish.js"
   },
