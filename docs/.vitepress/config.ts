@@ -1,7 +1,12 @@
-import { defineConfig } from 'vitepress'
-import UnoCSS from 'unocss/vite'
-import presetUno from '@unocss/preset-uno'
+import { resolve } from 'node:path'
 import presetIcons from '@unocss/preset-icons'
+import presetUno from '@unocss/preset-uno'
+import presetAttributify from '@unocss/preset-attributify'
+import transformerDirectives from '@unocss/transformer-directives'
+import transformerVariantGroup from '@unocss/transformer-variant-group'
+import UnoCSS from 'unocss/vite'
+import Components from 'unplugin-vue-components/vite'
+import { defineConfig } from 'vitepress'
 
 // https://vitepress.dev/reference/site-config
 export default defineConfig({
@@ -14,6 +19,7 @@ export default defineConfig({
 
     nav: [
       { text: 'Guide', link: '/guide/' },
+      { text: 'Functions', link: '/functions' },
       { text: 'Examples', link: '/examples/' },
     ],
 
@@ -51,9 +57,16 @@ export default defineConfig({
 
   vite: {
     plugins: [
+      Components({
+        dirs: resolve(__dirname, 'theme/components'),
+        include: [/\.vue$/, /\.vue\?vue/, /\.md$/],
+        dts: resolve(__dirname, 'components.d.ts'),
+        transformer: 'vue3',
+      }),
       UnoCSS({
         presets: [
           presetUno(),
+          presetAttributify(),
           presetIcons({
             extraProperties: {
               'display': 'inline-block',
@@ -61,10 +74,26 @@ export default defineConfig({
             },
           }),
         ],
-        shortcuts: {
-          'text-reactive': 'color-$vp-c-reactive',
-          'text-vscode': 'color-$vp-c-vscode',
+        theme: {
+          colors: {
+            'primary': '#1F9CF0',
+            'reactive': '#229863',
+            'vscode': '#1F9CF0',
+            'vscode-darker': '#007ACC',
+          },
+          fontFamily: {
+            mono: 'var(--vp-font-family-mono)',
+          },
         },
+        shortcuts: {
+          'border-main': 'border-$vp-c-divider',
+          'bg-main': 'bg-gray-400',
+          'bg-base': 'bg-white dark:bg-hex-1a1a1a',
+        },
+        transformers: [
+          transformerDirectives(),
+          transformerVariantGroup(),
+        ],
       }),
     ],
   },

@@ -1,8 +1,8 @@
 {
-  "name": "reactive-vscode",
+  "name": "reactive-vscode-metadata",
   "type": "module",
   "version": "0.0.0",
-  "description": "Develop VSCode extension with Vue 3 Composition API",
+  "description": "Metadata for reactive-vscode",
   "author": "_Kerman <kermanx@qq.com>",
   "license": "MIT",
   "homepage": "https://github.com/KermanX/reactive-vscode#readme",
@@ -12,13 +12,8 @@
   },
   "bugs": "https://github.com/KermanX/reactive-vscode/issues",
   "keywords": [
-    "vscode",
-    "extension",
-    "extension-development",
-    "vue",
-    "composition-api",
-    "reactive",
-    "reactiviry"
+    "reactive-vscode",
+    "metadata"
   ],
   "sideEffects": false,
   "exports": {
@@ -31,18 +26,19 @@
   "types": "./src/index.ts",
   "files": [
     "README.md",
-    "dist"
+    "metadata.json",
+    "src"
   ],
   "scripts": {
     "typecheck": "tsc --noEmit",
-    "build": "mkdist -d"
-  },
-  "dependencies": {
-    "@vue/runtime-core": "^3.4.27"
+    "dev": "nodemon -w ../reactive-vscode/** -w ./scripts/** -w ./src/** -e ts --exec \"tsx scripts/update.ts\""
   },
   "devDependencies": {
-    "@types/vscode": "^1.89.0",
-    "mkdist": "^1.5.1",
+    "@types/node": "18.x",
+    "fast-glob": "^3.3.2",
+    "nodemon": "^3.1.0",
+    "simple-git": "^3.24.0",
+    "tsx": "^4.10.5",
     "typescript": "^5.4.5"
   }
 }

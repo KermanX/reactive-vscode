@@ -1,5 +1,5 @@
 :root {
-  --vp-c-reactive: #32A873;
+  --vp-c-reactive: #229863;
   --vp-c-vscode: #1F9CF0;
   --vp-c-vscode-darker: #007ACC;
 
@@ -16,4 +16,19 @@
 
 .VPHero .main .text {
   opacity: 0.8;
+}
+
+.vsc-api-link {
+  color: var(--vp-c-vscode) !important;
+  text-decoration: none !important;
+  @apply !font-mono !px-1 !text-[1.1em];
+}
+
+.vsc-api-link::before {
+  content: '';
+  @apply mr-1 !i-vscode-icons:file-type-vscode;
+}
+
+.vsc-api-link:hover {
+  @apply op80;
 }

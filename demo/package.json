@@ -25,7 +25,7 @@
   },
   "scripts": {
     "build": "tsup --env.NODE_ENV production",
-    "dev": "tsup --watch ../src --watch ./src",
+    "dev": "tsup --watch ../packages/reactive-vscode/src --watch ./src",
     "typecheck": "tsc --noEmit"
   },
   "devDependencies": {

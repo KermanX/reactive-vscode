@@ -19,6 +19,8 @@
 
 The logo <img src="https://kermanx.github.io/reactive-vscode/logo.svg" width="14"> is modified from [Vue Reactity Artworks](https://github.com/vue-reactivity/art). Licensed under a [Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License](https://creativecommons.org/licenses/by-nc-sa/4.0/).
 
+Part of the docs website is ported from [VueUse](https://github.com/vueuse/vueuse). Licensed under a [MIT License](https://github.com/vueuse/vueuse/blob/main/LICENSE).
+
 <!-- Badges -->
 
 [npm-version-src]: https://img.shields.io/npm/v/reactive-vscode?style=flat&colorA=080f12&colorB=1fa669
