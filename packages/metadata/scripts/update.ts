@@ -25,7 +25,8 @@ function getCategory(ts: string) {
 }
 
 function getDescription(ts: string) {
-  const s = ts.match(/^ \* (.+)$/m)?.[1].trim()
+  const commentBlock = ts.slice(ts.lastIndexOf('\n/**\n') + 1)
+  const s = commentBlock?.match(/^ \* (.+)$/m)?.[1].trim()
   return s?.startsWith('@') ? undefined : s
 }
 
