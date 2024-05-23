@@ -4,6 +4,11 @@ import type { DecorationOptions, DecorationRenderOptions, Range, TextEditor } fr
 import { window } from 'vscode'
 import type { Nullable } from '../utils/types'
 
+/**
+ * Reactively set decorations on the given editor. See {{TextEditor.setDecorations}}.
+ *
+ * @category decorations
+ */
 export function useEditorDecorations(
   options: DecorationRenderOptions,
   editor: MaybeRefOrGetter<Nullable<TextEditor>>,

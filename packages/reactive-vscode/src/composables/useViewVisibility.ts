@@ -5,6 +5,11 @@ import type { Nullable } from '../utils/types'
 
 type ViewWithVisibility = Pick<TreeView<unknown> | WebviewView, 'visible' | 'onDidChangeVisibility'>
 
+/**
+ * Reactively get the visibility of a view ({{TreeView}} or {{WebviewView}}).
+ *
+ * @category view
+ */
 export function useViewVisibility(view: MaybeRefOrGetter<Nullable<ViewWithVisibility>>): ComputedRef<boolean> {
   const visible = ref(toValue(view)?.visible)
 

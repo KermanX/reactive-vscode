@@ -1,35 +1,25 @@
-import type { TreeDataProvider, TreeView, TreeViewOptions } from 'vscode'
-import { EventEmitter, window } from 'vscode'
 import type { MaybeRefOrGetter } from '@vue/runtime-core'
 import { toValue, watch } from '@vue/runtime-core'
+import { EventEmitter, window } from 'vscode'
 import { createKeyedComposable } from '../utils'
 import { useDisposable } from './useDisposable'
+import type { TreeViewNode, TreeViewWithoutParent, UseTreeViewOptions } from './useTreeView'
 
-export interface TreeViewNode<T> {
-  readonly element: T
-  readonly children: TreeViewNode<T>[]
+export interface TreeViewNodeWithParent<T> extends TreeViewNode<T> {
+  readonly parent?: TreeViewNodeWithParent<T>
 }
 
-export type UseTreeViewOptions<T> =
-  | (
-    & Omit<TreeViewOptions<T>, 'treeDataProvider'>
-    & Pick<TreeDataProvider<T>, 'getTreeItem' | 'resolveTreeItem'>
-  )
-  | TreeDataProvider<T>['getTreeItem']
-
-export type TreeViewWithoutParent<T> = Omit<TreeView<T>, 'reveal'>
-
 /**
- * Register a tree view. See {{window.createTreeView}}.
+ * Register a tree view, in which items has a prarent. See {{window.createTreeView}}.
  *
  * @category window
  */
-export const useTreeView = createKeyedComposable(
+export const useTreeViewWithParent = createKeyedComposable(
   <T>(
     viewId: string,
-    treeData: MaybeRefOrGetter<TreeViewNode<T>[]>,
-    options: UseTreeViewOptions<TreeViewNode<T>>,
-  ): TreeViewWithoutParent<TreeViewNode<T>> => {
+    treeData: MaybeRefOrGetter<TreeViewNodeWithParent<T>[]>,
+    options: UseTreeViewOptions<TreeViewNodeWithParent<T>>,
+  ): TreeViewWithoutParent<TreeViewNodeWithParent<T>> => {
     const normalizedOptions = typeof options === 'function' ? { getTreeItem: options } : options
     const changeEventEmitter = new EventEmitter<void>()
 
@@ -40,11 +30,14 @@ export const useTreeView = createKeyedComposable(
       treeDataProvider: {
         ...normalizedOptions,
         onDidChangeTreeData: changeEventEmitter.event,
-        getTreeItem(node: TreeViewNode<T>) {
+        getTreeItem(node: TreeViewNodeWithParent<T>) {
           return normalizedOptions.getTreeItem(node)
         },
-        getChildren(node?: TreeViewNode<T>) {
+        getChildren(node?: TreeViewNodeWithParent<T>) {
           return node ? node.children : toValue(treeData)
+        },
+        getParent(node: TreeViewNodeWithParent<T>) {
+          return node.parent
         },
       },
     }))

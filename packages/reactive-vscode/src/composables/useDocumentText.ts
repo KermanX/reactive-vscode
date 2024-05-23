@@ -6,6 +6,7 @@ import { useDisposable } from './useDisposable'
 
 /**
  * @reactive `TextDocument.getText`
+ * @category document
  */
 export function useDocumentText(doc: MaybeRefOrGetter<TextDocument | undefined>) {
   const text = shallowRef(toValue(doc)?.getText())

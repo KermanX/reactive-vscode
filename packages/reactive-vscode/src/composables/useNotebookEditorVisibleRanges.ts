@@ -6,6 +6,7 @@ import { useDisposable } from './useDisposable'
 
 /**
  * @reactive `NotebookEditor.visibleRanges`
+ * @category editor
  */
 export const useNotebookEditorVisibleRanges = createKeyedComposable(
   (notebookEditor: NotebookEditor) => {

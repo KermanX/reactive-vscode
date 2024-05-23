@@ -1,10 +1,10 @@
-import { createExtension, useCommand, useIsDarkTheme, useLogger, watchEffect } from 'reactive-vscode'
+import { defineExtension, useCommand, useIsDarkTheme, useLogger, watchEffect } from 'reactive-vscode'
 import { window } from 'vscode'
 
 const logger = useLogger('Reactive VSCode')
 
 // eslint-disable-next-line no-restricted-syntax
-export = createExtension(() => {
+export = defineExtension(() => {
   logger.info('Hello World!')
   logger.show()
 

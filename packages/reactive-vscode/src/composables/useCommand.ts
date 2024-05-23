@@ -1,12 +1,12 @@
 import { commands } from 'vscode'
-import type { Commands } from '../utils/commands'
+import type { Commands } from '../utils'
 import { useDisposable } from './useDisposable'
 
+/**
+ * Register a command. See {{commands.registerCommand}}.
+ *
+ * @category commands
+ */
 export function useCommand<K extends Extract<keyof Commands, string>>(command: K, callback: Commands[K]) {
   useDisposable(commands.registerCommand(command, callback))
-}
-
-export function useCommands(commands: Commands) {
-  for (const [command, callback] of Object.entries(commands))
-    useCommand(command, callback)
 }

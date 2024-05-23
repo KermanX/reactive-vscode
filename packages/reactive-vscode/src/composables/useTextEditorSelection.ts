@@ -6,6 +6,7 @@ import { useDisposable } from './useDisposable'
 
 /**
  * @reactive `TextEditor.selection`
+ * @category editor
  */
 export const useTextEditorSelection = createKeyedComposable(
   (textEditor: TextEditor) => {

@@ -1,6 +1,6 @@
 import { shallowRef } from '@vue/runtime-core'
 import { window } from 'vscode'
-import { createSingletonComposable } from '../utils/singletonComposable'
+import { createSingletonComposable } from '../utils'
 import { useDisposable } from './useDisposable'
 
 /**

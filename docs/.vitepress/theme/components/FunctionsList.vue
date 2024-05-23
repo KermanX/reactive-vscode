@@ -16,12 +16,18 @@ useEventListener('click', (e) => {
 const query = useUrlSearchParams('hash-params', { removeFalsyValues: true })
 const search = toRef(query, 'search') as Ref<string | null>
 const category = toRef(query, 'category') as Ref<string | null>
+const hasOriginal = toRef(query, 'has-original') as any as Ref<boolean>
+const isComposable = toRef(query, 'is-composable') as any as Ref<boolean>
 const sortMethod = toRef(query, 'sort') as Ref<'category' | 'name' | 'updated' | null>
 
 const showCategory = computed(() => !search.value && (!sortMethod.value || sortMethod.value === 'category'))
 
 const items = computed(() => {
   let fn = metadata.functions.filter(i => !i.internal)
+  if (hasOriginal.value)
+    fn = fn.filter(i => i.original)
+  if (isComposable.value)
+    fn = fn.filter(i => i.isComposable)
   if (!category.value)
     return fn
   return fn.filter(item => item.category === category.value)
@@ -45,12 +51,14 @@ const result = computed(() => {
   }
 })
 
-const hasFilters = computed(() => Boolean(search.value || category.value || sortMethod.value))
+const hasFilters = computed(() => Boolean(search.value || category.value || sortMethod.value || hasOriginal.value || isComposable.value))
 
 function resetFilters() {
   sortMethod.value = null
   category.value = null
   search.value = null
+  hasOriginal.value = false
+  isComposable.value = false
 }
 
 function toggleCategory(cate: string) {
@@ -65,7 +73,7 @@ function toggleSort(method: string) {
 <template>
   <div class="grid grid-cols-[80px_auto] gap-y-2 mt-10">
     <div opacity="80" text="sm">
-      Namespace
+      Category
     </div>
     <div flex="~ wrap" gap="2" m="b-2">
       <button
@@ -98,19 +106,19 @@ function toggleSort(method: string) {
         {{ method }}
       </button>
     </div>
-    <!-- <div opacity="80" text="sm">
+    <div opacity="80" text="sm">
       Filters
     </div>
     <div flex="~ gap-4">
       <label class="checkbox">
-        <input v-model="hasComponent" type="checkbox">
-        <span>Has Component</span>
+        <input v-model="hasOriginal" type="checkbox">
+        <span>Has Original VSCode API</span>
       </label>
       <label class="checkbox">
-        <input v-model="hasDirective" type="checkbox">
-        <span>Has Directive</span>
+        <input v-model="isComposable" type="checkbox">
+        <span>Is a Composable</span>
       </label>
-    </div> -->
+    </div>
   </div>
   <div h="1px" bg="$vp-c-divider" m="t-4" />
   <div flex="~" class="children:my-auto" p="2">

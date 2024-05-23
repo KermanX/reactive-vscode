@@ -12,6 +12,11 @@ function defaultGetPrefix(type: string) {
   return `${year}-${month}-${day} ${hour}:${minute}:${second}.${millisecond} [${type}] `
 }
 
+/**
+ * Creates a logger that writes to the output channel.
+ *
+ * @category window
+ */
 export function useLogger(name: string, getPrefix = defaultGetPrefix) {
   const outputChannel = useOutputChennel(name)
 

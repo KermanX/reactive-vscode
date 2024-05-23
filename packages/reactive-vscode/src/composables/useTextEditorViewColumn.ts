@@ -6,6 +6,7 @@ import { useDisposable } from './useDisposable'
 
 /**
  * @reactive `TextEditor.viewColumn`
+ * @category editor
  */
 export const useTextEditorViewColumn = createKeyedComposable(
   (textEditor: TextEditor) => {

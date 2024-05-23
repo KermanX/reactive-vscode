@@ -5,6 +5,11 @@ import type { Nullable } from '../utils/types'
 
 type ViewWithTitle = Pick<TreeView<unknown> | WebviewView, 'title'>
 
+/**
+ * Reactively set the title of a view ({{TreeView}} or {{WebviewView}}).
+ *
+ * @category view
+ */
 export function useViewTitle(
   view: MaybeRefOrGetter<Nullable<ViewWithTitle>>,
   title: MaybeRefOrGetter<string | undefined>,

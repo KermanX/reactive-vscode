@@ -1,5 +1,10 @@
 import { tryOnScopeDispose } from './tryOnScopeDispose'
 
+/**
+ * Creates a composable that caches the result of a function based on a key.
+ *
+ * @category utilities
+ */
 export function createKeyedComposable<P extends unknown[], R, K>(
   fn: (...args: P) => R,
   key: NoInfer<(...args: P) => K>,

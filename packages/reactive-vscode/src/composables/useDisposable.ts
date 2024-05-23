@@ -2,6 +2,11 @@ import { getCurrentScope } from '@vue/runtime-core'
 import type { Disposable } from 'vscode'
 import { extensionScope } from '../utils'
 
+/**
+ * Dispose the disposable when the current scope is disposed. See {{Disposable}}.
+ *
+ * @category lifecycle
+ */
 export function useDisposable<T extends Disposable>(disposable: T): T {
   const scope = getCurrentScope() ?? extensionScope
 

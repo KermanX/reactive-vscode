@@ -17,14 +17,21 @@ export function useVscodeContext<T>(
   value: Ref<T>,
   shouldUpdate?: MaybeRefOrGetter<boolean>,
 ): Ref<T>
+
+/**
+ * Reactively set a VS Code context. See [custom when clause context](https://code.visualstudio.com/api/references/when-clause-contexts#add-a-custom-when-clause-context).
+ *
+ * @category lifecycle
+ */
 export function useVscodeContext<T>(
   name: string,
-  value: MaybeRefOrGetter<T>,
+  value: Ref<T> | (() => T),
   shouldUpdate: MaybeRefOrGetter<boolean> = true,
 ) {
+  const normalized = typeof value === 'function' ? computed(value) : value
   watchEffect(() => {
     if (toValue(shouldUpdate))
-      commands.executeCommand('setContext', name, toValue(value))
+      commands.executeCommand('setContext', name, normalized.value)
   })
-  return computed(() => toValue(value))
+  return normalized
 }

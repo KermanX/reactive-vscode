@@ -6,6 +6,7 @@ import { useDisposable } from './useDisposable'
 
 /**
  * @reactive `Terminal.state`
+ * @category terminal
  */
 export const useTerminalState = createKeyedComposable(
   (terminal: Terminal) => {

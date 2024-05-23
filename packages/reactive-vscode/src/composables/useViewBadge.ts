@@ -5,6 +5,11 @@ import type { Nullable } from '../utils/types'
 
 type ViewWithBadge = Pick<TreeView<unknown> | WebviewView, 'badge'>
 
+/**
+ * Reactively set the badge of a view ({{TreeView}} or {{WebviewView}}).
+ *
+ * @category view
+ */
 export function useViewBadge(
   view: MaybeRefOrGetter<Nullable<ViewWithBadge>>,
   title: MaybeRefOrGetter<ViewBadge | undefined>,

@@ -7,6 +7,7 @@ export interface FunctionMetadata {
   description?: string
   deprecated?: boolean
   internal?: boolean
+  isComposable?: boolean
 }
 
 export interface Metadata {

@@ -2,9 +2,14 @@ import type { MaybeRefOrGetter } from '@vue/runtime-core'
 import { shallowRef, toValue, watchEffect } from '@vue/runtime-core'
 import type { WebviewOptions, WebviewView } from 'vscode'
 import { window } from 'vscode'
-import { createKeyedComposable } from '../utils/keyedComposable'
+import { createKeyedComposable } from '../utils'
 import { useDisposable } from './useDisposable'
 
+/**
+ * Register a webview view. See {{window.registerWebviewViewProvider}}.
+ *
+ * @category window
+ */
 export const useWebviewView = createKeyedComposable(
   (
     viewId: string,

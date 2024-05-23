@@ -21,7 +21,7 @@
 .vsc-api-link {
   color: var(--vp-c-vscode) !important;
   text-decoration: none !important;
-  @apply !font-mono !px-1 !text-[1.1em];
+  @apply !inline-block !font-mono !px-1 !text-[1.1em];
 }
 
 .vsc-api-link::before {
