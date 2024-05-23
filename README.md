@@ -9,7 +9,7 @@
 ![Header](./docs/public/header.png)
 **Develop VSCode extension with Vue 3 Composition API**
 
-[**Documentation**](https://kermanx.github.io/reactive-vscode/) | [**Why reactive-vscode**](https://kermanx.github.io/reactive-vscode/guide/why) | [**Implemented Composables**](https://github.com/KermanX/reactive-vscode/tree/main/packages/reactive-vscode/src/composables)
+[**Documentation**](https://kermanx.github.io/reactive-vscode/) | [**Why reactive-vscode**](https://kermanx.github.io/reactive-vscode/guide/why) | [**Implemented Composables**](https://kermanx.github.io/reactive-vscode/functions.html)
 
 🚧 _**WIP**, not published yet_ 🚧
 

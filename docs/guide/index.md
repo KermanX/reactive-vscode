@@ -29,7 +29,7 @@ The package exports the following:
 - All exports from `@vue/reactivity`, like `ref`
 - Exports that are useful for VSCode extension from `@vue/runtime-core`, like `watchEffect`
 
-You can find all the implemented composables [here](https://github.com/KermanX/reactive-vscode/tree/main/packages/reactive-vscode/src/composables). They will be documented in the future.
+You can find all the implemented composables [here](../functions.md). They will be documented in the future.
 
 ---
 
