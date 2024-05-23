@@ -12,7 +12,7 @@ export interface TreeViewNodeWithParent<T> extends TreeViewNode<T> {
 /**
  * Register a tree view, in which items has a prarent. See {{window.createTreeView}}.
  *
- * @category window
+ * @category view
  */
 export const useTreeViewWithParent = createKeyedComposable(
   <T>(

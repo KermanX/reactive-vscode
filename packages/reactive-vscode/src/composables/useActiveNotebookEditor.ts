@@ -5,6 +5,7 @@ import { useDisposable } from './useDisposable'
 
 /**
  * @reactive `window.activeNotebookEditor`
+ * @category editor
  */
 export const useActiveNotebookEditor = createSingletonComposable(() => {
   const activeNotebookEditor = shallowRef(window.activeNotebookEditor)

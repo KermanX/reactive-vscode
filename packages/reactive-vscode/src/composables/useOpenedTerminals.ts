@@ -5,6 +5,7 @@ import { useDisposable } from './useDisposable'
 
 /**
  * @reactive `window.terminals`
+ * @category terminal
  */
 export const useOpenedTerminals = createSingletonComposable(() => {
   const openedTerminals = shallowRef(window.terminals)

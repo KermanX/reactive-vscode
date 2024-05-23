@@ -8,7 +8,7 @@ import { useDisposable } from './useDisposable'
 /**
  * Register a webview view. See {{window.registerWebviewViewProvider}}.
  *
- * @category window
+ * @category view
  */
 export const useWebviewView = createKeyedComposable(
   (

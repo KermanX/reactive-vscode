@@ -7,7 +7,7 @@ import type { Nullable } from '../utils/types'
 /**
  * Reactively set decorations on the given editor. See {{TextEditor.setDecorations}}.
  *
- * @category decorations
+ * @category editor
  */
 export function useEditorDecorations(
   options: DecorationRenderOptions,

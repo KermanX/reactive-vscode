@@ -22,7 +22,7 @@ export type TreeViewWithoutParent<T> = Omit<TreeView<T>, 'reveal'>
 /**
  * Register a tree view. See {{window.createTreeView}}.
  *
- * @category window
+ * @category view
  */
 export const useTreeView = createKeyedComposable(
   <T>(

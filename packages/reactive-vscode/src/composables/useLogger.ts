@@ -15,7 +15,7 @@ function defaultGetPrefix(type: string) {
 /**
  * Creates a logger that writes to the output channel.
  *
- * @category window
+ * @category view
  */
 export function useLogger(name: string, getPrefix = defaultGetPrefix) {
   const outputChannel = useOutputChennel(name)

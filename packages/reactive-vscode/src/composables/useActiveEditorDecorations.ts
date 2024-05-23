@@ -6,7 +6,7 @@ import { useEditorDecorations } from './useEditorDecorations'
 /**
  * Reactively set decorations on the active editor. See {{window.activeTextEditor}}.
  *
- * @category decorations
+ * @category editor
  */
 export function useActiveEditorDecorations(
   options: DecorationRenderOptions,
