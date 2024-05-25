@@ -1,4 +1,4 @@
-import { useOutputChennel } from '../composables/useOutputChannel'
+import { useOutputChannel } from '../composables/useOutputChannel'
 
 function defaultGetPrefix(type: string) {
   const date = new Date()
@@ -18,7 +18,7 @@ function defaultGetPrefix(type: string) {
  * @category view
  */
 export function useLogger(name: string, getPrefix = defaultGetPrefix) {
-  const outputChannel = useOutputChennel(name)
+  const outputChannel = useOutputChannel(name)
 
   const createLoggerFunc = (type: string) => (...message: any[]) => {
     outputChannel.appendLine(getPrefix(type) + message.join(' '))
