@@ -21,7 +21,17 @@
         "command": "reactive-vscode-demo.helloWorld",
         "title": "Hello World"
       }
-    ]
+    ],
+    "configuration": {
+      "title": "Reactive VSCode Demo",
+      "properties": {
+        "reactive-vscode-demo.message": {
+          "type": "string",
+          "default": "Hello World",
+          "description": "The message to show in the notification"
+        }
+      }
+    }
   },
   "scripts": {
     "build": "tsup --env.NODE_ENV production",
