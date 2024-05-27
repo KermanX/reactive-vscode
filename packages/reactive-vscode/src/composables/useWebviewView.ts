@@ -6,7 +6,7 @@ import { createKeyedComposable } from '../utils'
 import { useDisposable } from './useDisposable'
 
 /**
- * Register a webview view. See {{window.registerWebviewViewProvider}}.
+ * Register a webview view. See `vscode::window.registerWebviewViewProvider`.
  *
  * @category view
  */

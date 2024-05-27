@@ -4,7 +4,7 @@ import { useActiveTextEditor } from './useActiveTextEditor'
 import { useEditorDecorations } from './useEditorDecorations'
 
 /**
- * Reactively set decorations on the active editor. See {{window.activeTextEditor}}.
+ * Reactively set decorations on the active editor. See `vscode::window.activeTextEditor`.
  *
  * @category editor
  */

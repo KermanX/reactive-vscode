@@ -2,6 +2,8 @@
   --vp-c-reactive: #229863;
   --vp-c-vscode: #1F9CF0;
   --vp-c-vscode-darker: #007ACC;
+  --vp-c-vue: var(--vp-c-reactive);
+  --vp-c-npm: color-mix(in srgb, var(--vp-c-text-1), red 50%);
 
   --vp-c-brand-1: var(--vp-c-vscode);
   --vp-c-brand-2: var(--vp-c-reactive);
@@ -18,17 +20,38 @@
   opacity: 0.8;
 }
 
-.vsc-api-link {
-  color: var(--vp-c-vscode) !important;
+.api-link {
   text-decoration: none !important;
   @apply !inline-block !font-mono !px-1 !text-[1.1em];
 }
 
-.vsc-api-link::before {
+.api-link:hover {
+  @apply op80;
+}
+
+.api-link.scope-vscode {
+  color: var(--vp-c-vscode);
+}
+
+.api-link.scope-vscode::before {
   content: '';
   @apply mr-1 !i-vscode-icons:file-type-vscode;
 }
 
-.vsc-api-link:hover {
-  @apply op80;
+.api-link.scope-reactive {
+  color: var(--vp-c-reactive);
+}
+
+.api-link.scope-reactive::before {
+  content: '';
+  @apply mr-1 !i-reactive-vscode:logo;
+}
+
+.api-link.scope-vue {
+  color: var(--vp-c-vue);
+}
+
+.api-link.scope-vue::before {
+  content: '';
+  @apply mr-1 !i-vscode-icons:file-type-vue;
 }

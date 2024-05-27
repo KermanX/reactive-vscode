@@ -20,7 +20,7 @@ export type UseTreeViewOptions<T> =
 export type TreeViewWithoutParent<T> = Omit<TreeView<T>, 'reveal'>
 
 /**
- * Register a tree view. See {{window.createTreeView}}.
+ * Register a tree view. See `vscode::window.createTreeView`.
  *
  * @category view
  */

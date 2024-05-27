@@ -6,7 +6,7 @@ import type { Nullable } from '../utils/types'
 type ViewWithBadge = Pick<TreeView<unknown> | WebviewView, 'badge'>
 
 /**
- * Reactively set the badge of a view ({{TreeView}} or {{WebviewView}}).
+ * Reactively set the badge of a view (`vscode::TreeView` or `vscode::WebviewView`).
  *
  * @category view
  */

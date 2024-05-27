@@ -6,7 +6,7 @@ import type { Nullable } from '../utils/types'
 type ViewWithTitle = Pick<TreeView<unknown> | WebviewView, 'title'>
 
 /**
- * Reactively set the title of a view ({{TreeView}} or {{WebviewView}}).
+ * Reactively set the title of a view (`vscode::TreeView` or `vscode::WebviewView`).
  *
  * @category view
  */

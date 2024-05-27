@@ -1,3 +1,5 @@
+/// <reference types="vitepress/client" />
+
 import DefaultTheme from 'vitepress/theme'
 import './styles.css'
 import Layout from './Layout.vue'

@@ -5,7 +5,7 @@ import { useDisposable } from './useDisposable'
 export type TextEditorCommandCallback = (textEditor: TextEditor, edit: TextEditorEdit, ...args: any[]) => void
 
 /**
- * Register a text editor command. See {{commands.registerTextEditorCommand}}.
+ * Register a text editor command. See `vscode::commands.registerTextEditorCommand`.
  *
  * @category commands
  */

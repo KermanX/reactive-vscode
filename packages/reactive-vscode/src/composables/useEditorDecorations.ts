@@ -5,7 +5,7 @@ import { window } from 'vscode'
 import type { Nullable } from '../utils/types'
 
 /**
- * Reactively set decorations on the given editor. See {{TextEditor.setDecorations}}.
+ * Reactively set decorations on the given editor. See `vscode::TextEditor.setDecorations`.
  *
  * @category editor
  */

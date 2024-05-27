@@ -10,7 +10,7 @@ export interface TreeViewNodeWithParent<T> extends TreeViewNode<T> {
 }
 
 /**
- * Register a tree view, in which items has a prarent. See {{window.createTreeView}}.
+ * Register a tree view, in which items has a prarent. See `vscode::window.createTreeView`.
  *
  * @category view
  */

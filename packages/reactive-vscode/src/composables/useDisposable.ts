@@ -3,7 +3,7 @@ import type { Disposable } from 'vscode'
 import { extensionScope } from '../utils'
 
 /**
- * Dispose the disposable when the current scope is disposed. See {{Disposable}}.
+ * Dispose the disposable when the current scope is disposed. See `vscode::Disposable`.
  *
  * @category lifecycle
  */

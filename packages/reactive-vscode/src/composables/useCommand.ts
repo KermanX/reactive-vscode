@@ -3,7 +3,7 @@ import type { Commands } from '../utils'
 import { useDisposable } from './useDisposable'
 
 /**
- * Register a command. See {{commands.registerCommand}}.
+ * Register a command. See `vscode::commands.registerCommand`.
  *
  * @category commands
  */

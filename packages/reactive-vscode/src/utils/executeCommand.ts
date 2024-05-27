@@ -7,7 +7,7 @@ export interface Commands extends Record<string, (...args: any[]) => any> {
 }
 
 /**
- * Execute a command, with type checking. See {{commands.executeCommand}}.
+ * Execute a command, with type checking. See `vscode::commands.executeCommand`.
  *
  * @category commands
  */

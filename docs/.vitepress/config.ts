@@ -1,3 +1,4 @@
+import { readFile } from 'node:fs/promises'
 import { resolve } from 'node:path'
 import presetIcons from '@unocss/preset-icons'
 import presetUno from '@unocss/preset-uno'
@@ -72,6 +73,11 @@ export default defineConfig({
               'display': 'inline-block',
               'vertical-align': 'middle',
             },
+            collections: {
+              'reactive-vscode': {
+                logo: () => readFile(resolve(__dirname, '../public/logo.svg'), 'utf-8'),
+              },
+            },
           }),
         ],
         theme: {
@@ -95,6 +101,17 @@ export default defineConfig({
           transformerVariantGroup(),
         ],
       }),
+      {
+        name: 'api-link',
+        enforce: 'pre',
+        transform(code, id) {
+          if (!id.endsWith('.md'))
+            return
+          return code.replace(/`(\w+)\:\:(\S+?)(\(\S+?\))?`/g, (_, scope, name, link) => {
+            return `<ApiLink scope="${scope}" name="${name}" ${link ? `link="${link}"` : ''}/>`
+          })
+        },
+      },
     ],
   },
 })

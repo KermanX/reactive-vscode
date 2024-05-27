@@ -6,7 +6,7 @@ import type { Nullable } from '../utils/types'
 type ViewWithVisibility = Pick<TreeView<unknown> | WebviewView, 'visible' | 'onDidChangeVisibility'>
 
 /**
- * Reactively get the visibility of a view ({{TreeView}} or {{WebviewView}}).
+ * Reactively get the visibility of a view (`vscode::TreeView` or `vscode::WebviewView`).
  *
  * @category view
  */

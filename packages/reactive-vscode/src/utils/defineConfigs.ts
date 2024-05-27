@@ -41,7 +41,7 @@ type ParseConfigTypeOptions<C extends ConfigTypeOptions> = {
 }
 
 /**
- * Define configurations of an extension. See {{workspace.getConfiguration}}.
+ * Define configurations of an extension. See `vscode::workspace.getConfiguration`.
  *
  * @category lifecycle
  */
