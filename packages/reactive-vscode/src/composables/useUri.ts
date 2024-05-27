@@ -4,6 +4,7 @@ import type { Uri } from 'vscode'
 
 /**
  * @reactive `Uri`
+ * @category utilities
  */
 export function useUri(uri: MaybeRefOrGetter<Uri>) {
   return shallowReactive({
