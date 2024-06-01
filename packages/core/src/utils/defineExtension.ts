@@ -3,9 +3,6 @@ import type { ExtensionContext } from 'vscode'
 import { activateCbs } from './onActivate'
 import { deactivateCbs } from './onDeactivate'
 
-/**
- * @internal
- */
 export const extensionContext = shallowRef<ExtensionContext | null>(null!)
 
 /**
