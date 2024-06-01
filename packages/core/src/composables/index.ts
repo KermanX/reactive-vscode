@@ -1,3 +1,4 @@
+export * from './useAbsolutePath'
 export * from './useActiveColorTheme'
 export * from './useActiveDebugSession'
 export * from './useActiveEditorDecorations'
