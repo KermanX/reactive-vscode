@@ -39,7 +39,7 @@ The package exports the following:
 
 You can find all the implemented composables [here](../functions/index.md). They will be documented in the future.
 
-## Define an Extension
+## Extension Basics
 
 ### Extension Manifest
 
@@ -53,11 +53,11 @@ Usually, the [extension entry file](https://code.visualstudio.com/api/get-starte
 import { defineExtension } from 'reactive-vscode'
 
 export = defineExtension(() => {
-  // Setup your extension code here
+  // Setup your extension here
 })
 ```
 
-We will introduce how to setup the extension code in [the next section](./extension.md).
+We will introduce how to write the body of your extension in [the next section](./extension.md).
 
 ## Developing the Extension
 
@@ -82,3 +82,11 @@ yarn dev
 2. Inside the editor, press <kbd>F5</kbd> or run the command **Debug: Start Debugging** from the Command Palette (<kbd>Ctrl+Shift+P</kbd>). This will run the extension in a new window.
 
 > Visit the [VSCode Documentation](https://code.visualstudio.com/api/get-started/your-first-extension#debugging-the-extension) for more information about debugging the extension.
+
+---
+
+::: tip [Twoslash](https://twoslash.netlify.app/) powered!
+
+You can hover the tokens in code blocks to see the type definitions for some uncovered functions.
+
+:::
