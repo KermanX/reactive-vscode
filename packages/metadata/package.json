@@ -35,7 +35,7 @@
     "typecheck": "nr update && tsc --noEmit",
     "update": "tsx scripts/update.ts",
     "build": "nr update",
-    "dev": "nodemon -w ../reactive-vscode/** -w ./scripts/** -w ./src/** -e ts --exec \"nr update\""
+    "dev": "nodemon -w ../core/** -w ./scripts/** -w ./src/** -e ts --exec \"nr update\""
   },
   "devDependencies": {
     "@antfu/ni": "^0.21.12",
