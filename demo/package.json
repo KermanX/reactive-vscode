@@ -31,11 +31,33 @@
           "description": "The message to show in the notification"
         }
       }
+    },
+    "viewsContainers": {
+      "activitybar": [
+        {
+          "id": "reactive-vscode-demo",
+          "title": "Reactive VSCode Demo",
+          "icon": "$(list-flat)"
+        }
+      ]
+    },
+    "views": {
+      "reactive-vscode-demo": [
+        {
+          "id": "reactive-tree-view",
+          "name": "Tree View"
+        },
+        {
+          "type": "webview",
+          "id": "reactive-webview-view",
+          "name": "Webview View"
+        }
+      ]
     }
   },
   "scripts": {
     "build": "tsup --env.NODE_ENV production",
-    "dev": "tsup --watch ../packages/reactive-vscode/src --watch ./src",
+    "dev": "tsup --watch ../packages/core/src --watch ./src",
     "typecheck": "tsc --noEmit"
   },
   "devDependencies": {

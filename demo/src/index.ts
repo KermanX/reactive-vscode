@@ -1,10 +1,11 @@
-import { defineConfigs, defineExtension, useCommand, useIsDarkTheme, useLogger, watchEffect } from 'reactive-vscode'
+import { defineExtension, useCommand, useIsDarkTheme, useLogger, watchEffect } from 'reactive-vscode'
 import { window } from 'vscode'
+import { message } from './configs'
+import { calledTimes } from './states'
+import { useDemoTreeView } from './treeView'
+import { useDemoWebviewView } from './webviewView'
 
 const logger = useLogger('Reactive VSCode')
-const { message } = defineConfigs('reactive-vscode-demo', {
-  message: 'string',
-})
 
 // eslint-disable-next-line no-restricted-syntax
 export = defineExtension(() => {
@@ -13,10 +14,14 @@ export = defineExtension(() => {
 
   useCommand('reactive-vscode-demo.helloWorld', () => {
     window.showInformationMessage(message.value)
+    calledTimes.value++
   })
 
   const isDark = useIsDarkTheme()
   watchEffect(() => {
     logger.info('Is Dark Theme:', isDark.value)
   })
+
+  useDemoTreeView()
+  useDemoWebviewView()
 })
