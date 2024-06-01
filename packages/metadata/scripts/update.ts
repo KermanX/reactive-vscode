@@ -11,7 +11,7 @@ const __dirname = fileURLToPath(new URL('.', import.meta.url))
 const JSON_OUT = resolve(__dirname, '../metadata.json')
 const JS_OUT = resolve(__dirname, '../index.js')
 const DIR_ROOT = resolve(__dirname, '../../..')
-const DIR_SRC = resolve(DIR_ROOT, 'packages/reactive-vscode/src')
+const DIR_SRC = resolve(DIR_ROOT, 'packages/core/src')
 const DIR_COMPOSABLES = resolve(DIR_SRC, 'composables')
 const DIR_UTILS = resolve(DIR_SRC, 'utils')
 

@@ -15,7 +15,7 @@ export default defineConfig({
       name: 'alias',
       esbuildOptions(options) {
         options.alias ||= {}
-        options.alias['reactive-vscode'] = fileURLToPath(new URL('../packages/reactive-vscode/src/index.ts', import.meta.url))
+        options.alias['reactive-vscode'] = fileURLToPath(new URL('../packages/core/src/index.ts', import.meta.url))
       },
     },
   ],

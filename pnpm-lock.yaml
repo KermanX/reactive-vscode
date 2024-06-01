@@ -43,7 +43,7 @@ importers:
         version: 1.89.0
       reactive-vscode:
         specifier: workspace:*
-        version: link:../packages/reactive-vscode
+        version: link:../packages/core
       tsup:
         specifier: ^8.0.2
         version: 8.0.2(@microsoft/api-extractor@7.43.7(@types/node@18.19.33))(postcss@8.4.38)(typescript@5.4.5)
@@ -88,7 +88,7 @@ importers:
         version: 7.0.0
       reactive-vscode:
         specifier: workspace:*
-        version: link:../packages/reactive-vscode
+        version: link:../packages/core
       reactive-vscode-metadata:
         specifier: workspace:*
         version: link:../packages/metadata
@@ -104,6 +104,22 @@ importers:
       vue:
         specifier: ^3.4.27
         version: 3.4.27(typescript@5.4.5)
+
+  packages/core:
+    dependencies:
+      '@vue/runtime-core':
+        specifier: ^3.4.27
+        version: 3.4.27
+    devDependencies:
+      '@types/vscode':
+        specifier: ^1.89.0
+        version: 1.89.0
+      mkdist:
+        specifier: ^1.5.1
+        version: 1.5.1(typescript@5.4.5)
+      typescript:
+        specifier: ^5.4.5
+        version: 5.4.5
 
   packages/metadata:
     devDependencies:
@@ -129,27 +145,11 @@ importers:
         specifier: ^5.4.5
         version: 5.4.5
 
-  packages/reactive-vscode:
-    dependencies:
-      '@vue/runtime-core':
-        specifier: ^3.4.27
-        version: 3.4.27
-    devDependencies:
-      '@types/vscode':
-        specifier: ^1.89.0
-        version: 1.89.0
-      mkdist:
-        specifier: ^1.5.1
-        version: 1.5.1(typescript@5.4.5)
-      typescript:
-        specifier: ^5.4.5
-        version: 5.4.5
-
   test:
     devDependencies:
       reactive-vscode:
         specifier: workspace:*
-        version: link:../packages/reactive-vscode
+        version: link:../packages/core
       typescript:
         specifier: ^5.4.5
         version: 5.4.5
@@ -5452,7 +5452,7 @@ snapshots:
       caniuse-lite: 1.0.30001617
       fraction.js: 4.3.7
       normalize-range: 0.1.2
-      picocolors: 1.0.0
+      picocolors: 1.0.1
       postcss: 8.4.38
       postcss-value-parser: 4.2.0
 
@@ -7644,7 +7644,7 @@ snapshots:
       css-tree: 2.3.1
       css-what: 6.1.0
       csso: 5.0.5
-      picocolors: 1.0.0
+      picocolors: 1.0.1
 
   synckit@0.6.2:
     dependencies:
