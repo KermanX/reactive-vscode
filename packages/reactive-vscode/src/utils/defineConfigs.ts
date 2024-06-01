@@ -6,7 +6,7 @@ import { useDisposable } from '../composables'
 import { onActivate } from './onActivate'
 
 export interface ConfigRef<T> extends ShallowRef<T> {
-  writeBack: (value: T, configurationTarget?: ConfigurationTarget | boolean | null, overrideInLanguage?: boolean) => Promise<void>
+  update: (value: T, configurationTarget?: ConfigurationTarget | boolean | null, overrideInLanguage?: boolean) => Promise<void>
 }
 
 const ConfigTypeSymbol = Symbol('ConfigType')
@@ -50,7 +50,7 @@ export function defineConfigs<const C extends ConfigTypeOptions>(section: string
 
   function createConfigRef<T>(key: string, value: T): ConfigRef<T> {
     const ref = shallowRef(value) as unknown as ConfigRef<T>
-    ref.writeBack = async (value, configurationTarget, overrideInLanguage) => {
+    ref.update = async (value, configurationTarget, overrideInLanguage) => {
       await workspaceConfig.update(key, value, configurationTarget, overrideInLanguage)
       ref.value = value
     }
