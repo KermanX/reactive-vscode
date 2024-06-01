@@ -1,12 +1,13 @@
 import type { MaybeRefOrGetter } from '@vue/runtime-core'
 import { toValue, watch } from '@vue/runtime-core'
+import type { ProviderResult } from 'vscode'
 import { EventEmitter, window } from 'vscode'
 import { createKeyedComposable } from '../utils'
 import { useDisposable } from './useDisposable'
 import type { TreeViewNode, TreeViewWithoutParent, UseTreeViewOptions } from './useTreeView'
 
-export interface TreeViewNodeWithParent<T> extends TreeViewNode<T> {
-  readonly parent?: TreeViewNodeWithParent<T>
+export interface TreeViewNodeWithParent extends TreeViewNode {
+  readonly parent?: ProviderResult<this>
 }
 
 /**
@@ -15,11 +16,11 @@ export interface TreeViewNodeWithParent<T> extends TreeViewNode<T> {
  * @category view
  */
 export const useTreeViewWithParent = createKeyedComposable(
-  <T>(
+  <T extends TreeViewNodeWithParent>(
     viewId: string,
-    treeData: MaybeRefOrGetter<TreeViewNodeWithParent<T>[]>,
-    options: UseTreeViewOptions<TreeViewNodeWithParent<T>>,
-  ): TreeViewWithoutParent<TreeViewNodeWithParent<T>> => {
+    treeData: MaybeRefOrGetter<T[]>,
+    options: UseTreeViewOptions<T>,
+  ): TreeViewWithoutParent<T> => {
     const normalizedOptions = typeof options === 'function' ? { getTreeItem: options } : options
     const changeEventEmitter = new EventEmitter<void>()
 
@@ -30,13 +31,13 @@ export const useTreeViewWithParent = createKeyedComposable(
       treeDataProvider: {
         ...normalizedOptions,
         onDidChangeTreeData: changeEventEmitter.event,
-        getTreeItem(node: TreeViewNodeWithParent<T>) {
+        getTreeItem(node: T) {
           return normalizedOptions.getTreeItem(node)
         },
-        getChildren(node?: TreeViewNodeWithParent<T>) {
+        getChildren(node?: T) {
           return node ? node.children : toValue(treeData)
         },
-        getParent(node: TreeViewNodeWithParent<T>) {
+        getParent(node: T) {
           return node.parent
         },
       },
