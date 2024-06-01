@@ -1,4 +1,4 @@
-# Extension Entry File
+# Define an Extension
 
 It's simple to create a VSCode extension with <ReactiveVscode />. You just need to define your extension code inside the `reactive::defineExtension` function, and export the returned `activate` and `deactivate` functions.
 
@@ -25,6 +25,7 @@ VSCode extensions should be CommonJS modules. Since `export =` statement is not 
 Or you can avoid the `export =` statement in this way:
 
 ```ts
+import { defineExtension } from 'reactive-vscode'
 const { activate, deactivate } = defineExtension(() => {
   // Your extension code here
 })

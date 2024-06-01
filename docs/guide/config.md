@@ -1,4 +1,4 @@
-# Extension Configuration
+# Define Configurations
 
 An extension can contribute extension-specific settings.
 
@@ -37,7 +37,7 @@ To use the settings in the extension, you can use the `reactive::defineConfigs` 
 ```ts
 import { defineConfigs } from 'reactive-vscode'
 
-const { enable, greeting } = defineConfigs({
+const { enable, greeting } = defineConfigs('your-extension', {
   enable: Boolean,
   greeting: [String, null],
 })
@@ -48,6 +48,13 @@ Note that you should always set the default value in the manifest file. `reactiv
 In the above example, `enable` is of type `ConfigRef<boolean>`, which extends `Ref<boolean>`. Note that setting `enable.value` will not update the configuration. You should use `enable.update` instead.
 
 ```ts
+import { defineConfigs } from 'reactive-vscode'
+
+const { enable, greeting } = defineConfigs('your-extension', {
+  enable: Boolean,
+  greeting: [String, null],
+})
+// ---cut---
 // This will not update the configuration. Only the value in the memory is changed.
 enable.value = false
 

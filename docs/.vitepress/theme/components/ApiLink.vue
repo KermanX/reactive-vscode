@@ -25,7 +25,7 @@ const iconClass = computed(() => ({
 const linkUrl = computed(() => props.link ?? ({
   'vscode': `https://code.visualstudio.com/api/references/vscode-api#${props.name}`,
   'vue': null,
-  'reactive': `${import.meta.env.BASE_URL}core/${props.name}/`,
+  'reactive': `${import.meta.env.BASE_URL}functions/${props.name}`,
   'npm': `https://www.npmjs.com/package/${props.name}`,
 }[props.scope]))
 
@@ -37,7 +37,7 @@ const linkColor = computed(() => ({
 <template>
   <span class="api-link">
     <span :class="iconClass" class="mb-.5"/>
-    <a v-if="linkUrl" :href="linkUrl" :style="linkColor">
+    <a v-if="linkUrl" :href="linkUrl" :style="linkColor" target="_blank">
       {{ name }}
     </a>
     <span v-else :style="linkColor">

@@ -1,8 +1,9 @@
 export function renderMarkdown(markdownText = '') {
   const htmlText = markdownText
-    .replace(/`vscode::(\S+?)`/g, '<a class="api-link scope-vscode" href=\'https://code.visualstudio.com/api/references/vscode-api#$1\'>$1</a>')
-    .replace(/`reactive::(\S+?)`/g, `<a class="api-link scope-reactive" href='${import.meta.env.BASE_URL}core/$1'>$1</a>`)
-    .replace(/`vue::(\S+?)\((\S+?)\)`/g, `<a class="api-link scope-vue" href='$2'>$1</a>`)
+    .replace(/`vscode::(\S+?)`/g, '<a class="api-link scope-vscode" target="_blank" href=\'https://code.visualstudio.com/api/references/vscode-api#$1\'>$1</a>')
+    // eslint-disable-next-line node/prefer-global/process
+    .replace(/`reactive::(\S+?)`/g, `<a class="api-link scope-reactive" target="_blank" href='${globalThis.process ? globalThis.process.env.BASE_URL : import.meta.env.BASE_URL}core/$1'>$1</a>`)
+    .replace(/`vue::(\S+?)\((\S+?)\)`/g, `<a class="api-link scope-vue" target="_blank" href='$2'>$1</a>`)
     .replace(/^### (.*$)/gim, '<h3>$1</h3>')
     .replace(/^## (.*$)/gim, '<h2>$1</h2>')
     .replace(/^# (.*$)/gim, '<h1>$1</h1>')

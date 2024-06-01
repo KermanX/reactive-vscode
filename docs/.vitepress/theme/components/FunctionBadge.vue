@@ -23,7 +23,7 @@ const link = computed(() => {
     }
   }
   return {
-    href: `/core/${props.fn.name}/`,
+    href: `${import.meta.env.BASE_URL}functions/${props.fn.name}`,
   }
 })
 </script>

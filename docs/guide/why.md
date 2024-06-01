@@ -41,7 +41,9 @@ Here is an example which shows how this library can help you develop a VSCode ex
 ```ts
 import { ExtensionContext, window, workspace } from 'vscode'
 
-const decorationType = window.createTextEditorDecorationType({})
+const decorationType = window.createTextEditorDecorationType({
+  backgroundColor: 'red',
+})
 
 function updateDecorations(enabled: boolean) {
   window.activeTextEditor?.setDecorations(decorationType, enabled ? [/* ... */] : [])
@@ -49,15 +51,17 @@ function updateDecorations(enabled: boolean) {
 
 export function activate(context: ExtensionContext) {
   const configurations = workspace.getConfiguration('demo')
-  let decorationsEnabled = configurations.get<boolean>('decorations')
+  let decorationsEnabled = configurations.get<boolean>('decorations')!
 
   context.subscriptions.push(workspace.onDidChangeConfiguration((e) => {
     if (e.affectsConfiguration('demo.decorations')) {
-      decorationsEnabled = configurations.get<boolean>('decorations')
+      decorationsEnabled = configurations.get<boolean>('decorations')!
       updateDecorations(decorationsEnabled)
     }
   }))
-  context.subscriptions.push(window.onDidChangeActiveTextEditor(updateDecorations))
+  context.subscriptions.push(window.onDidChangeActiveTextEditor(() => {
+    updateDecorations(decorationsEnabled)
+  }))
 
   updateDecorations(decorationsEnabled)
 }
@@ -66,18 +70,17 @@ export function activate(context: ExtensionContext) {
 **After:**
 
 ```ts
-import { defineConfigs, defineExtension, useActiveTextEditor, watchEffect } from 'reactive-vscode'
-
-const decorationType = window.createTextEditorDecorationType({})
+import { defineConfigs, defineExtension, useActiveEditorDecorations } from 'reactive-vscode'
 
 const configs = defineConfigs('demo', { decorations: Boolean })
 
 export = defineExtension(() => {
-  const editor = useActiveTextEditor()
-
-  watchEffect(() => {
-    editor.value?.setDecorations(configs.decorations ? [/* ... */] : [])
-  })
+  const editor = useActiveEditorDecorations(
+    {
+      backgroundColor: 'red',
+    },
+    () => configs.decorations ? [/* ... */] : []
+  )
 })
 ```
 

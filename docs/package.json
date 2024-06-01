@@ -6,19 +6,22 @@
     "preview": "vitepress preview"
   },
   "devDependencies": {
-    "@iconify-json/carbon": "^1.1.33",
+    "@iconify-json/carbon": "^1.1.34",
     "@iconify-json/vscode-icons": "^1.1.34",
+    "@shikijs/vitepress-twoslash": "^1.6.1",
+    "@types/vscode": "^1.89.0",
     "@unocss/preset-attributify": "^0.60.3",
     "@unocss/preset-icons": "^0.60.3",
     "@unocss/preset-uno": "^0.60.3",
     "@unocss/transformer-directives": "^0.60.3",
     "@unocss/transformer-variant-group": "^0.60.3",
-    "@vueuse/core": "^10.9.0",
+    "@vueuse/core": "^10.10.0",
     "fuse.js": "^7.0.0",
+    "reactive-vscode": "workspace:*",
     "reactive-vscode-metadata": "workspace:*",
     "unocss": "^0.60.3",
     "unplugin-vue-components": "^0.27.0",
-    "vitepress": "^1.1.4",
+    "vitepress": "^1.2.2",
     "vue": "^3.4.27"
   }
 }

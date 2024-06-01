@@ -4,11 +4,12 @@ import { fileURLToPath } from 'node:url'
 import { existsSync } from 'node:fs'
 import fg from 'fast-glob'
 import Git from 'simple-git'
-import type { FunctionMetadata, Metadata } from '../src'
+import type { FunctionMetadata, Metadata } from '../index.d.ts'
 
 const __dirname = fileURLToPath(new URL('.', import.meta.url))
 
-const METADATA_OUT = resolve(__dirname, '../metadata.json')
+const JSON_OUT = resolve(__dirname, '../metadata.json')
+const JS_OUT = resolve(__dirname, '../index.js')
 const DIR_ROOT = resolve(__dirname, '../../..')
 const DIR_SRC = resolve(DIR_ROOT, 'packages/reactive-vscode/src')
 const DIR_COMPOSABLES = resolve(DIR_SRC, 'composables')
@@ -83,7 +84,8 @@ async function run() {
     functions,
     categories: Array.from(new Set(functions.map(f => f.category!).filter(Boolean))).sort(),
   }
-  await fs.writeFile(METADATA_OUT, JSON.stringify(metadata, null, 2))
+  await fs.writeFile(JSON_OUT, JSON.stringify(metadata, null, 2))
+  await fs.writeFile(JS_OUT, `export const metadata = ${JSON.stringify(metadata, null, 2)}`)
   // eslint-disable-next-line no-console
   console.log('Metadata updated')
 }

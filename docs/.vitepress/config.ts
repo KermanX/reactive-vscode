@@ -8,6 +8,7 @@ import transformerVariantGroup from '@unocss/transformer-variant-group'
 import UnoCSS from 'unocss/vite'
 import Components from 'unplugin-vue-components/vite'
 import { defineConfig } from 'vitepress'
+import { transformerTwoslash } from '@shikijs/vitepress-twoslash'
 
 // https://vitepress.dev/reference/site-config
 export default defineConfig({
@@ -31,8 +32,9 @@ export default defineConfig({
           items: [
             { text: 'Why reactive-vscode', link: '/guide/why' },
             { text: 'Getting Started', link: '/guide/' },
-            { text: 'Extension Entry File', link: '/guide/entry' },
-            { text: 'Extension Configuration', link: '/guide/configs' },
+            { text: 'Define an Extension', link: '/guide/extension' },
+            { text: 'Define Configurations', link: '/guide/config' },
+            { text: 'Define Views', link: '/guide/view' },
           ],
         },
         {
@@ -65,7 +67,7 @@ export default defineConfig({
         include: [/\.vue$/, /\.vue\?vue/, /\.md$/],
         dts: resolve(__dirname, 'components.d.ts'),
         transformer: 'vue3',
-      }),
+      }) as any,
       UnoCSS({
         presets: [
           presetUno(),
@@ -114,6 +116,19 @@ export default defineConfig({
           })
         },
       },
+    ],
+  },
+
+  markdown: {
+    codeTransformers: [
+      transformerTwoslash({
+        explicitTrigger: false,
+        twoslashOptions: {
+          compilerOptions: {
+            module: 200, // ModuleKind.Preserve
+          },
+        },
+      }),
     ],
   },
 })

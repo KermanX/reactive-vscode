@@ -37,7 +37,7 @@ The package exports the following:
 - All exports from `npm::@vue/reactivity`, like `vue::ref(https://vuejs.org/api/reactivity-core.html#ref)`
 - Exports that are useful for VSCode extension from `npm::@vue/runtime-core`, like `vue::watchEffect(https://vuejs.org/api/reactivity-core.html#watcheffect)`
 
-You can find all the implemented composables [here](../functions.md). They will be documented in the future.
+You can find all the implemented composables [here](../functions/index.md). They will be documented in the future.
 
 ## Define an Extension
 
@@ -57,7 +57,7 @@ export = defineExtension(() => {
 })
 ```
 
-We will introduce how to setup the extension code in [the next section](./entry.md).
+We will introduce how to setup the extension code in [the next section](./extension.md).
 
 ## Developing the Extension
 

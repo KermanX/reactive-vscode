@@ -14,3 +14,5 @@ export interface Metadata {
   categories: string[]
   functions: FunctionMetadata[]
 }
+
+export const metadata: Metadata

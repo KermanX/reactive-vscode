@@ -13,3 +13,4 @@ docs/.vitepress/dist
 docs/.vitepress/cache
 packages/reactive-vscode/README.md
 packages/metadata/metadata.json
+packages/metadata/index.js
