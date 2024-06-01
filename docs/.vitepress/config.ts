@@ -32,6 +32,7 @@ export default defineConfig({
             { text: 'Why reactive-vscode', link: '/guide/why' },
             { text: 'Getting Started', link: '/guide/' },
             { text: 'Extension Entry File', link: '/guide/entry' },
+            { text: 'Extension Configuration', link: '/guide/configs' },
           ],
         },
         {
@@ -52,6 +53,7 @@ export default defineConfig({
 
     socialLinks: [
       { icon: 'github', link: 'https://github.com/KermanX/reactive-vscode' },
+      { icon: 'discord', link: 'https://discord.gg/8YNDMA5Hcq' },
     ],
   },
   head: [['link', { rel: 'icon', href: '/reactive-vscode/favicon.ico' }]],

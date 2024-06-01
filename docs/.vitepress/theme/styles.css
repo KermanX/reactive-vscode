@@ -22,7 +22,8 @@
 
 .api-link {
   text-decoration: none !important;
-  @apply !inline-block !font-mono !px-1 !text-[1.1em];
+  line-height: 1.6;
+  @apply !inline-block !font-mono !px-1;
 }
 
 .api-link:hover {

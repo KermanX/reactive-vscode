@@ -2,7 +2,9 @@
 outline: 'deep'
 ---
 
-# Why reactive-vscode
+# Why <ReactiveVscode />
+
+VSCode extensions are powerful tools to enhance your development experience. But developing a VSCode extension is not easy. This library is created to help you develop a VSCode extension with Vue's reactivity system.
 
 ## The Problems
 
@@ -79,15 +81,15 @@ export = defineExtension(() => {
 })
 ```
 
-As you can see, after using `reactive-vscode`, the code is much cleaner and easier to understand. With composables like `useActiveTextEditor` provided by this library, you can use Vue's reactivity API like `watchEffect` smoothly when developing a VSCode extension.
+As you can see, after using <ReactiveVscode />, the code is much cleaner and easier to understand. With composables like `reactive::useActiveTextEditor` provided by this library, you can use Vue's reactivity API like `vue::watchEffect(https://vuejs.org/api/reactivity-core.html#watcheffect)` smoothly when developing a VSCode extension.
 
 ## FAQ
 
-### Why use `@vue/runtime-core` internally?
+### Why use `npm::@vue/runtime-core` internally?
 
-This library is built on top of `@vue/runtime-core`. This is because `@vue/reactivity` doesn't provide the `watch` and `watchEffect` function, which is essential in a VSCode extension.
+This library is built on top of `npm::@vue/runtime-core`. This is because `npm::@vue/reactivity` doesn't provide the `vue::watch(https://vuejs.org/api/reactivity-core.html#watch)` and `vue::watchEffect(https://vuejs.org/api/reactivity-core.html#watcheffect)` function, which is essential in a VSCode extension.
 
-It's possible to use [`@vue-reactivity/watch`](https://github.com/vue-reactivity/watch) in the future. But for now, we have to use `@vue/runtime-core`.
+It's possible to use `npm::@vue-reactivity/watch` in the future. But for now, we have to use `npm::@vue/runtime-core`.
 
 ### Use Vue in Webview?
 

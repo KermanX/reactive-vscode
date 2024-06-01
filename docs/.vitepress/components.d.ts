@@ -11,5 +11,6 @@ declare module 'vue' {
     FunctionBadge: typeof import('./theme/components/FunctionBadge.vue')['default']
     FunctionLink: typeof import('./theme/components/FunctionLink.vue')['default']
     FunctionsList: typeof import('./theme/components/FunctionsList.vue')['default']
+    ReactiveVscode: typeof import('./theme/components/ReactiveVscode.vue')['default']
   }
 }

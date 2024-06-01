@@ -16,6 +16,9 @@ hero:
       text: Why?
       link: /guide/why
     - theme: alt
+      text: Functions
+      link: /functions
+    - theme: alt
       text: Examples
       link: /examples/
 
