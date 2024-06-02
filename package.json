@@ -15,7 +15,7 @@
     "creator:dev": "nr -C packages/creator dev",
     "creator:build": "nr -C packages/creator build",
     "docs:dev": "nr -C docs dev",
-    "docs:build": "nr -C packages/metadata build && nr -C docs build",
+    "docs:build": "nr -C packages/core build && nr -C packages/metadata build && nr -C docs build",
     "docs:preview": "nr -C docs preview",
     "typecheck": "nr -r --parallel typecheck",
     "prepublishOnly": "node ./scripts/prepublish.js"
