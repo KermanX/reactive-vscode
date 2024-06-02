@@ -48,6 +48,7 @@ export default defineConfig({
           text: 'Examples',
           items: [
             { text: 'Index', link: '/examples/' },
+            { text: 'Dark & Light Theme Detector', link: '/examples/dark-light' },
           ],
         },
       ],
@@ -57,8 +58,17 @@ export default defineConfig({
       { icon: 'github', link: 'https://github.com/KermanX/reactive-vscode' },
       { icon: 'discord', link: 'https://discord.gg/8YNDMA5Hcq' },
     ],
+
+    search: {
+      provider: 'local',
+    },
+
+    editLink: {
+      pattern: 'https://github.com/kermanx/reactive-vscode/edit/main/docs/:path',
+    },
   },
   head: [['link', { rel: 'icon', href: '/reactive-vscode/favicon.ico' }]],
+  lastUpdated: true,
 
   vite: {
     plugins: [
