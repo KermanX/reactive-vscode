@@ -12,6 +12,8 @@
     "demo:build": "nr -C demo build",
     "metadata:dev": "nr -C packages/metadata dev",
     "metadata:build": "nr -C packages/metadata build",
+    "creator:dev": "nr -C packages/creator dev",
+    "creator:build": "nr -C packages/creator build",
     "docs:dev": "nr -C docs dev",
     "docs:build": "nr -C packages/metadata build && nr -C docs build",
     "docs:preview": "nr -C docs preview",
