@@ -18,8 +18,7 @@
     "docs:dev": "nr -C docs dev",
     "docs:build": "nr -C packages/core build && nr -C packages/metadata build && nr -C docs build",
     "docs:preview": "nr -C docs preview",
-    "typecheck": "nr -r --parallel typecheck",
-    "prepublishOnly": "node ./scripts/prepublish.js"
+    "typecheck": "nr -r --parallel typecheck"
   },
   "devDependencies": {
     "@antfu/eslint-config": "^2.17.0",
