@@ -29,6 +29,9 @@ jobs:
       - name: Install
         run: nci
 
+      - name: Build
+        run: nr core:build
+
       - name: Lint
         run: nr lint
 
@@ -50,6 +53,9 @@ jobs:
 
       - name: Install
         run: nci
+
+      - name: Build
+        run: nr core:build
 
       - name: Typecheck
         run: nr typecheck
@@ -79,6 +85,9 @@ jobs:
 
       - name: Install
         run: nci
+
+      - name: Build
+        run: nr core:build
 
       - name: Test
         run: nr test
