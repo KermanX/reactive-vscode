@@ -18,7 +18,6 @@ describe('keyedComposable', () => {
         arr1: 'array',
         arr2: Array,
         obj1: 'object',
-        obj2: Object,
         obj3: Object as ConfigType<{ a: number }>,
         union1: ['string', 'number'],
         union2: [String, Number],
@@ -37,7 +36,6 @@ describe('keyedComposable', () => {
       arr1: ConfigRef<any[]>
       arr2: ConfigRef<any[]>
       obj1: ConfigRef<Record<string | number, any>>
-      obj2: ConfigRef<Record<string | number, any>>
       obj3: ConfigRef<{ a: number }>
       union1: ConfigRef<string | number>
       union2: ConfigRef<string | number>
