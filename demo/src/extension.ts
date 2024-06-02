@@ -7,7 +7,6 @@ import { useDemoWebviewView } from './webviewView'
 
 const logger = useLogger('Reactive VSCode')
 
-// eslint-disable-next-line no-restricted-syntax
 export = defineExtension(() => {
   logger.info('Extension Activated')
   logger.show()

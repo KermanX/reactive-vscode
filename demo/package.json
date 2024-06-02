@@ -8,7 +8,7 @@
   "categories": [
     "Other"
   ],
-  "main": "./dist/index.cjs",
+  "main": "./dist/extension.cjs",
   "engines": {
     "vscode": "^1.89.0"
   },
