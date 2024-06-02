@@ -36,7 +36,7 @@
   "scripts": {
     "typecheck": "tsc --noEmit",
     "build": "mkdist -d",
-    "prepublishOnly": "pnpm typecheck && node ../../scripts/prepublish.js && pnpm build"
+    "prepublishOnly": "pnpm typecheck && pnpm build"
   },
   "dependencies": {
     "@vue/runtime-core": "^3.4.27"

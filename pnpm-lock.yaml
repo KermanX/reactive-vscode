@@ -32,6 +32,9 @@ importers:
       typescript:
         specifier: ^5.4.5
         version: 5.4.5
+      zx:
+        specifier: ^8.1.2
+        version: 8.1.2
 
   demo:
     devDependencies:
@@ -94,13 +97,13 @@ importers:
         version: link:../packages/metadata
       unocss:
         specifier: ^0.60.3
-        version: 0.60.3(postcss@8.4.38)(rollup@4.18.0)(vite@5.2.12(@types/node@20.12.11))
+        version: 0.60.3(postcss@8.4.38)(rollup@4.18.0)(vite@5.2.12(@types/node@20.13.0))
       unplugin-vue-components:
         specifier: ^0.27.0
         version: 0.27.0(@babel/parser@7.24.6)(rollup@4.18.0)(vue@3.4.27(typescript@5.4.5))
       vitepress:
         specifier: ^1.2.2
-        version: 1.2.2(@algolia/client-search@4.23.3)(@types/node@20.12.11)(fuse.js@7.0.0)(postcss@8.4.38)(search-insights@2.13.0)(typescript@5.4.5)
+        version: 1.2.2(@algolia/client-search@4.23.3)(@types/node@20.13.0)(fuse.js@7.0.0)(postcss@8.4.38)(search-insights@2.13.0)(typescript@5.4.5)
       vue:
         specifier: ^3.4.27
         version: 3.4.27(typescript@5.4.5)
@@ -179,10 +182,10 @@ importers:
         version: 5.4.5
       vite:
         specifier: ^5.2.11
-        version: 5.2.11(@types/node@20.12.11)
+        version: 5.2.11(@types/node@20.13.0)
       vitest:
         specifier: ^1.6.0
-        version: 1.6.0(@types/node@20.12.11)
+        version: 1.6.0(@types/node@20.13.0)
 
 packages:
 
@@ -1184,6 +1187,9 @@ packages:
   '@types/estree@1.0.5':
     resolution: {integrity: sha512-/kYRxGDLWzHOB7q+wtSUQlFrtcdUccpfy+X+9iMBpHK8QLLhx2wIPYuS5DYtR9Wa/YlZAbIovy7qVdB1Aq6Lyw==}
 
+  '@types/fs-extra@11.0.4':
+    resolution: {integrity: sha512-yTbItCNreRooED33qjunPthRcSjERP1r4MqCZc7wv0u2sUkzTFp45tgUfS5+r7FrZPdmCCNflLhVSP/o+SemsQ==}
+
   '@types/hast@3.0.4':
     resolution: {integrity: sha512-WPs+bbQw5aCj+x6laNGWLH3wviHtoCv/P3+otBhbOhJgG8qtpdAMlTCxLtsTWA7LH1Oh/bFCHsBn0TPS5m30EQ==}
 
@@ -1192,6 +1198,9 @@ packages:
 
   '@types/json-schema@7.0.15':
     resolution: {integrity: sha512-5+fP8P8MFNC+AyZCDxrB2pkZFPGzqQWUzpSeuuVLvm8VMcorNYavBqoFcxK8bQz4Qsbn4oUEEem4wDLfcysGHA==}
+
+  '@types/jsonfile@6.1.4':
+    resolution: {integrity: sha512-D5qGUYwjvnNNextdU59/+fI+spnwtTFmyQP0h+PfIOSkNfpU6AOICUOkm4i0OnSk+NyjdPJrxCDro0sJsWlRpQ==}
 
   '@types/linkify-it@5.0.0':
     resolution: {integrity: sha512-sVDA58zAw4eWAffKOaQH5/5j3XeayukzDk+ewSsnv3p4yJEZHCCzMDiZM8e0OUrRvmpGZ85jf4yDHkHsgBNr9Q==}
@@ -1216,6 +1225,9 @@ packages:
 
   '@types/node@20.12.11':
     resolution: {integrity: sha512-vDg9PZ/zi+Nqp6boSOT7plNuthRugEKixDv5sFTIpkE89MmNtEArAShI4mxuX2+UrLEe9pxC1vm2cjm9YlWbJw==}
+
+  '@types/node@20.13.0':
+    resolution: {integrity: sha512-FM6AOb3khNkNIXPnHFDYaHerSv8uN22C91z098AnGccVu+Pcdhi+pNUFDi0iLmPIsVE0JBD0KVS7mzUYt4nRzQ==}
 
   '@types/normalize-package-data@2.4.4':
     resolution: {integrity: sha512-37i+OaWTh9qeK4LSHPsyRC7NahnGotNuZvjLSgcPzblpHB3rrCJxAOgI5gCdKm7coonsaX1Of0ILiTcnZjbfxA==}
@@ -4098,6 +4110,11 @@ packages:
   zwitch@2.0.4:
     resolution: {integrity: sha512-bXE4cR/kVZhKZX/RjPEflHaKVhUVl85noU3v6b8apfQEc1x4A+zBxjZ4lN8LqGd6WZ3dl98pY4o717VFmoPp+A==}
 
+  zx@8.1.2:
+    resolution: {integrity: sha512-zkCiXKh8D/eo6r58OmJvO5mc2NthcSRvysb3fuS6VQlHPbEPBcxduRwM3m6ZfHj+7cLHcrahCnuO2TDAbW+6xw==}
+    engines: {node: '>= 12.17.0'}
+    hasBin: true
+
 snapshots:
 
   '@algolia/autocomplete-core@1.9.3(@algolia/client-search@4.23.3)(algoliasearch@4.23.3)(search-insights@2.13.0)':
@@ -5154,6 +5171,12 @@ snapshots:
 
   '@types/estree@1.0.5': {}
 
+  '@types/fs-extra@11.0.4':
+    dependencies:
+      '@types/jsonfile': 6.1.4
+      '@types/node': 20.13.0
+    optional: true
+
   '@types/hast@3.0.4':
     dependencies:
       '@types/unist': 3.0.2
@@ -5161,6 +5184,11 @@ snapshots:
   '@types/http-cache-semantics@4.0.4': {}
 
   '@types/json-schema@7.0.15': {}
+
+  '@types/jsonfile@6.1.4':
+    dependencies:
+      '@types/node': 20.13.0
+    optional: true
 
   '@types/linkify-it@5.0.0': {}
 
@@ -5188,6 +5216,11 @@ snapshots:
   '@types/node@20.12.11':
     dependencies:
       undici-types: 5.26.5
+
+  '@types/node@20.13.0':
+    dependencies:
+      undici-types: 5.26.5
+    optional: true
 
   '@types/normalize-package-data@2.4.4': {}
 
@@ -5300,13 +5333,13 @@ snapshots:
 
   '@ungap/structured-clone@1.2.0': {}
 
-  '@unocss/astro@0.60.3(rollup@4.18.0)(vite@5.2.12(@types/node@20.12.11))':
+  '@unocss/astro@0.60.3(rollup@4.18.0)(vite@5.2.12(@types/node@20.13.0))':
     dependencies:
       '@unocss/core': 0.60.3
       '@unocss/reset': 0.60.3
-      '@unocss/vite': 0.60.3(rollup@4.18.0)(vite@5.2.12(@types/node@20.12.11))
+      '@unocss/vite': 0.60.3(rollup@4.18.0)(vite@5.2.12(@types/node@20.13.0))
     optionalDependencies:
-      vite: 5.2.12(@types/node@20.12.11)
+      vite: 5.2.12(@types/node@20.13.0)
     transitivePeerDependencies:
       - rollup
 
@@ -5437,7 +5470,7 @@ snapshots:
     dependencies:
       '@unocss/core': 0.60.3
 
-  '@unocss/vite@0.60.3(rollup@4.18.0)(vite@5.2.12(@types/node@20.12.11))':
+  '@unocss/vite@0.60.3(rollup@4.18.0)(vite@5.2.12(@types/node@20.13.0))':
     dependencies:
       '@ampproject/remapping': 2.3.0
       '@rollup/pluginutils': 5.1.0(rollup@4.18.0)
@@ -5449,13 +5482,13 @@ snapshots:
       chokidar: 3.6.0
       fast-glob: 3.3.2
       magic-string: 0.30.10
-      vite: 5.2.12(@types/node@20.12.11)
+      vite: 5.2.12(@types/node@20.13.0)
     transitivePeerDependencies:
       - rollup
 
-  '@vitejs/plugin-vue@5.0.5(vite@5.2.12(@types/node@20.12.11))(vue@3.4.27(typescript@5.4.5))':
+  '@vitejs/plugin-vue@5.0.5(vite@5.2.12(@types/node@20.13.0))(vue@3.4.27(typescript@5.4.5))':
     dependencies:
-      vite: 5.2.12(@types/node@20.12.11)
+      vite: 5.2.12(@types/node@20.13.0)
       vue: 3.4.27(typescript@5.4.5)
 
   '@vitest/expect@1.6.0':
@@ -6312,7 +6345,7 @@ snapshots:
       eslint: 9.2.0
     optionalDependencies:
       '@typescript-eslint/eslint-plugin': 7.8.0(@typescript-eslint/parser@7.8.0(eslint@9.2.0)(typescript@5.4.5))(eslint@9.2.0)(typescript@5.4.5)
-      vitest: 1.6.0(@types/node@20.12.11)
+      vitest: 1.6.0(@types/node@20.13.0)
     transitivePeerDependencies:
       - supports-color
       - typescript
@@ -8185,9 +8218,9 @@ snapshots:
 
   universalify@2.0.1: {}
 
-  unocss@0.60.3(postcss@8.4.38)(rollup@4.18.0)(vite@5.2.12(@types/node@20.12.11)):
+  unocss@0.60.3(postcss@8.4.38)(rollup@4.18.0)(vite@5.2.12(@types/node@20.13.0)):
     dependencies:
-      '@unocss/astro': 0.60.3(rollup@4.18.0)(vite@5.2.12(@types/node@20.12.11))
+      '@unocss/astro': 0.60.3(rollup@4.18.0)(vite@5.2.12(@types/node@20.13.0))
       '@unocss/cli': 0.60.3(rollup@4.18.0)
       '@unocss/core': 0.60.3
       '@unocss/extractor-arbitrary-variants': 0.60.3
@@ -8206,9 +8239,9 @@ snapshots:
       '@unocss/transformer-compile-class': 0.60.3
       '@unocss/transformer-directives': 0.60.3
       '@unocss/transformer-variant-group': 0.60.3
-      '@unocss/vite': 0.60.3(rollup@4.18.0)(vite@5.2.12(@types/node@20.12.11))
+      '@unocss/vite': 0.60.3(rollup@4.18.0)(vite@5.2.12(@types/node@20.13.0))
     optionalDependencies:
-      vite: 5.2.12(@types/node@20.12.11)
+      vite: 5.2.12(@types/node@20.13.0)
     transitivePeerDependencies:
       - postcss
       - rollup
@@ -8271,13 +8304,13 @@ snapshots:
       unist-util-stringify-position: 4.0.0
       vfile-message: 4.0.2
 
-  vite-node@1.6.0(@types/node@20.12.11):
+  vite-node@1.6.0(@types/node@20.13.0):
     dependencies:
       cac: 6.7.14
       debug: 4.3.4(supports-color@5.5.0)
       pathe: 1.1.2
       picocolors: 1.0.0
-      vite: 5.2.11(@types/node@20.12.11)
+      vite: 5.2.11(@types/node@20.13.0)
     transitivePeerDependencies:
       - '@types/node'
       - less
@@ -8288,32 +8321,32 @@ snapshots:
       - supports-color
       - terser
 
-  vite@5.2.11(@types/node@20.12.11):
+  vite@5.2.11(@types/node@20.13.0):
     dependencies:
       esbuild: 0.20.2
       postcss: 8.4.38
       rollup: 4.17.2
     optionalDependencies:
-      '@types/node': 20.12.11
+      '@types/node': 20.13.0
       fsevents: 2.3.3
 
-  vite@5.2.12(@types/node@20.12.11):
+  vite@5.2.12(@types/node@20.13.0):
     dependencies:
       esbuild: 0.20.2
       postcss: 8.4.38
       rollup: 4.18.0
     optionalDependencies:
-      '@types/node': 20.12.11
+      '@types/node': 20.13.0
       fsevents: 2.3.3
 
-  vitepress@1.2.2(@algolia/client-search@4.23.3)(@types/node@20.12.11)(fuse.js@7.0.0)(postcss@8.4.38)(search-insights@2.13.0)(typescript@5.4.5):
+  vitepress@1.2.2(@algolia/client-search@4.23.3)(@types/node@20.13.0)(fuse.js@7.0.0)(postcss@8.4.38)(search-insights@2.13.0)(typescript@5.4.5):
     dependencies:
       '@docsearch/css': 3.6.0
       '@docsearch/js': 3.6.0(@algolia/client-search@4.23.3)(search-insights@2.13.0)
       '@shikijs/core': 1.6.1
       '@shikijs/transformers': 1.6.1
       '@types/markdown-it': 14.1.1
-      '@vitejs/plugin-vue': 5.0.5(vite@5.2.12(@types/node@20.12.11))(vue@3.4.27(typescript@5.4.5))
+      '@vitejs/plugin-vue': 5.0.5(vite@5.2.12(@types/node@20.13.0))(vue@3.4.27(typescript@5.4.5))
       '@vue/devtools-api': 7.2.1(vue@3.4.27(typescript@5.4.5))
       '@vue/shared': 3.4.27
       '@vueuse/core': 10.10.0(vue@3.4.27(typescript@5.4.5))
@@ -8322,7 +8355,7 @@ snapshots:
       mark.js: 8.11.1
       minisearch: 6.3.0
       shiki: 1.6.1
-      vite: 5.2.12(@types/node@20.12.11)
+      vite: 5.2.12(@types/node@20.13.0)
       vue: 3.4.27(typescript@5.4.5)
     optionalDependencies:
       postcss: 8.4.38
@@ -8353,7 +8386,7 @@ snapshots:
       - typescript
       - universal-cookie
 
-  vitest@1.6.0(@types/node@20.12.11):
+  vitest@1.6.0(@types/node@20.13.0):
     dependencies:
       '@vitest/expect': 1.6.0
       '@vitest/runner': 1.6.0
@@ -8372,11 +8405,11 @@ snapshots:
       strip-literal: 2.1.0
       tinybench: 2.8.0
       tinypool: 0.8.4
-      vite: 5.2.11(@types/node@20.12.11)
-      vite-node: 1.6.0(@types/node@20.12.11)
+      vite: 5.2.11(@types/node@20.13.0)
+      vite-node: 1.6.0(@types/node@20.13.0)
       why-is-node-running: 2.2.2
     optionalDependencies:
-      '@types/node': 20.12.11
+      '@types/node': 20.13.0
     transitivePeerDependencies:
       - less
       - lightningcss
@@ -8507,3 +8540,8 @@ snapshots:
     optional: true
 
   zwitch@2.0.4: {}
+
+  zx@8.1.2:
+    optionalDependencies:
+      '@types/fs-extra': 11.0.4
+      '@types/node': 20.13.0

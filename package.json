@@ -28,7 +28,8 @@
     "lint-staged": "^15.2.2",
     "pnpm": "^9.1.1",
     "simple-git-hooks": "^2.11.1",
-    "typescript": "^5.4.5"
+    "typescript": "^5.4.5",
+    "zx": "^8.1.2"
   },
   "simple-git-hooks": {
     "pre-commit": "pnpm lint-staged"
