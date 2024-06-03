@@ -50,7 +50,7 @@ export default defineConfig({
           items: [
             { text: 'Index', link: '/examples/' },
             { text: 'Hello Counter', link: '/examples/hello-counter/' },
-            { text: 'Theme Detector', link: '/examples/dark-light/' },
+            { text: 'Theme Detector', link: '/examples/theme-detector/' },
           ],
         },
       ],

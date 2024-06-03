@@ -4,7 +4,7 @@ import { ColorThemeKind, window } from 'vscode'
 function showMessage() {
   const theme = window.activeColorTheme
   const isDark = theme.kind === ColorThemeKind.Dark || theme.kind === ColorThemeKind.HighContrast
-  window.showInformationMessage(`You are using a ${isDark ? 'dark' : 'light'} theme.`)
+  window.showInformationMessage(`Your theme is ${theme} (kind: ${isDark ? 'dark' : 'light'})`)
 }
 
 export function activate(extensionContext: ExtensionContext) {

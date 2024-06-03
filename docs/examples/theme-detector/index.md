@@ -2,11 +2,12 @@
 outline: false
 ---
 
-# Dark & Light Theme Detector
+# Theme Detector
 
-Detects the user's theme type, and show a message accordingly.
+Detects the user's theme, and show a message accordingly.
 
 <ExampleFunctions :fns="[
+  'useActiveColorTheme',
   'useIsDarkTheme',
 ]" />
 
