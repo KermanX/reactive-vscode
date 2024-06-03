@@ -4,7 +4,7 @@ Commands trigger actions. Commands expose functionality to users, bind to action
 
 There are some [built-in commands](https://code.visualstudio.com/api/references/commands) in VS Code, and you can also define your own commands.
 
-## Define in Manifest
+## Define in Manifest <NonProprietary />
 
 As described in the [official documentation](https://code.visualstudio.com/api/references/contribution-points#contributes.commands), you need to define the commands in the `contributes.commands` field in the `package.json`.
 
@@ -47,3 +47,32 @@ export = defineExtension(() => {
   })
 })
 ```
+
+## Caveats
+
+### Command Palette Visibility <NonProprietary />
+
+Commands can be used as view actions, or be called by other extensions. In that case, commands may have params and shouldn't be called via the [Command Palette](https://code.visualstudio.com/api/ux-guidelines/command-palette). We should hide these commands from the Command Palette by setting the `contributes.menus[*].when` property to `false`:
+
+```json
+{
+  "contributes": {
+    "commands": [
+      {
+        "command": "extension.doSomething",
+        "title": "This requires params"
+      }
+    ],
+    "menus": {
+      "commandPalette": [
+        {
+          "command": "extension.doSomething",
+          "when": "false"
+        }
+      ]
+    }
+  }
+}
+```
+
+See the [official documentation](https://code.visualstudio.com/api/references/contribution-points#Context-specific-visibility-of-Command-Palette-menu-items) for more information.
