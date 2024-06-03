@@ -32,6 +32,7 @@ jobs:
 
       - name: Publish
         run: node scripts/publish.js
+        continue-on-error: true
         env:
           NODE_AUTH_TOKEN: ${{secrets.NPM_TOKEN}}
           NPM_CONFIG_PROVENANCE: true
