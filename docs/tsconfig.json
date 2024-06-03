@@ -3,7 +3,8 @@
   "compilerOptions": {
     "lib": [
       "DOM"
-    ]
+    ],
+    "module": "Preserve"
   },
   "include": [
     ".vitepress/**/*",

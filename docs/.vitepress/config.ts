@@ -32,9 +32,10 @@ export default defineConfig({
           items: [
             { text: 'Why reactive-vscode', link: '/guide/why' },
             { text: 'Getting Started', link: '/guide/' },
-            { text: 'Define an Extension', link: '/guide/extension' },
-            { text: 'Define Configurations', link: '/guide/config' },
-            { text: 'Define Views', link: '/guide/view' },
+            { text: 'Extension', link: '/guide/extension' },
+            { text: 'Commands', link: '/guide/command' },
+            { text: 'Views', link: '/guide/view' },
+            { text: 'Configurations', link: '/guide/config' },
           ],
         },
         {
@@ -48,7 +49,8 @@ export default defineConfig({
           text: 'Examples',
           items: [
             { text: 'Index', link: '/examples/' },
-            { text: 'Dark & Light Theme Detector', link: '/examples/dark-light' },
+            { text: 'Hello Counter', link: '/examples/hello-counter/' },
+            { text: 'Theme Detector', link: '/examples/dark-light/' },
           ],
         },
       ],
@@ -135,8 +137,9 @@ export default defineConfig({
         explicitTrigger: false,
         twoslashOptions: {
           compilerOptions: {
-            module: 200, // ModuleKind.Preserve
+            module: 200, // ModuleKind.Preserve,
           },
+          vfsRoot: resolve(__dirname, '../snippets'),
         },
       }),
     ],

@@ -18,11 +18,11 @@
 }
 
 .example-container > .language-ts:first-child::before {
-  content: 'Using original VSCode API';
+  content: 'Original VSCode API';
 }
 
 .example-container > .language-ts:nth-child(2)::before {
-  content: 'Using reactive-vscode';
+  content: 'With reactive-vscode';
 }
 
 .content-container:has(.example-container) {

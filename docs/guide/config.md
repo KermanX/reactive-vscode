@@ -1,4 +1,4 @@
-# Define Configurations
+# Configurations
 
 An extension can contribute extension-specific settings.
 

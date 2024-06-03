@@ -1,4 +1,4 @@
-# Define Views
+# Views
 
 Views are an important part of a VSCode extension. There are two types of views in VSCode: [Tree View](https://code.visualstudio.com/api/extension-guides/tree-view) and [Webview](https://code.visualstudio.com/api/extension-guides/webview). Please read the [official UX guidelines](https://code.visualstudio.com/api/ux-guidelines/views) for a basic understanding.
 
@@ -36,38 +36,25 @@ As described in the [official documentation](https://code.visualstudio.com/api/r
 
 ![Custom views container](https://code.visualstudio.com/assets/api/references/contribution-points/custom-views-container.png)
 
-## Tree View
+## Register Tree View
 
 [Tree views](https://code.visualstudio.com/api/extension-guides/tree-view) are used to display hierarchical data. You can define a tree view by using the `reactive::useTreeView` function.
 
 Here is an example of a tree view:
 
-```ts
-import { computed, createSingletonComposable, useTreeView } from 'reactive-vscode'
-import { TreeItemCollapsibleState } from 'vscode'
+<<< @/snippets/treeView.ts
 
-export const useDemoTreeView = createSingletonComposable(() => {
-  const rootNodes = computed(() => [
-    { data: 1, children: [{ data: 2 }] },
-    { data: 3 },
-  ])
-  // return anything you want to expose
-  return useTreeView(
-    'reactive-tree-view',
-    rootNodes,
-    {
-      getTreeItem(node) {
-        return {
-          label: `Item ${node.data}`,
-          collapsibleState: node.children?.length ? TreeItemCollapsibleState.Expanded : TreeItemCollapsibleState.None,
-        }
-      },
-    },
-  )
+Then you can call the `useDemoTreeView` function every where to register the tree view and get the returned value:
+
+```ts
+import { defineExtension } from 'reactive-vscode'
+import { useDemoTreeView } from './treeView'
+
+export = defineExtension(() => {
+  const demoTreeView = useDemoTreeView()
+  // ...
 })
 ```
-
-Then you can call the `useDemoTreeView` function every where to register the tree view and get the returned value.
 
 The `children` property in nodes is used to define the children of the node. Other properties are user-defined and can be used in the `getTreeItem` function. The `getTreeItem` function returns a `vscode::TreeItem` object from a node.
 
@@ -79,7 +66,7 @@ The `children` property in nodes is used to define the children of the node. Oth
 For the above example, `useDemoTreeView` should **not** be called top-level in the module, because the extension context is not available at that time. Instead, you should **always** call it in the `setup` function.
 :::
 
-## Webview
+## Register Webview
 
 [Webviews](https://code.visualstudio.com/api/extension-guides/webview) are used to display web content in the editor. You can define a webview by using the `reactive::useWebviewView` function.
 

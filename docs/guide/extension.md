@@ -1,4 +1,4 @@
-# Define an Extension
+# Extension
 
 It's simple to create a VSCode extension with <ReactiveVscode />. You just need to define your extension code inside the `reactive::defineExtension` function, and export the returned `activate` and `deactivate` functions.
 
@@ -53,13 +53,10 @@ import type { Ref } from 'reactive-vscode'
  * Defined via `defineConfigs`
  */
 declare const message: Ref<string>
-/**
- * Defined in `./treeView.ts`
- */
-declare const useDemoTreeView: () => void
 // ---cut---
 import { defineExtension, useCommand, useIsDarkTheme, useLogger, watchEffect } from 'reactive-vscode'
 import { window } from 'vscode'
+import { useDemoTreeView } from './treeView'
 
 export = defineExtension(() => {
   const logger = useLogger('Reactive VSCode')
