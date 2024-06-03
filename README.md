@@ -2,16 +2,12 @@
 
 [![npm version][npm-version-src]][npm-version-href]
 [![npm downloads][npm-downloads-src]][npm-downloads-href]
-[![bundle][bundle-src]][bundle-href]
-[![JSDocs][jsdocs-src]][jsdocs-href]
 [![License][license-src]][license-href]
 
 ![Header](./docs/public/header.png)
 **Develop VSCode extension with Vue 3 Composition API**
 
 [**Documentation**](https://kermanx.github.io/reactive-vscode/) | [**Why reactive-vscode**](https://kermanx.github.io/reactive-vscode/guide/why) | [**Implemented Composables**](https://kermanx.github.io/reactive-vscode/functions.html)
-
-🚧 _**WIP**, not published yet_ 🚧
 
 ## License
 
