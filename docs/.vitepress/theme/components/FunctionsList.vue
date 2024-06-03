@@ -71,7 +71,7 @@ function toggleSort(method: string) {
 </script>
 
 <template>
-  <div class="grid grid-cols-[80px_auto] gap-y-2 mt-10">
+  <div class="grid grid-cols-[80px_auto] gap-y-2 mt-10" id="functions-list">
     <div opacity="80" text="sm">
       Category
     </div>
@@ -200,5 +200,19 @@ input {
 }
 .select-button.disabled {
   @apply opacity-50 pointer-events-none;
+}
+</style>
+
+<style>
+.content:has(#functions-list) {
+  max-width: 80vw !important;
+}
+
+.content-container:has(#functions-list) {
+  max-width: 80vw !important;
+}
+
+.aside:has(+ .content #functions-list) {
+  display: none !important;
 }
 </style>
