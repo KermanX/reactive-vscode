@@ -41,7 +41,7 @@ You can find all the implemented composables [here](../functions/index.md). They
 
 ## Extension Basics
 
-### Extension Manifest
+### Extension Manifest <NonProprietary />
 
 Each VS Code extension must have a `package.json` as its [Extension Manifest](https://code.visualstudio.com/api/get-started/extension-anatomy#extension-manifest). Please visit the [official documentation](https://code.visualstudio.com/api/get-started/extension-anatomy#extension-manifest) for more information.
 
@@ -79,13 +79,15 @@ yarn dev
 
 :::
 
-2. Inside the editor, press <kbd>F5</kbd> or run the command **Debug: Start Debugging** from the Command Palette (<kbd>Ctrl+Shift+P</kbd>). This will run the extension in a new window.
+2. <NonProprietary /> Inside the editor, press <kbd>F5</kbd> or run the command **Debug: Start Debugging** from the Command Palette (<kbd>Ctrl+Shift+P</kbd>). This will run the extension in a new window.
 
 > Visit the [VSCode Documentation](https://code.visualstudio.com/api/get-started/your-first-extension#debugging-the-extension) for more information about debugging the extension.
 
+<div h-4 />
+
 ---
 
-::: tip [Twoslash](https://twoslash.netlify.app/) powered!
+::: info [Twoslash](https://twoslash.netlify.app/) powered docs!
 
 You can hover the tokens in code blocks to see the type definitions for some uncovered functions.
 

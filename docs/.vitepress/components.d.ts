@@ -13,6 +13,7 @@ declare module 'vue' {
     FunctionBadge: typeof import('./theme/components/FunctionBadge.vue')['default']
     FunctionInfo: typeof import('./theme/components/FunctionInfo.vue')['default']
     FunctionsList: typeof import('./theme/components/FunctionsList.vue')['default']
+    NonProprietary: typeof import('./theme/components/NonProprietary.vue')['default']
     ReactiveVscode: typeof import('./theme/components/ReactiveVscode.vue')['default']
   }
 }
