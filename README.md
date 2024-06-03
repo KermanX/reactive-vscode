@@ -5,9 +5,9 @@
 [![License][license-src]][license-href]
 
 ![Header](./docs/public/header.png)
-**Develop VSCode extension with Vue 3 Composition API**
+**Develop VSCode extension with Vue Reactivity API**
 
-[**Documentation**](https://kermanx.github.io/reactive-vscode/) | [**Why reactive-vscode**](https://kermanx.github.io/reactive-vscode/guide/why) | [**Implemented Composables**](https://kermanx.github.io/reactive-vscode/functions.html)
+[**Documentation**](https://kermanx.github.io/reactive-vscode/) | [**Why reactive-vscode**](https://kermanx.github.io/reactive-vscode/guide/why) | [**Functions**](https://kermanx.github.io/reactive-vscode/functions/) | [**Examples**](https://kermanx.github.io/reactive-vscode/examples/)
 
 ## License
 

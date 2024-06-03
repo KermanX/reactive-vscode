@@ -13,7 +13,7 @@ import { transformerTwoslash } from '@shikijs/vitepress-twoslash'
 // https://vitepress.dev/reference/site-config
 export default defineConfig({
   title: 'Reactive VSCode',
-  description: 'Develop VSCode extension with Vue 3 Composition API',
+  description: 'Develop VSCode extension with Vue Reactivity API',
   base: '/reactive-vscode/',
   lang: 'en-US',
   themeConfig: {

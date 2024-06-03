@@ -25,7 +25,7 @@ hero:
 features:
   - icon: 🚀
     title: Easy to use
-    details: Familiar Vue 3 Composition API
+    details: Familiar Vue Reactivity API
   - icon: 🦾
     title: Feature rich
     details: Most of the VSCode APIs included

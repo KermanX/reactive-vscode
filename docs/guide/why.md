@@ -28,7 +28,7 @@ Vue's reactivity system is powerful. It's much easier to watch states and update
 
 ## The solution
 
-[Vue's Reactivity API](https://vuejs.org/api/reactivity-core.html) is all you need. This library wraps most of the VSCode APIs into [Vue Composables](https://vuejs.org/guide/reusability/composables.html). You can use them as you use Vue 3 Composition API, which is familiar to Vue developers.
+[Vue's Reactivity API](https://vuejs.org/api/reactivity-core.html) is all you need. This library wraps most of the VSCode APIs into [Vue Composables](https://vuejs.org/guide/reusability/composables.html). You can use them as you use Vue Reactivity API, which is familiar to Vue developers.
 
 With the help of this library, you can develop a VSCode extension just like developing a Vue 3 web application. You can use Vue's reactivity system to watch states, and implement views as Vue composables.
 

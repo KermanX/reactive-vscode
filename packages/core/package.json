@@ -2,7 +2,7 @@
   "name": "reactive-vscode",
   "type": "module",
   "version": "0.0.1-beta.1",
-  "description": "Develop VSCode extension with Vue 3 Composition API",
+  "description": "Develop VSCode extension with Vue Reactivity API",
   "author": "_Kerman <kermanx@qq.com>",
   "license": "MIT",
   "homepage": "https://github.com/KermanX/reactive-vscode#readme",
