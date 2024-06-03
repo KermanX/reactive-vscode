@@ -11,10 +11,10 @@ Detects the user's theme, and show a message accordingly.
   'useIsDarkTheme',
 ]" />
 
-<ExampleContainer>
+::: code-group
 
-<<< ./1.ts
+<<< ./1.ts [<ReactiveVscode2 />]
 
-<<< ./2.ts
+<<< ./2.ts [Original VSCode API]
 
-</ExampleContainer>
+:::

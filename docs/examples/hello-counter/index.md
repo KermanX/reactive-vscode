@@ -4,17 +4,17 @@ outline: false
 
 # Hello Counter
 
-A simple example that shows how many times the user has called the `extension.sayHello` command.
+A simple example that shows how many times the user has called the commands.
 
 <ExampleFunctions :fns="[
   'useCommands',
   'useStatusBarItem',
 ]" />
 
-<ExampleContainer>
+::: code-group
 
-<<< ./1.ts
+<<< ./1.ts [<ReactiveVscode2 />]
 
-<<< ./2.ts
+<<< ./2.ts [Original VSCode API]
 
-</ExampleContainer>
+:::

@@ -1,17 +1,26 @@
-import { defineExtension, ref, useCommands, useStatusBarItem } from 'reactive-vscode'
-import { StatusBarAlignment } from 'vscode'
+import type { ExtensionContext } from 'vscode'
+import { StatusBarAlignment, commands, window } from 'vscode'
 
-export = defineExtension(() => {
-  const counter = ref(0)
+export function activate(extensionContext: ExtensionContext) {
+  let counter = 0
 
-  useStatusBarItem({
-    alignment: StatusBarAlignment.Right,
-    priority: 100,
-    text: () => `$(megaphone) Hello*${counter.value}`,
-  })
+  const item = window.createStatusBarItem(StatusBarAlignment.Right, 100)
 
-  useCommands({
-    'extension.sayHello': () => counter.value++,
-    'extension.sayGoodbye': () => counter.value--,
-  })
-})
+  function updateStatusBar() {
+    item.text = `$(megaphone) Hello*${counter}`
+    item.show()
+  }
+
+  updateStatusBar()
+
+  extensionContext.subscriptions.push(
+    commands.registerCommand('extension.sayHello', () => {
+      counter++
+      updateStatusBar()
+    }),
+    commands.registerCommand('extension.sayGoodbye', () => {
+      counter--
+      updateStatusBar()
+    }),
+  )
+}

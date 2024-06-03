@@ -8,6 +8,7 @@ export {}
 declare module 'vue' {
   export interface GlobalComponents {
     ApiLink: typeof import('./theme/components/ApiLink.vue')['default']
+    copy: typeof import('./theme/components/ReactiveVscode2.vue')['default']
     ExampleContainer: typeof import('./theme/components/ExampleContainer.vue')['default']
     ExampleFunctions: typeof import('./theme/components/ExampleFunctions.vue')['default']
     FunctionBadge: typeof import('./theme/components/FunctionBadge.vue')['default']
@@ -15,5 +16,6 @@ declare module 'vue' {
     FunctionsList: typeof import('./theme/components/FunctionsList.vue')['default']
     NonProprietary: typeof import('./theme/components/NonProprietary.vue')['default']
     ReactiveVscode: typeof import('./theme/components/ReactiveVscode.vue')['default']
+    ReactiveVscode2: typeof import('./theme/components/ReactiveVscode2.vue')['default']
   }
 }

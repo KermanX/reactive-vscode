@@ -8,7 +8,7 @@ const m = props.fns.map(n => metadata.functions.find(m => m.name === n)!)
 </script>
 
 <template>
-  <div pb-3>
+  <div pb-3 class="example-functions">
     <h4 mb--3>
       Used functions
     </h4>
@@ -21,3 +21,13 @@ const m = props.fns.map(n => metadata.functions.find(m => m.name === n)!)
     </ul>
   </div>
 </template>
+
+<style>
+.content-container:has(.example-functions) {
+  max-width: 80vw !important;
+}
+
+.aside:has(+ .content .example-functions) {
+  display: none !important;
+}
+</style>
