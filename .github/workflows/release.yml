@@ -23,6 +23,7 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: lts/*
+          registry-url: https://registry.npmjs.org/
 
       - name: Setup @antfu/ni
         run: npm i -g @antfu/ni
@@ -30,13 +31,12 @@ jobs:
       - name: Install
         run: nci
 
-      - name: Publish
-        run: node scripts/publish.js
-        continue-on-error: true
-        env:
-          NODE_AUTH_TOKEN: ${{secrets.NPM_TOKEN}}
-          NPM_CONFIG_PROVENANCE: true
-
       - run: npx changelogithub
         env:
           GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
+
+      - name: Publish
+        run: node scripts/publish.js
+        env:
+          NODE_AUTH_TOKEN: ${{secrets.NPM_TOKEN}}
+          NPM_CONFIG_PROVENANCE: true
