@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { computed } from 'vue';
+import { computed } from 'vue'
 
 const props = defineProps({
   scope: {
@@ -12,21 +12,21 @@ const props = defineProps({
   },
   link: {
     type: String,
-  }
+  },
 })
 
 const iconClass = computed(() => ({
-  'vscode': 'i-vscode-icons:file-type-vscode',
-  'vue': 'i-vscode-icons:file-type-vue',
-  'reactive': 'i-reactive-vscode:logo',
-  'npm': 'i-carbon:logo-npm color-$vp-c-npm',
+  vscode: 'i-vscode-icons:file-type-vscode',
+  vue: 'i-vscode-icons:file-type-vue',
+  reactive: 'i-reactive-vscode:logo',
+  npm: 'i-carbon:logo-npm color-$vp-c-npm',
 }[props.scope]))
 
 const linkUrl = computed(() => props.link ?? ({
-  'vscode': `https://code.visualstudio.com/api/references/vscode-api#${props.name}`,
-  'vue': null,
-  'reactive': `${import.meta.env.BASE_URL}functions/${props.name}`,
-  'npm': `https://www.npmjs.com/package/${props.name}`,
+  vscode: `https://code.visualstudio.com/api/references/vscode-api#${props.name}`,
+  vue: null,
+  reactive: `${import.meta.env.BASE_URL}functions/${props.name}`,
+  npm: `https://www.npmjs.com/package/${props.name}`,
 }[props.scope]))
 
 const linkColor = computed(() => ({
@@ -36,7 +36,7 @@ const linkColor = computed(() => ({
 
 <template>
   <span class="api-link">
-    <span :class="iconClass" class="mb-.5"/>
+    <span :class="iconClass" class="mb-.5" />
     <a v-if="linkUrl" :href="linkUrl" :style="linkColor" target="_blank">
       {{ name }}
     </a>

@@ -71,7 +71,7 @@ function toggleSort(method: string) {
 </script>
 
 <template>
-  <div class="grid grid-cols-[80px_auto] gap-y-2 mt-10" id="functions-list">
+  <div id="functions-list" class="grid grid-cols-[80px_auto] gap-y-2 mt-10">
     <div opacity="80" text="sm">
       Category
     </div>

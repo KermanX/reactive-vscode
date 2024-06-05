@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { computed } from 'vue'
-import { renderMarkdown } from '../utils'
 import type { FunctionMetadata } from 'reactive-vscode-metadata'
+import { renderMarkdown } from '../utils'
 
 const props = defineProps<{ fn: FunctionMetadata }>()
 

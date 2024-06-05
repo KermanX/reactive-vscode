@@ -24,7 +24,7 @@ provide('toggle-appearance', async ({ clientX: x, clientY: y }: MouseEvent) => {
     )}px at ${x}px ${y}px)`,
   ]
 
-  // @ts-ignore missing types
+  // @ts-expect-error missing types
   await document.startViewTransition(async () => {
     isDark.value = !isDark.value
     await nextTick()

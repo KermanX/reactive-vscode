@@ -2,16 +2,16 @@
 defineProps({
   type: {
     type: String,
-    default: 'info'
+    default: 'info',
   },
   text: {
     type: String,
-    default: 'Non-Proprietary'
+    default: 'Non-Proprietary',
   },
   tooltip: {
     type: String,
-    default: 'This applys to any VSCode extension, not only those using reactive-vscode'
-  }
+    default: 'This applys to any VSCode extension, not only those using reactive-vscode',
+  },
 })
 </script>
 
