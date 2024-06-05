@@ -189,8 +189,8 @@ importers:
         specifier: ^5.4.5
         version: 5.4.5
       vite:
-        specifier: ^5.2.11
-        version: 5.2.11(@types/node@20.14.2)
+        specifier: ^5.2.12
+        version: 5.2.12(@types/node@20.14.2)
       vitest:
         specifier: ^1.6.0
         version: 1.6.0(@types/node@20.14.2)
@@ -3625,34 +3625,6 @@ packages:
       vite: '*'
     peerDependenciesMeta:
       vite:
-        optional: true
-
-  vite@5.2.11:
-    resolution: {integrity: sha512-HndV31LWW05i1BLPMUCE1B9E9GFbOu1MbenhS58FuK6owSO5qHm7GiCotrNY1YE5rMeQSFBGmT5ZaLEjFizgiQ==}
-    engines: {node: ^18.0.0 || >=20.0.0}
-    hasBin: true
-    peerDependencies:
-      '@types/node': ^18.0.0 || >=20.0.0
-      less: '*'
-      lightningcss: ^1.21.0
-      sass: '*'
-      stylus: '*'
-      sugarss: '*'
-      terser: ^5.4.0
-    peerDependenciesMeta:
-      '@types/node':
-        optional: true
-      less:
-        optional: true
-      lightningcss:
-        optional: true
-      sass:
-        optional: true
-      stylus:
-        optional: true
-      sugarss:
-        optional: true
-      terser:
         optional: true
 
   vite@5.2.12:
@@ -7777,15 +7749,6 @@ snapshots:
       - '@types/node'
       - rollup
       - supports-color
-
-  vite@5.2.11(@types/node@20.14.2):
-    dependencies:
-      esbuild: 0.20.2
-      postcss: 8.4.38
-      rollup: 4.17.2
-    optionalDependencies:
-      '@types/node': 20.14.2
-      fsevents: 2.3.3
 
   vite@5.2.12(@types/node@20.14.2):
     dependencies:
