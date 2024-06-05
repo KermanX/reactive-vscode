@@ -1,7 +1,7 @@
-import type { MaybeRefOrGetter } from '@vue/runtime-core'
-import { shallowRef, toValue, watchEffect } from '@vue/runtime-core'
 import type { TextDocument } from 'vscode'
 import { workspace } from 'vscode'
+import type { MaybeRefOrGetter } from '../reactivity'
+import { shallowRef, toValue, watchEffect } from '../reactivity'
 import { useDisposable } from './useDisposable'
 
 /**

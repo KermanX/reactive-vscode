@@ -1,6 +1,6 @@
-import type { ComputedRef, MaybeRefOrGetter } from '@vue/runtime-core'
-import { computed, ref, toValue, watchEffect } from '@vue/runtime-core'
 import type { TreeView, WebviewView } from 'vscode'
+import type { ComputedRef, MaybeRefOrGetter } from '../reactivity'
+import { computed, ref, toValue, watchEffect } from '../reactivity'
 import type { Nullable } from '../utils/types'
 
 type ViewWithVisibility = Pick<TreeView<unknown> | WebviewView, 'visible' | 'onDidChangeVisibility'>

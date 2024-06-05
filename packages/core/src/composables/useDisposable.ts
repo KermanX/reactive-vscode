@@ -1,5 +1,5 @@
-import { getCurrentScope } from '@vue/runtime-core'
 import type { Disposable } from 'vscode'
+import { getCurrentScope } from '../reactivity'
 import { extensionScope } from '../utils'
 
 /**

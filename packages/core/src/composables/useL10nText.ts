@@ -1,6 +1,6 @@
-import type { ComputedRef, MaybeRefOrGetter } from '@vue/runtime-core'
-import { computed, toRaw, toValue } from '@vue/runtime-core'
 import { l10n } from 'vscode'
+import type { ComputedRef, MaybeRefOrGetter } from '../reactivity'
+import { computed, toRaw, toValue } from '../reactivity'
 
 /**
  * @reactive `l10n.t`

@@ -1,7 +1,7 @@
-import type { MaybeRefOrGetter } from '@vue/runtime-core'
-import { toValue, watch } from '@vue/runtime-core'
 import type { TreeDataProvider, TreeView, TreeViewOptions } from 'vscode'
 import { EventEmitter, window } from 'vscode'
+import type { MaybeRefOrGetter } from '../reactivity'
+import { toValue, watch } from '../reactivity'
 import { createKeyedComposable } from '../utils'
 import { useDisposable } from './useDisposable'
 

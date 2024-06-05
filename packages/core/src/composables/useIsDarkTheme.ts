@@ -1,5 +1,5 @@
-import { computed } from '@vue/runtime-core'
 import { ColorThemeKind } from 'vscode'
+import { computed } from '../reactivity'
 import { createSingletonComposable } from '../utils'
 import { useActiveColorTheme } from './useActiveColorTheme'
 

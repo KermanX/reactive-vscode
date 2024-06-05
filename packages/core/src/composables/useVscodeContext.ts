@@ -1,6 +1,6 @@
-import type { ComputedRef, MaybeRefOrGetter, Ref, WritableComputedRef } from '@vue/runtime-core'
-import { computed, toValue, watchEffect } from '@vue/runtime-core'
 import { commands } from 'vscode'
+import type { ComputedRef, MaybeRefOrGetter, Ref, WritableComputedRef } from '../reactivity'
+import { computed, toValue, watchEffect } from '../reactivity'
 
 export function useVscodeContext<T>(
   name: string,

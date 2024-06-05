@@ -13,6 +13,8 @@
 
 [MIT](./LICENSE) License © 2024-PRESENT [_Kerman](https://github.com/KermanX)
 
+Source code in [the `./packages/core/src/reactivity` directory](https://github.com/KermanX/reactive-vscode/blob/main/packages/core/src/reactivity) is ported from [`@vue/runtime-core`](https://github.com/vuejs/core/blob/main/packages/runtime-core). Licensed under a [MIT License](https://github.com/vueuse/vueuse/blob/main/LICENSE).
+
 The logo <img src="https://kermanx.github.io/reactive-vscode/logo.svg" width="14"> is modified from [Vue Reactity Artworks](https://github.com/vue-reactivity/art). Licensed under a [Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License](https://creativecommons.org/licenses/by-nc-sa/4.0/).
 
 Part of the docs website is ported from [VueUse](https://github.com/vueuse/vueuse). Licensed under a [MIT License](https://github.com/vueuse/vueuse/blob/main/LICENSE).

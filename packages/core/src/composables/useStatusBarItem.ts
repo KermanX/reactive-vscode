@@ -1,7 +1,7 @@
-import type { MaybeRefOrGetter } from '@vue/runtime-core'
-import { toValue, watchEffect } from '@vue/runtime-core'
 import type { StatusBarAlignment, StatusBarItem } from 'vscode'
 import { window } from 'vscode'
+import type { MaybeRefOrGetter } from '../reactivity'
+import { toValue, watchEffect } from '../reactivity'
 import { useDisposable } from './useDisposable'
 
 export interface UseStatusBarItemOptions {

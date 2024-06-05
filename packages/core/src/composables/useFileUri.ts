@@ -1,6 +1,6 @@
-import type { MaybeRefOrGetter } from '@vue/runtime-core'
-import { toValue } from '@vue/runtime-core'
 import { Uri } from 'vscode'
+import type { MaybeRefOrGetter } from '../reactivity'
+import { toValue } from '../reactivity'
 import { useUri } from './useUri'
 
 /**

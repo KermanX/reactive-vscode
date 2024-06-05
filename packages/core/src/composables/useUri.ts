@@ -1,6 +1,6 @@
-import type { MaybeRefOrGetter } from '@vue/runtime-core'
-import { shallowReactive, toValue } from '@vue/runtime-core'
 import type { Uri } from 'vscode'
+import type { MaybeRefOrGetter } from '../reactivity'
+import { shallowReactive, toValue } from '../reactivity'
 
 /**
  * @reactive `Uri`

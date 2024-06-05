@@ -1,4 +1,4 @@
-import { getCurrentScope, onScopeDispose } from '@vue/runtime-core'
+import { getCurrentScope, onScopeDispose } from '../reactivity'
 
 /**
  * The safe version of `vue::onScopeDispose(https://vuejs.org/api/reactivity-advanced.html#onscopedispose)`.

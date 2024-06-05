@@ -1,5 +1,5 @@
-import type { ComputedRef, MaybeRefOrGetter } from '@vue/runtime-core'
-import { computed, toValue } from '@vue/runtime-core'
+import type { ComputedRef, MaybeRefOrGetter } from '../reactivity'
+import { computed, toValue } from '../reactivity'
 import { extensionContext } from '../utils'
 
 /**

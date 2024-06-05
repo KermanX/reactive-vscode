@@ -1,7 +1,7 @@
-import type { MaybeRefOrGetter } from '@vue/runtime-core'
-import { shallowRef, toValue, watchEffect } from '@vue/runtime-core'
 import type { WebviewOptions, WebviewView } from 'vscode'
 import { window } from 'vscode'
+import type { MaybeRefOrGetter } from '../reactivity'
+import { shallowRef, toValue, watchEffect } from '../reactivity'
 import { createKeyedComposable } from '../utils'
 import { useDisposable } from './useDisposable'
 

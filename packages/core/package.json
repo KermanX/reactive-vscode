@@ -42,9 +42,11 @@
     "@types/vscode": "^1.89.0"
   },
   "dependencies": {
-    "@vue/runtime-core": "^3.4.27"
+    "@vue/reactivity": "^3.4.27",
+    "@vue/shared": "^3.4.27"
   },
   "devDependencies": {
+    "@types/node": "^20.14.2",
     "@types/vscode": "^1.89.0",
     "mkdist": "^1.5.1",
     "typescript": "^5.4.5"

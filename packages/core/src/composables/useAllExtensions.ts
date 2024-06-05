@@ -1,5 +1,5 @@
-import { computed, shallowRef } from '@vue/runtime-core'
 import { extensions } from 'vscode'
+import { computed, shallowRef } from '../reactivity'
 import { createSingletonComposable } from '../utils'
 import { useDisposable } from './useDisposable'
 

@@ -90,9 +90,7 @@ As you can see, after using <ReactiveVscode />, the code is much cleaner and eas
 
 ### Why use `npm::@vue/runtime-core` internally?
 
-This library is built on top of `npm::@vue/runtime-core`. This is because `npm::@vue/reactivity` doesn't provide the `vue::watch(https://vuejs.org/api/reactivity-core.html#watch)` and `vue::watchEffect(https://vuejs.org/api/reactivity-core.html#watcheffect)` function, which is essential in a VSCode extension.
-
-It's possible to use `npm::@vue-reactivity/watch` in the future. But for now, we have to use `npm::@vue/runtime-core`.
+This library is built on top of `npm::@vue/reactivity`, and ported some code from `npm::@vue/runtime-core` (See [the `./packages/core/src/reactivity` directory](https://github.com/KermanX/reactive-vscode/blob/main/packages/core/src/reactivity)).
 
 ### Use Vue in Webview?
 

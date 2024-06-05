@@ -1,6 +1,6 @@
-import type { MaybeRefOrGetter } from '@vue/runtime-core'
-import { toValue, watchEffect } from '@vue/runtime-core'
 import type { TreeView, WebviewView } from 'vscode'
+import type { MaybeRefOrGetter } from '../reactivity'
+import { toValue, watchEffect } from '../reactivity'
 import type { Nullable } from '../utils/types'
 
 type ViewWithTitle = Pick<TreeView<unknown> | WebviewView, 'title'>

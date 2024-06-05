@@ -1,6 +1,6 @@
-import { computed, shallowRef } from '@vue/runtime-core'
 import type { TextEditor } from 'vscode'
 import { window } from 'vscode'
+import { computed, shallowRef } from '../reactivity'
 import { createKeyedComposable } from '../utils'
 import { useDisposable } from './useDisposable'
 
