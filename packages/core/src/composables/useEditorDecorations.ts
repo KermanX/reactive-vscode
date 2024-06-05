@@ -1,6 +1,6 @@
 import type { MaybeRefOrGetter } from '@vue/runtime-core'
 import { toValue, watchEffect } from '@vue/runtime-core'
-import type { DecorationOptions, DecorationRenderOptions, Range, TextEditor } from 'vscode'
+import type { DecorationOptions, DecorationRenderOptions, Range, TextEditor, TextEditorDecorationType } from 'vscode'
 import { window } from 'vscode'
 import type { Nullable } from '../utils/types'
 
@@ -10,11 +10,11 @@ import type { Nullable } from '../utils/types'
  * @category editor
  */
 export function useEditorDecorations(
-  options: DecorationRenderOptions,
   editor: MaybeRefOrGetter<Nullable<TextEditor>>,
+  decorationTypeOrOptions: TextEditorDecorationType | DecorationRenderOptions,
   rangesOrOptions: MaybeRefOrGetter<readonly Range[] | readonly DecorationOptions[]>,
 ) {
-  const decorationType = window.createTextEditorDecorationType(options)
+  const decorationType = 'key' in decorationTypeOrOptions ? decorationTypeOrOptions : window.createTextEditorDecorationType(decorationTypeOrOptions)
 
   watchEffect(() => {
     toValue(editor)?.setDecorations(decorationType, toValue(rangesOrOptions))

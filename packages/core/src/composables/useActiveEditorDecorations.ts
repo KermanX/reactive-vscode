@@ -1,5 +1,5 @@
 import type { MaybeRefOrGetter } from '@vue/runtime-core'
-import type { DecorationOptions, DecorationRenderOptions, Range } from 'vscode'
+import type { DecorationOptions, DecorationRenderOptions, Range, TextEditorDecorationType } from 'vscode'
 import { useActiveTextEditor } from './useActiveTextEditor'
 import { useEditorDecorations } from './useEditorDecorations'
 
@@ -9,10 +9,10 @@ import { useEditorDecorations } from './useEditorDecorations'
  * @category editor
  */
 export function useActiveEditorDecorations(
-  options: DecorationRenderOptions,
+  decorationTypeOrOptions: TextEditorDecorationType | DecorationRenderOptions,
   rangesOrOptions: MaybeRefOrGetter<readonly Range[] | readonly DecorationOptions[]>,
 ) {
   const activeEditor = useActiveTextEditor()
 
-  useEditorDecorations(options, activeEditor, rangesOrOptions)
+  useEditorDecorations(activeEditor, decorationTypeOrOptions, rangesOrOptions)
 }
