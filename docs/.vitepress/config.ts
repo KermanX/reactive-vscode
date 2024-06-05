@@ -36,6 +36,7 @@ export default defineConfig({
             { text: 'Commands', link: '/guide/command' },
             { text: 'Views', link: '/guide/view' },
             { text: 'Configurations', link: '/guide/config' },
+            { text: 'Editor & Document', link: '/guide/editor' },
           ],
         },
         {
