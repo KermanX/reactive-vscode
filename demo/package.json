@@ -57,7 +57,7 @@
   },
   "scripts": {
     "build": "tsup --env.NODE_ENV production",
-    "dev": "tsup --watch ../packages/core/src --watch ./src",
+    "dev": "tsup --watch ./src --env.NODE_ENV development",
     "typecheck": "tsc --noEmit"
   },
   "devDependencies": {

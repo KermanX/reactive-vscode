@@ -34,7 +34,7 @@ export default (identifier: string, displayName: string, coreVersion: string) =>
   },
   "scripts": {
     "build": "tsup --env.NODE_ENV production",
-    "dev": "tsup --watch ./src",
+    "dev": "tsup --watch ./src --env.NODE_ENV development",
     "typecheck": "tsc --noEmit",
     "vscode:prepublish": "pnpm run build"
   },
