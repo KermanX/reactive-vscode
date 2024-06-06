@@ -1,23 +1,24 @@
 import type { NotebookEditor } from 'vscode'
 import { window } from 'vscode'
-import { computed, shallowRef } from '../reactivity'
-import { createKeyedComposable } from '../utils'
+import { computed, shallowRef, toValue, watch } from '../reactivity'
+import type { MaybeNullableRefOrGetter } from '../utils'
 import { useDisposable } from './useDisposable'
 
 /**
  * @reactive `NotebookEditor.visibleRanges`
  * @category editor
  */
-export const useNotebookEditorVisibleRanges = createKeyedComposable(
-  (notebookEditor: NotebookEditor) => {
-    const ranges = shallowRef(notebookEditor.visibleRanges)
+export function useNotebookEditorVisibleRanges(notebookEditor: MaybeNullableRefOrGetter<NotebookEditor>) {
+  const ranges = shallowRef(toValue(notebookEditor)?.visibleRanges ?? [])
 
-    useDisposable(window.onDidChangeNotebookEditorVisibleRanges((ev) => {
-      if (ev.notebookEditor === notebookEditor)
-        ranges.value = ev.visibleRanges
-    }))
+  watch(notebookEditor, () => {
+    ranges.value = toValue(notebookEditor)?.visibleRanges ?? []
+  })
 
-    return computed(() => ranges.value)
-  },
-  notebookEditor => notebookEditor,
-)
+  useDisposable(window.onDidChangeNotebookEditorVisibleRanges((ev) => {
+    if (ev.notebookEditor === toValue(notebookEditor))
+      ranges.value = ev.visibleRanges
+  }))
+
+  return computed(() => ranges.value)
+}

@@ -1,23 +1,24 @@
 import type { TextEditor } from 'vscode'
 import { window } from 'vscode'
-import { computed, shallowRef } from '../reactivity'
-import { createKeyedComposable } from '../utils'
+import { computed, shallowRef, toValue, watch } from '../reactivity'
+import type { MaybeNullableRefOrGetter } from '../utils'
 import { useDisposable } from './useDisposable'
 
 /**
  * @reactive `TextEditor.viewColumn`
  * @category editor
  */
-export const useTextEditorViewColumn = createKeyedComposable(
-  (textEditor: TextEditor) => {
-    const viewColumn = shallowRef(textEditor.viewColumn)
+export function useTextEditorViewColumn(textEditor: MaybeNullableRefOrGetter<TextEditor>) {
+  const viewColumn = shallowRef(toValue(textEditor)?.viewColumn)
 
-    useDisposable(window.onDidChangeTextEditorViewColumn((ev) => {
-      if (ev.textEditor === textEditor)
-        viewColumn.value = ev.viewColumn
-    }))
+  watch(textEditor, () => {
+    viewColumn.value = toValue(textEditor)?.viewColumn
+  })
 
-    return computed(() => viewColumn.value)
-  },
-  textEditor => textEditor,
-)
+  useDisposable(window.onDidChangeTextEditorViewColumn((ev) => {
+    if (ev.textEditor === toValue(textEditor))
+      viewColumn.value = ev.viewColumn
+  }))
+
+  return computed(() => viewColumn.value)
+}
