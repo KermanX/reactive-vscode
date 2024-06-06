@@ -6,7 +6,7 @@ import process from 'node:process'
 import chalk from 'chalk'
 import prompts from 'prompts'
 import corePackage from '../core/package.json'
-import tExtension from './templates/extension'
+import tSrc from './templates/src'
 import tGitignore from './templates/gitignore'
 import tLaunch from './templates/launch'
 import tPackage from './templates/package'
@@ -83,7 +83,9 @@ async function main() {
   fs.writeFileSync('README.md', tReadme(displayName))
 
   fs.mkdirSync('src')
-  fs.writeFileSync('src/extension.ts', tExtension(identifier, displayName))
+  const srcCode = tSrc(identifier, displayName)
+  fs.writeFileSync('src/extension.ts', srcCode.extension)
+  fs.writeFileSync('src/configs.ts', srcCode.configs)
 
   fs.mkdirSync('.vscode')
   fs.writeFileSync('.vscode/launch.json', tLaunch)
