@@ -37,6 +37,7 @@ export default defineConfig({
             { text: 'Views', link: '/guide/view' },
             { text: 'Configurations', link: '/guide/config' },
             { text: 'Editor & Document', link: '/guide/editor' },
+            { text: 'Window & Workspace', link: '/guide/window' },
           ],
         },
         {

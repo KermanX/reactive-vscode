@@ -1,4 +1,4 @@
-# Editor & Document
+# Editor and Document
 
 Editors and documents are the core of the VS Code extension development. In this guide, we will learn how to interact with the editor and document.
 

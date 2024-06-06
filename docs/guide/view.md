@@ -72,45 +72,6 @@ For the above example, `useDemoTreeView` should **not** be called top-level in t
 
 Here is an example of a webview:
 
-```ts
-import { computed, createSingletonComposable, ref, useWebviewView } from 'reactive-vscode'
-
-export const useDemoWebviewView = createSingletonComposable(() => {
-  const message = ref('')
-  const html = computed(() => `
-  <script>
-    vscode = acquireVsCodeApi()
-    function updateMessage() {
-      vscode.postMessage({
-        type: 'updateMessage',
-        message: document.querySelector('input').value,
-      })
-    }
-  </script>
-  <p>${message.value}</p>
-  <div style="display:flex; flex-wrap:wrap;">
-    <input type="text" placeholder="Input Message" />
-    <button onclick="updateMessage()">Update Message</button>
-  </div>
-  `)
-
-  useWebviewView(
-    'reactive-webview-view',
-    /* html content, can be computed */ html,
-    /* webviewOptions, can be computed */ {
-      enableScripts: true,
-      enableCommandUris: true,
-    },
-    /* registerOptions, static */ {
-      onDidReceiveMessage(ev) {
-        if (ev.type === 'updateMessage')
-          message.value = ev.message
-      },
-    },
-  )
-
-  return { message }
-})
-```
+<<< @/snippets/webviewView.ts
 
 The time to call `useDemoWebviewView` is the same as the tree view in the previous section.
