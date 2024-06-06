@@ -46,7 +46,7 @@ Here is an example of a tree view:
 
 Then you can call the `useDemoTreeView` function every where to register the tree view and get the returned value:
 
-```ts
+```ts {2,5}
 import { defineExtension } from 'reactive-vscode'
 import { useDemoTreeView } from './treeView'
 

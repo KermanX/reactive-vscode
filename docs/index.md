@@ -38,13 +38,13 @@ features:
 import { withBase } from 'vitepress'
 </script>
 
-<div class="relative">
+<div class="relative min-h-220">
 
 ::: code-group
 
-<<< ./examples/hello-counter/1.ts [<ReactiveVscode2 />]
+<<< ./examples/editor-decoration/1.ts [<ReactiveVscode2 />]
 
-<<< ./examples/hello-counter/2.ts [Original VSCode API]
+<<< ./examples/editor-decoration/2.ts [Original VSCode API]
 
 :::
 

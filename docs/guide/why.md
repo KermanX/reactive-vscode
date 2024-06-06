@@ -36,55 +36,17 @@ With the help of this library, you can develop a VSCode extension just like deve
 
 Here is an example which shows how this library can help you develop a VSCode extension. The following extension decorates the active text editor depending on a configuration.
 
-**Before:**
+::: code-group
 
-```ts
-import { ExtensionContext, window, workspace } from 'vscode'
+<<< ../examples/editor-decoration/1.ts [<ReactiveVscode2 />]
 
-const decorationType = window.createTextEditorDecorationType({
-  backgroundColor: 'red',
-})
+<<< ../examples/editor-decoration/2.ts [Original VSCode API]
 
-function updateDecorations(enabled: boolean) {
-  window.activeTextEditor?.setDecorations(decorationType, enabled ? [/* ... */] : [])
-}
-
-export function activate(context: ExtensionContext) {
-  const configurations = workspace.getConfiguration('demo')
-  let decorationsEnabled = configurations.get<boolean>('decorations')!
-
-  context.subscriptions.push(workspace.onDidChangeConfiguration((e) => {
-    if (e.affectsConfiguration('demo.decorations')) {
-      decorationsEnabled = configurations.get<boolean>('decorations')!
-      updateDecorations(decorationsEnabled)
-    }
-  }))
-  context.subscriptions.push(window.onDidChangeActiveTextEditor(() => {
-    updateDecorations(decorationsEnabled)
-  }))
-
-  updateDecorations(decorationsEnabled)
-}
-```
-
-**After:**
-
-```ts
-import { defineConfigs, defineExtension, useActiveEditorDecorations } from 'reactive-vscode'
-
-const configs = defineConfigs('demo', { decorations: Boolean })
-
-export = defineExtension(() => {
-  const editor = useActiveEditorDecorations(
-    {
-      backgroundColor: 'red',
-    },
-    () => configs.decorations ? [/* ... */] : []
-  )
-})
-```
+:::
 
 As you can see, after using <ReactiveVscode />, the code is much cleaner and easier to understand. With composables like `reactive::useActiveTextEditor` provided by this library, you can use Vue's reactivity API like `vue::watchEffect(https://vuejs.org/api/reactivity-core.html#watcheffect)` smoothly when developing a VSCode extension.
+
+More examples [here](../examples/){target="_blank"}.
 
 ## FAQ
 

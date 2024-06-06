@@ -52,6 +52,7 @@ export default defineConfig({
           items: [
             { text: 'Index', link: '/examples/' },
             { text: 'Hello Counter', link: '/examples/hello-counter/' },
+            { text: 'Editor Decoration', link: '/examples/editor-decoration/' },
             { text: 'Theme Detector', link: '/examples/theme-detector/' },
           ],
         },

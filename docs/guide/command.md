@@ -30,7 +30,7 @@ As described in the [official documentation](https://code.visualstudio.com/api/r
 
 You can use the `reactive::useCommand` or `reactive::useCommands` function to register commands in your extension.
 
-```ts
+```ts {6-9}
 import { window } from 'vscode'
 import { defineExtension, ref, useCommand, watchEffect } from 'reactive-vscode'
 

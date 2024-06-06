@@ -6,7 +6,7 @@ You may want to apply different styles to your extension based on the current th
 
 The `reactive::useActiveColorTheme` and `reactive::useIsDrakTheme` composable can be used to get the current theme and whether it's dark or not.
 
-```ts
+```ts {5,6}
 import { defineExtension, useActiveColorTheme, useIsDarkTheme, watchEffect } from 'reactive-vscode'
 import { useDemoWebviewView } from './webviewView'
 
@@ -33,7 +33,7 @@ The `reactive::useWindowState` composable can be used to get the current window 
 - `vscode::WindowState.active` - Whether the window has been interacted with recently. This will change immediately on activity, or after a short time of user inactivity.
 - `vscode::WindowState.focused` - Whether the current window is focused.
 
-```ts
+```ts {4}
 import { defineExtension, useWindowState, watchEffect } from 'reactive-vscode'
 
 export = defineExtension(() => {
@@ -50,7 +50,7 @@ export = defineExtension(() => {
 
 The `reactive::useWorkspaceFolders` composable can be used to get the workspace folders:
 
-```ts
+```ts {4}
 import { defineExtension, useWorkspaceFolders, watchEffect } from 'reactive-vscode'
 
 export = defineExtension(() => {
@@ -58,6 +58,7 @@ export = defineExtension(() => {
 
   watchEffect(() => {
     console.log('There are', workspaceFolders.value?.length, 'workspace folders')
+    //                         ^?
   })
 })
 ```

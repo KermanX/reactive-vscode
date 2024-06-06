@@ -36,7 +36,7 @@ export = defineExtension(() => {
   watchEffect(() => {
     console.log('Visible Text Editors:', textEditors.value)
     console.log('Visible Notebook Editors:', notebookEditors.value)
-    //                                                         ^?
+    //                                         ^?
   })
 })
 ```
