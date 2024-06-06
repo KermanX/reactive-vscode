@@ -33,3 +33,25 @@ features:
     title: Fully tree shakeable
     details: Only take what you want
 ---
+
+<script setup>
+import { withBase } from 'vitepress'
+</script>
+
+<div class="relative">
+
+::: code-group
+
+<<< ./examples/hello-counter/1.ts [<ReactiveVscode2 />]
+
+<<< ./examples/hello-counter/2.ts [Original VSCode API]
+
+:::
+
+<div class="absolute top-4 text-sm right-6 op-80 hidden sm:block">
+<a :href="withBase('examples/index.html')" style="text-decoration: none">
+<span class="i-carbon-launch mb-.5"></span> More examples
+</a>
+</div>
+
+</div>

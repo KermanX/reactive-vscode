@@ -92,6 +92,8 @@ As you can see, after using <ReactiveVscode />, the code is much cleaner and eas
 
 This library is built on top of `npm::@vue/reactivity`, and ported some code from `npm::@vue/runtime-core` (See [the `./packages/core/src/reactivity` directory](https://github.com/KermanX/reactive-vscode/blob/main/packages/core/src/reactivity)).
 
+The size of the minimal extension built with this library is about 12KB.
+
 ### Use Vue in Webview?
 
-This library is **not** designed for using Vue in a webview. If you want to use Vue in a webview, you can use the CDN version of Vue or bundler plugins like [`@tomjs/vite-plugin-vscode`](https://github.com/tomjs/vite-plugin-vscode).
+This library is **not** designed for using Vue in a webview. If you want to use Vue in a webview, you can use the CDN version of Vue or bundler plugins like `npm::@tomjs/vite-plugin-vscode`.
