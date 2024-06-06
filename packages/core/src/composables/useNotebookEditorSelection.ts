@@ -1,8 +1,7 @@
 import type { NotebookEditor } from 'vscode'
-import { window } from 'vscode'
-import { computed, shallowRef } from '../reactivity'
+import { computed } from '../reactivity'
 import { createKeyedComposable } from '../utils'
-import { useDisposable } from './useDisposable'
+import { useNotebookEditorSelections } from './useNotebookEditorSelections'
 
 /**
  * @reactive `NotebookEditor.selection`
@@ -10,20 +9,14 @@ import { useDisposable } from './useDisposable'
  */
 export const useNotebookEditorSelection = createKeyedComposable(
   (notebookEditor: NotebookEditor) => {
-    const selection = shallowRef(notebookEditor.selection)
-
-    useDisposable(window.onDidChangeNotebookEditorSelection((ev) => {
-      if (ev.notebookEditor === notebookEditor)
-        selection.value = ev.selections[0]
-    }))
+    const selections = useNotebookEditorSelections(notebookEditor)
 
     return computed({
       get() {
-        return selection.value
+        return selections.value[0]
       },
       set(newSelection) {
-        selection.value = newSelection
-        notebookEditor.selection = newSelection
+        selections.value = selections.value.toSpliced(0, 1, newSelection)
       },
     })
   },

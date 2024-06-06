@@ -1,6 +1,7 @@
-import type { TextEditor } from 'vscode'
+import type { TextEditor, TextEditorSelectionChangeKind } from 'vscode'
 import { window } from 'vscode'
-import { computed, shallowRef } from '../reactivity'
+import type { MaybeRefOrGetter } from '../reactivity'
+import { computed, shallowRef, toValue } from '../reactivity'
 import { createKeyedComposable } from '../utils'
 import { useDisposable } from './useDisposable'
 
@@ -9,11 +10,12 @@ import { useDisposable } from './useDisposable'
  * @category editor
  */
 export const useTextEditorSelections = createKeyedComposable(
-  (textEditor: TextEditor) => {
+  (textEditor: TextEditor, acceptKind?: MaybeRefOrGetter<(TextEditorSelectionChangeKind | undefined)[]>) => {
     const selections = shallowRef(textEditor.selections)
 
     useDisposable(window.onDidChangeTextEditorSelection((ev) => {
-      if (ev.textEditor === textEditor)
+      const kinds = toValue(acceptKind)
+      if (ev.textEditor === textEditor && (!kinds || kinds.includes(ev.kind)))
         selections.value = ev.selections
     }))
 

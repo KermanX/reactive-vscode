@@ -124,7 +124,7 @@ The following 4 composable can be used to **get and set** the selections of edit
 - `reactive::useNotebookEditorSelections` - All selections in the notebook editor.
 - `reactive::useNotebookEditorSelection` - The primary selection in the notebook editor.
 
-See their docs for more information.
+See their docs for more information. Note that `reactive::useTextEditorSelections` and `reactive::useTextEditorSelection` also support an `acceptKind` option to filter the change kind which has triggered this event (See `vscode::TextEditorSelectionChangeKind`).
 
 ## Editor Viewport
 
