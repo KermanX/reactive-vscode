@@ -12,7 +12,7 @@ export function useAbsolutePath(relativePath: MaybeRefOrGetter<string>, slient =
   return computed(() => {
     const extCtx = extensionContext.value
     if (!extCtx && !slient)
-      throw new Error('useAbsolutePath() must be called in extension activation callback.')
+      throw new Error('Cannot get absolute path because the extension is not activated yet')
     return extCtx?.asAbsolutePath(toValue(relativePath))
   })
 }
