@@ -11,7 +11,8 @@ const { params, title } = useData()
 const fn = metadata.functions.find(fn => fn.name === params.value.name)
 
 // A workaround for https://github.com/vuejs/vitepress/issues/3758
-document.title = `${fn.name} | Reactive VSCode`
+if(!import.meta.env.SSR)
+  document.title = `${fn.name} | Reactive VSCode`
 
 const sourcePath = `packages/core/${fn.isComposable ? 'composables' : 'utils'}/${fn.name}.ts`
 </script>
