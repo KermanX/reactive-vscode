@@ -1,0 +1,49 @@
+{
+  "name": "@reactive-vscode/vueuse",
+  "type": "module",
+  "version": "0.0.1-beta.5",
+  "description": "Useful VueUse utilities for VSCode extension development",
+  "author": "_Kerman <kermanx@qq.com>",
+  "license": "MIT",
+  "homepage": "https://github.com/KermanX/reactive-vscode#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/KermanX/reactive-vscode.git"
+  },
+  "bugs": "https://github.com/KermanX/reactive-vscode/issues",
+  "keywords": [
+    "vueuse",
+    "vscode",
+    "extension",
+    "vue"
+  ],
+  "sideEffects": false,
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js"
+    }
+  },
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "files": [
+    "README.md",
+    "dist",
+    "tsconfig.json"
+  ],
+  "scripts": {
+    "typecheck": "tsc --noEmit",
+    "build": "vite build",
+    "dev": "vite build --watch",
+    "prepublishOnly": "pnpm typecheck && pnpm build"
+  },
+  "peerDependencies": {
+    "@reactive-vscode/reactivity": "workspace:*"
+  },
+  "devDependencies": {
+    "@vueuse/core": "^10.10.0",
+    "typescript": "^5.4.5",
+    "vite": "^5.2.12",
+    "vite-plugin-dts": "^3.9.1"
+  }
+}
