@@ -1,7 +1,7 @@
+import type { MaybeRefOrGetter } from '@reactive-vscode/reactivity'
+import { shallowRef, toValue, watchEffect } from '@reactive-vscode/reactivity'
 import type { WebviewOptions, WebviewView } from 'vscode'
 import { window } from 'vscode'
-import type { MaybeRefOrGetter } from '../reactivity'
-import { shallowRef, toValue, watchEffect } from '../reactivity'
 import { createKeyedComposable } from '../utils'
 import { useDisposable } from './useDisposable'
 

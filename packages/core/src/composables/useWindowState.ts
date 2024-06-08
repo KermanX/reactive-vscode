@@ -1,5 +1,5 @@
+import { computed, shallowRef } from '@reactive-vscode/reactivity'
 import { window } from 'vscode'
-import { computed, shallowRef } from '../reactivity'
 import { createSingletonComposable } from '../utils'
 import { useDisposable } from './useDisposable'
 

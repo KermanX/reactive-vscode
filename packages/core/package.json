@@ -18,7 +18,7 @@
     "vue",
     "composition-api",
     "reactive",
-    "reactiviry"
+    "reactivity"
   ],
   "sideEffects": false,
   "exports": {
@@ -32,7 +32,6 @@
   "files": [
     "README.md",
     "dist",
-    "shim.d.ts",
     "tsconfig.json"
   ],
   "scripts": {
@@ -46,10 +45,9 @@
   },
   "dependencies": {},
   "devDependencies": {
+    "@reactive-vscode/reactivity": "workspace:*",
     "@types/node": "^20.14.2",
     "@types/vscode": "^1.89.0",
-    "@vue/reactivity": "^3.4.27",
-    "@vue/shared": "^3.4.27",
     "typescript": "^5.4.5",
     "vite": "^5.2.12",
     "vite-plugin-dts": "^3.9.1"

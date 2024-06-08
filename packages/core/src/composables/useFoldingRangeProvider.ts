@@ -1,7 +1,7 @@
+import type { MaybeRefOrGetter } from '@reactive-vscode/reactivity'
+import { shallowRef, toValue, watchEffect } from '@reactive-vscode/reactivity'
 import type { DocumentSelector, FoldingRangeProvider } from 'vscode'
 import { EventEmitter, languages } from 'vscode'
-import type { MaybeRefOrGetter } from '../reactivity'
-import { shallowRef, toValue, watchEffect } from '../reactivity'
 import { useDisposable } from './useDisposable'
 
 /**

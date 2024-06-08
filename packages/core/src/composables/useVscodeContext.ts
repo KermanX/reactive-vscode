@@ -1,6 +1,6 @@
+import type { ComputedRef, MaybeRefOrGetter, Ref, WritableComputedRef } from '@reactive-vscode/reactivity'
+import { computed, toValue, watchEffect } from '@reactive-vscode/reactivity'
 import { commands } from 'vscode'
-import type { ComputedRef, MaybeRefOrGetter, Ref, WritableComputedRef } from '../reactivity'
-import { computed, toValue, watchEffect } from '../reactivity'
 
 export function useVscodeContext<T>(
   name: string,

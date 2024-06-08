@@ -1,7 +1,7 @@
+import type { ShallowRef } from '@reactive-vscode/reactivity'
+import { shallowRef } from '@reactive-vscode/reactivity'
 import type { ConfigurationScope, ConfigurationTarget } from 'vscode'
 import { workspace } from 'vscode'
-import type { ShallowRef } from '../reactivity'
-import { shallowRef } from '../reactivity'
 import { useDisposable } from '../composables'
 import { onActivate } from './onActivate'
 

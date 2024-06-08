@@ -1,7 +1,7 @@
+import type { MaybeRefOrGetter } from '@reactive-vscode/reactivity'
+import { computed, shallowRef, toValue, watch } from '@reactive-vscode/reactivity'
 import type { TextEditor, TextEditorSelectionChangeKind } from 'vscode'
 import { window } from 'vscode'
-import type { MaybeRefOrGetter } from '../reactivity'
-import { computed, shallowRef, toValue, watch } from '../reactivity'
 import type { MaybeNullableRefOrGetter } from '../utils'
 import { useDisposable } from './useDisposable'
 

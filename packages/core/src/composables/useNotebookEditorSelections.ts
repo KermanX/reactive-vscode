@@ -1,6 +1,6 @@
+import { computed, shallowRef, toValue, watch } from '@reactive-vscode/reactivity'
 import type { NotebookEditor } from 'vscode'
 import { window } from 'vscode'
-import { computed, shallowRef, toValue, watch } from '../reactivity'
 import type { MaybeNullableRefOrGetter } from '../utils'
 import { useDisposable } from './useDisposable'
 

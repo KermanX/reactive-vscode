@@ -1,4 +1,4 @@
-import type { Ref } from '../reactivity'
+import type { Ref } from '@reactive-vscode/reactivity'
 
 export type Nullable<T> = T | null | undefined
 

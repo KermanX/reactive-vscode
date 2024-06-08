@@ -1,6 +1,6 @@
+import type { MaybeRefOrGetter } from '@reactive-vscode/reactivity'
+import { toValue } from '@reactive-vscode/reactivity'
 import { Uri } from 'vscode'
-import type { MaybeRefOrGetter } from '../reactivity'
-import { toValue } from '../reactivity'
 import { useUri } from './useUri'
 
 /**

@@ -1,5 +1,5 @@
+import { effectScope, shallowRef } from '@reactive-vscode/reactivity'
 import type { ExtensionContext } from 'vscode'
-import { effectScope, shallowRef } from '../reactivity'
 import { activateCbs } from './onActivate'
 import { deactivateCbs } from './onDeactivate'
 

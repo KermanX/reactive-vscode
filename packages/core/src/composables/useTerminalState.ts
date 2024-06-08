@@ -1,6 +1,6 @@
+import { computed, shallowRef } from '@reactive-vscode/reactivity'
 import type { Terminal } from 'vscode'
 import { window } from 'vscode'
-import { computed, shallowRef } from '../reactivity'
 import { createKeyedComposable } from '../utils'
 import { useDisposable } from './useDisposable'
 

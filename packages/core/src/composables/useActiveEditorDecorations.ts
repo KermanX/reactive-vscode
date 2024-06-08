@@ -1,5 +1,5 @@
+import type { MaybeRefOrGetter } from '@reactive-vscode/reactivity'
 import type { DecorationOptions, DecorationRenderOptions, Range, TextEditorDecorationType } from 'vscode'
-import type { MaybeRefOrGetter } from '../reactivity'
 import { useActiveTextEditor } from './useActiveTextEditor'
 import { useEditorDecorations } from './useEditorDecorations'
 

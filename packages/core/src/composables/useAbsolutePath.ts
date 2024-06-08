@@ -1,5 +1,5 @@
-import type { ComputedRef, MaybeRefOrGetter } from '../reactivity'
-import { computed, toValue } from '../reactivity'
+import type { ComputedRef, MaybeRefOrGetter } from '@reactive-vscode/reactivity'
+import { computed, toValue } from '@reactive-vscode/reactivity'
 import { extensionContext } from '../utils'
 
 /**

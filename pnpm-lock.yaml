@@ -110,18 +110,15 @@ importers:
 
   packages/core:
     devDependencies:
+      '@reactive-vscode/reactivity':
+        specifier: workspace:*
+        version: link:../reactivity
       '@types/node':
         specifier: ^20.14.2
         version: 20.14.2
       '@types/vscode':
         specifier: ^1.89.0
         version: 1.89.0
-      '@vue/reactivity':
-        specifier: ^3.4.27
-        version: 3.4.27
-      '@vue/shared':
-        specifier: ^3.4.27
-        version: 3.4.27
       typescript:
         specifier: ^5.4.5
         version: 5.4.5
@@ -176,6 +173,18 @@ importers:
       tsx:
         specifier: ^4.10.5
         version: 4.10.5
+      typescript:
+        specifier: ^5.4.5
+        version: 5.4.5
+
+  packages/reactivity:
+    devDependencies:
+      '@vue/reactivity':
+        specifier: ^3.4.27
+        version: 3.4.27
+      '@vue/shared':
+        specifier: ^3.4.27
+        version: 3.4.27
       typescript:
         specifier: ^5.4.5
         version: 5.4.5
