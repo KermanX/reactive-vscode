@@ -1,12 +1,28 @@
+import path from 'node:path'
 import { defineConfig } from 'vite'
 import Dts from 'vite-plugin-dts'
 
 export default defineConfig({
   plugins: [
+    {
+      name: 'replace constants',
+      enforce: 'pre',
+      transform: {
+        order: 'pre',
+        handler(code, id) {
+          if (id.endsWith('.mjs')) {
+            return code
+              .replaceAll(`getCurrentInstance()`, `null`)
+              .replaceAll(`getLifeCycleTarget()`, `null`)
+          }
+        },
+      },
+    },
     Dts({
       include: [
         './src/**/*.ts',
         './tsconfig.json',
+        './shim.d.ts',
       ],
       rollupTypes: true,
       bundledPackages: ['@vueuse/core', '@vueuse/shared'],
@@ -19,7 +35,7 @@ export default defineConfig({
   ],
   resolve: {
     alias: {
-      'vue-demi': '@reactive-vscode/reactivity',
+      'vue-demi': path.resolve(__dirname, './src/vue-demi.ts'),
     },
   },
   build: {
