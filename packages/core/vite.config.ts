@@ -20,6 +20,8 @@ export default defineConfig({
         './tsconfig.json',
         './shim.d.ts',
       ],
+      rollupTypes: true,
+      bundledPackages: ['@reactive-vscode/reactivity'],
     }),
   ],
   build: {
