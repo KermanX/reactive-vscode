@@ -3,7 +3,7 @@ import type { Ref } from 'vue'
 import { computed, toRef } from 'vue'
 import Fuse from 'fuse.js'
 import { useEventListener, useUrlSearchParams } from '@vueuse/core'
-import { metadata } from 'reactive-vscode-metadata'
+import { metadata } from '@reactive-vscode/metadata'
 
 const sortMethods = ['category', 'name', 'updated']
 

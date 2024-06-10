@@ -1,4 +1,4 @@
-import { metadata } from 'reactive-vscode-metadata'
+import { metadata } from '@reactive-vscode/metadata'
 import { renderMarkdown } from '../.vitepress/theme/utils'
 
 export default {

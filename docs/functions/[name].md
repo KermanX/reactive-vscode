@@ -3,7 +3,7 @@
 <FunctionInfo :name="$params.name" />
 
 <script setup>
-import { metadata } from 'reactive-vscode-metadata'
+import { metadata } from '@reactive-vscode/metadata'
 import { withBase, useData } from 'vitepress'
 
 const { params, title } = useData()

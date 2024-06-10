@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { useTimeAgo } from '@vueuse/core'
 import { computed } from 'vue'
-import { metadata } from 'reactive-vscode-metadata'
+import { metadata } from '@reactive-vscode/metadata'
 import { withBase } from 'vitepress'
 
 const props = defineProps<{ name: string }>()

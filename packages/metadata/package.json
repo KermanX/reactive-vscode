@@ -1,5 +1,5 @@
 {
-  "name": "reactive-vscode-metadata",
+  "name": "@reactive-vscode/metadata",
   "type": "module",
   "version": "0.0.1-beta.6",
   "description": "Metadata for reactive-vscode",
@@ -36,7 +36,7 @@
     "update": "tsx scripts/update.ts",
     "build": "nr update",
     "prepublishOnly": "nr update",
-    "dev": "nodemon -w ../core/** -w ./scripts/** -w ./src/** -e ts --exec \"nr update\""
+    "dev": "nodemon -w ../core/src/** -w ./scripts/** -e ts --exec \"nr update\""
   },
   "devDependencies": {
     "@antfu/ni": "^0.21.12",

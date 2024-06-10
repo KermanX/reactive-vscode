@@ -8,8 +8,6 @@ export {}
 declare module 'vue' {
   export interface GlobalComponents {
     ApiLink: typeof import('./theme/components/ApiLink.vue')['default']
-    copy: typeof import('./theme/components/ReactiveVscode2.vue')['default']
-    ExampleContainer: typeof import('./theme/components/ExampleContainer.vue')['default']
     ExampleFunctions: typeof import('./theme/components/ExampleFunctions.vue')['default']
     FunctionBadge: typeof import('./theme/components/FunctionBadge.vue')['default']
     FunctionInfo: typeof import('./theme/components/FunctionInfo.vue')['default']

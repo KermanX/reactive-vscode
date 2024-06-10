@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { metadata } from 'reactive-vscode-metadata'
+import { metadata } from '@reactive-vscode/metadata'
 import { renderMarkdown } from '../utils'
 
 const props = defineProps<{ fns: string[] }>()

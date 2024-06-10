@@ -1,5 +1,5 @@
 {
-  "name": "reactive-vscode-demo",
+  "name": "@reactive-vscode/demo",
   "displayName": "demo",
   "type": "module",
   "version": "0.0.1",
