@@ -6,6 +6,7 @@ Although most of the VSCode API is covered by <ReactiveVscode />, sometimes you 
 
 ```ts
 import { defineExtension, useDisposable } from 'reactive-vscode'
+import type { TextDocument } from 'vscode'
 import { languages } from 'vscode'
 
 export = defineExtension(() => {
