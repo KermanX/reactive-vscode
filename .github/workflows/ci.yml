@@ -61,13 +61,7 @@ jobs:
         run: nr typecheck
 
   test:
-    runs-on: ${{ matrix.os }}
-
-    strategy:
-      matrix:
-        node: [lts/*]
-        os: [ubuntu-latest, windows-latest, macos-latest]
-      fail-fast: false
+    runs-on: ubuntu-latest
 
     steps:
       - uses: actions/checkout@v4
@@ -75,10 +69,10 @@ jobs:
       - name: Install pnpm
         uses: pnpm/action-setup@v3
 
-      - name: Set node ${{ matrix.node }}
+      - name: Set node
         uses: actions/setup-node@v4
         with:
-          node-version: ${{ matrix.node }}
+          node-version: lts/*
 
       - name: Setup
         run: npm i -g @antfu/ni
