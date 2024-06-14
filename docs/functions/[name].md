@@ -14,7 +14,7 @@ const fn = metadata.functions.find(fn => fn.name === params.value.name)
 if(!import.meta.env.SSR)
   document.title = `${fn.name} | Reactive VSCode`
 
-const sourcePath = `packages/core/${fn.isComposable ? 'composables' : 'utils'}/${fn.name}.ts`
+const sourcePath = `packages/core/src/${fn.isComposable ? 'composables' : 'utils'}/${fn.name}.ts`
 </script>
 
 ## Usage
