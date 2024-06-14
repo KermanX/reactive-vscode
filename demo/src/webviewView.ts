@@ -26,10 +26,10 @@ export const useDemoWebviewView = createSingletonComposable(() => {
     'reactive-webview-view',
     html,
     {
-      enableScripts: true,
-      enableCommandUris: true,
-    },
-    {
+      webviewOptions: {
+        enableScripts: true,
+        enableCommandUris: true,
+      },
       onDidReceiveMessage(ev) {
         if (ev.type === 'updateMessage')
           message.value = ev.message
