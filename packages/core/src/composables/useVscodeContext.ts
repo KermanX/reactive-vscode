@@ -1,5 +1,5 @@
-import type { ComputedRef, MaybeRefOrGetter, Ref, WritableComputedRef } from '@reactive-vscode/reactivity'
-import { computed, toValue, watchEffect } from '@reactive-vscode/reactivity'
+import type { ComputedRef, MaybeRef, MaybeRefOrGetter, Ref, WritableComputedRef } from '@reactive-vscode/reactivity'
+import { computed, isRef, ref, toValue, watchEffect } from '@reactive-vscode/reactivity'
 import { commands } from 'vscode'
 
 export function useVscodeContext<T>(
@@ -14,7 +14,7 @@ export function useVscodeContext<T>(
 ): WritableComputedRef<T>
 export function useVscodeContext<T>(
   name: string,
-  value: Ref<T>,
+  value: MaybeRef<T>,
   shouldUpdate?: MaybeRefOrGetter<boolean>,
 ): Ref<T>
 
@@ -28,7 +28,7 @@ export function useVscodeContext<T>(
   value: Ref<T> | (() => T),
   shouldUpdate: MaybeRefOrGetter<boolean> = true,
 ) {
-  const normalized = typeof value === 'function' ? computed(value) : value
+  const normalized = isRef(value) ? value : typeof value === 'function' ? computed(value) : ref(value)
   watchEffect(() => {
     if (toValue(shouldUpdate))
       commands.executeCommand('setContext', name, normalized.value)
