@@ -1,9 +1,11 @@
 import type { MaybeRefOrGetter } from '@reactive-vscode/reactivity'
 import { toValue, watch } from '@reactive-vscode/reactivity'
-import type { TreeDataProvider, TreeView, TreeViewOptions } from 'vscode'
+import type { TreeDataProvider, TreeView, TreeViewOptions, ViewBadge } from 'vscode'
 import { EventEmitter, window } from 'vscode'
 import { createKeyedComposable } from '../utils'
 import { useDisposable } from './useDisposable'
+import { useViewBadge } from './useViewBadge'
+import { useViewTitle } from './useViewTitle'
 
 export interface TreeViewNode {
   readonly children?: this[]
@@ -13,6 +15,10 @@ export type UseTreeViewOptions<T> =
   | (
     & Omit<TreeViewOptions<T>, 'treeDataProvider'>
     & Pick<TreeDataProvider<T>, 'getTreeItem' | 'resolveTreeItem'>
+    & {
+      title?: MaybeRefOrGetter<string | undefined>
+      badge?: MaybeRefOrGetter<ViewBadge | undefined>
+    }
   )
   | TreeDataProvider<T>['getTreeItem']
 
@@ -34,7 +40,7 @@ export const useTreeView = createKeyedComposable(
 
     const childrenToParentMap = new WeakMap<T, T>()
 
-    return useDisposable(window.createTreeView(viewId, {
+    const view = useDisposable(window.createTreeView(viewId, {
       ...normalizedOptions,
       treeDataProvider: {
         ...normalizedOptions,
@@ -54,6 +60,14 @@ export const useTreeView = createKeyedComposable(
         },
       },
     }))
+
+    if (normalizedOptions?.title)
+      useViewTitle(view, normalizedOptions.title)
+
+    if (normalizedOptions?.badge)
+      useViewBadge(view, normalizedOptions.badge)
+
+    return view
   },
   viewId => viewId,
 )

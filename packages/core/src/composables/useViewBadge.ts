@@ -12,11 +12,11 @@ type ViewWithBadge = Pick<TreeView<unknown> | WebviewView, 'badge'>
  */
 export function useViewBadge(
   view: MaybeRefOrGetter<Nullable<ViewWithBadge>>,
-  title: MaybeRefOrGetter<ViewBadge | undefined>,
+  badge: MaybeRefOrGetter<ViewBadge | undefined>,
 ) {
   watchEffect(() => {
     const viewValue = toValue(view)
     if (viewValue)
-      viewValue.badge = toValue(title)
+      viewValue.badge = toValue(badge)
   })
 }

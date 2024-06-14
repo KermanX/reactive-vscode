@@ -1,12 +1,17 @@
 import type { MaybeRefOrGetter } from '@reactive-vscode/reactivity'
 import { shallowRef, toValue, watchEffect } from '@reactive-vscode/reactivity'
-import type { WebviewOptions, WebviewView } from 'vscode'
+import type { ViewBadge, WebviewOptions, WebviewView } from 'vscode'
 import { window } from 'vscode'
 import { createKeyedComposable } from '../utils'
 import { useDisposable } from './useDisposable'
+import { useViewBadge } from './useViewBadge'
+import { useViewTitle } from './useViewTitle'
 
 type WebviewRegisterOptions = Parameters<typeof window.registerWebviewViewProvider>[2] & {
   onDidReceiveMessage?: (message: any) => void
+  webviewOptions?: MaybeRefOrGetter<WebviewOptions>
+  title?: MaybeRefOrGetter<string | undefined>
+  badge?: MaybeRefOrGetter<ViewBadge | undefined>
 }
 
 /**
@@ -18,8 +23,7 @@ export const useWebviewView = createKeyedComposable(
   (
     viewId: string,
     html: MaybeRefOrGetter<string>,
-    webviewOptions?: MaybeRefOrGetter<WebviewOptions>,
-    registerOptions?: WebviewRegisterOptions,
+    options?: WebviewRegisterOptions,
   ) => {
     const view = shallowRef<WebviewView>()
     const context = shallowRef<unknown>()
@@ -27,22 +31,29 @@ export const useWebviewView = createKeyedComposable(
       resolveWebviewView(viewArg, contextArg) {
         view.value = viewArg
         context.value = contextArg
-        if (registerOptions?.onDidReceiveMessage)
-          viewArg.webview.onDidReceiveMessage(registerOptions.onDidReceiveMessage)
+        if (options?.onDidReceiveMessage)
+          viewArg.webview.onDidReceiveMessage(options.onDidReceiveMessage)
       },
-    }, registerOptions))
+    }, options))
 
     watchEffect(() => {
       if (view.value)
         view.value.webview.html = toValue(html)
     })
 
-    if (webviewOptions) {
+    if (options?.webviewOptions) {
+      const webviewOptions = options.webviewOptions
       watchEffect(() => {
         if (view.value)
           view.value.webview.options = toValue(webviewOptions)
       })
     }
+
+    if (options?.title)
+      useViewTitle(view, options.title)
+
+    if (options?.badge)
+      useViewBadge(view, options.badge)
 
     function postMessage(message: any) {
       return view.value?.webview.postMessage(message)

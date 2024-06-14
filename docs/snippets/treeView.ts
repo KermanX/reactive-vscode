@@ -11,6 +11,7 @@ export const useDemoTreeView = createSingletonComposable(() => {
     'reactive-tree-view',
     rootNodes,
     {
+      title: () => `Tree with ${rootNodes.value.length} roots`,
       getTreeItem(node) {
         return {
           label: `Item ${node.data}`,
