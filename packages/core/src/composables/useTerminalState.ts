@@ -1,23 +1,24 @@
-import { computed, shallowRef } from '@reactive-vscode/reactivity'
+import { computed, shallowRef, toValue, watch } from '@reactive-vscode/reactivity'
 import type { Terminal } from 'vscode'
 import { window } from 'vscode'
-import { createKeyedComposable } from '../utils'
+import type { MaybeNullableRefOrGetter } from '../utils'
 import { useDisposable } from './useDisposable'
 
 /**
  * @reactive `Terminal.state`
  * @category terminal
  */
-export const useTerminalState = createKeyedComposable(
-  (terminal: Terminal) => {
-    const state = shallowRef(terminal.state)
+export function useTerminalState(terminal: MaybeNullableRefOrGetter<Terminal>) {
+  const state = shallowRef(toValue(terminal)?.state)
 
-    useDisposable(window.onDidChangeTerminalState((ev) => {
-      if (ev === terminal)
-        state.value = terminal.state
-    }))
+  watch(terminal, () => {
+    state.value = toValue(terminal)?.state
+  })
 
-    return computed(() => state.value)
-  },
-  terminal => terminal,
-)
+  useDisposable(window.onDidChangeTerminalState((ev) => {
+    if (ev === toValue(terminal))
+      state.value = ev.state
+  }))
+
+  return computed(() => state.value)
+}

@@ -1,7 +1,8 @@
-import type { Ref } from '@reactive-vscode/reactivity'
+import type { ComputedRef, Ref } from '@reactive-vscode/reactivity'
 import { onScopeDispose, ref } from '@reactive-vscode/reactivity'
-import type { ExtensionTerminalOptions, Terminal, TerminalOptions } from 'vscode'
+import type { ExtensionTerminalOptions, Terminal, TerminalOptions, TerminalState } from 'vscode'
 import { window } from 'vscode'
+import { useTerminalState } from './useTerminalState'
 
 interface UseControlledTerminalReturn {
   terminal: Ref<Terminal | null>
@@ -9,6 +10,7 @@ interface UseControlledTerminalReturn {
   show: () => void
   sendText: (text: string) => void
   close: () => void
+  state: ComputedRef<TerminalState | undefined>
 }
 
 /**
@@ -56,5 +58,6 @@ export function useControlledTerminal(...args: any[]): UseControlledTerminalRetu
     show,
     sendText,
     close,
+    state: useTerminalState(terminal),
   }
 }
