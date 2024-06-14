@@ -38,6 +38,7 @@ export default defineConfig({
             { text: 'Configurations', link: '/guide/config' },
             { text: 'Editor & Document', link: '/guide/editor' },
             { text: 'Window & Workspace', link: '/guide/window' },
+            { text: 'Terminals', link: '/guide/terminal' },
             { text: 'Custom contexts', link: '/guide/context' },
             { text: 'Disposables', link: '/guide/disposable' },
             { text: 'Events', link: '/guide/event' },
