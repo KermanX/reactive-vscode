@@ -6,12 +6,11 @@ VSCode's [when clause contexts](https://code.visualstudio.com/api/references/whe
 import { computed, defineExtension, ref, useVscodeContext } from 'reactive-vscode'
 
 export = defineExtension(() => {
-  const contextA = useVscodeContext('demo.fromValue', true)
+  const contextA = useVscodeContext('demo.fromValue', true) // [!code highlight]
   //     ^?
 
-  const contextB = useVscodeContext('demo.fromRef', contextA)
-
-  const contextC = useVscodeContext('demo.fromGetter', () => !contextA.value)
+  const contextB = useVscodeContext('demo.fromRef', contextA) // [!code highlight]
+  const contextC = useVscodeContext('demo.fromGetter', () => !contextA.value) // [!code highlight]
   //     ^?
 })
 ```
