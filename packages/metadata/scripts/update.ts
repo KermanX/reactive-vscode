@@ -27,8 +27,11 @@ function getCategory(ts: string) {
 
 function getDescription(ts: string) {
   const commentBlock = ts.slice(ts.lastIndexOf('\n/**\n') + 1)
-  const s = commentBlock?.match(/^ \* (.+)$/m)?.[1].trim()
-  return s?.startsWith('@') ? undefined : s
+  const lines = commentBlock.split('\n')
+    .filter(line => line.startsWith(' * '))
+    .map(line => line.slice(3))
+    .filter(line => !line.startsWith('@reactive') && !line.startsWith('@category'))
+  return lines.join('\n')
 }
 
 function toCategoryName(api: string) {
@@ -43,7 +46,7 @@ async function getComposableMetadata(filename: string): Promise<FunctionMetadata
   const _md = existsSync(mdPath) ? await fs.readFile(mdPath, 'utf-8') : undefined // TODO: md
   const original = getOriginalAPI(ts)
   const category = getCategory(ts) ?? (original ? toCategoryName(original) : undefined)
-  const description = getDescription(ts) ?? (original ? `Reactive API for \`vscode::${original}\`.` : undefined)
+  const description = getDescription(ts) || (original ? `Reactive API for \`vscode::${original}\`.` : undefined)
   return {
     name,
     category,
