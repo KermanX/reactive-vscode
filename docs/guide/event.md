@@ -28,7 +28,7 @@ declare function someVscodeApi(options: { onSomeEvent: Event<string> }): void
 import { defineExtension, useEventEmitter } from 'reactive-vscode'
 
 export = defineExtension(() => {
-  const myEvent = useEventEmitter<string>()
+  const myEvent = useEventEmitter<string>([/* optional listenrs */])
 
   myEvent.addListener((msg) => {
     console.log(`Received message: ${msg}`)
@@ -39,5 +39,17 @@ export = defineExtension(() => {
   someVscodeApi({
     onSomeEvent: myEvent.event,
   })
+})
+```
+
+You can also convert a raw event to a friendly event emitter:
+
+```ts {6}
+import { defineExtension, useEventEmitter } from 'reactive-vscode'
+import { EventEmitter } from 'vscode'
+
+export = defineExtension(() => {
+  const rawEvent = new EventEmitter<string>()
+  const myEvent = useEventEmitter(rawEvent, [/* optional listenrs */])
 })
 ```
