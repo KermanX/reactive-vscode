@@ -1,23 +1,45 @@
+import type { TreeViewNode } from 'reactive-vscode'
 import { computed, createSingletonComposable, useTreeView } from 'reactive-vscode'
 import { TreeItemCollapsibleState } from 'vscode'
 
 export const useDemoTreeView = createSingletonComposable(() => {
-  const rootNodes = computed(() => [
-    { data: 1, children: [{ data: 2 }] },
-    { data: 3 },
-  ])
-  // return anything you want to expose
-  return useTreeView(
-    'reactive-tree-view',
-    rootNodes,
-    {
-      title: () => `Tree with ${rootNodes.value.length} roots`,
-      getTreeItem(node) {
-        return {
-          label: `Item ${node.data}`,
-          collapsibleState: node.children?.length ? TreeItemCollapsibleState.Expanded : TreeItemCollapsibleState.None,
-        }
+  function getRootNode(index: number) {
+    return {
+      children: [
+        getChildNode(index * 10 + 1),
+        getChildNode(index * 10 + 2),
+      ],
+      treeItem: {
+        label: `Root ${index}`,
+        collapsibleState: TreeItemCollapsibleState.Expanded,
       },
+    }
+  }
+
+  function getChildNode(index: number) {
+    return {
+      treeItem: {
+        label: `Child ${index}`,
+        collapsibleState: TreeItemCollapsibleState.None,
+      },
+    }
+  }
+
+  const treeData = computed(() => {
+    const roots: TreeViewNode[] = []
+    for (let i = 1; i < 5; i++)
+      roots.push(getRootNode(i))
+    return roots
+  })
+
+  const view = useTreeView(
+    'reactive-tree-view',
+    treeData,
+    {
+      title: () => `Tree with ${treeData.value.length} roots`,
     },
   )
+
+  // return anything you want to expose
+  return view
 })

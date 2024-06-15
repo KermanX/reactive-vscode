@@ -42,7 +42,7 @@ As described in the [official documentation](https://code.visualstudio.com/api/r
 
 Here is an example of a tree view:
 
-<<< @/snippets/treeView.ts
+<<< @/snippets/treeView.ts {35-41}
 
 Then you can call the `useDemoTreeView` function every where to register the tree view and get the returned value:
 
@@ -56,7 +56,9 @@ export = defineExtension(() => {
 })
 ```
 
-The `children` property in nodes is used to define the children of the node. Other properties are user-defined and can be used in the `getTreeItem` function. The `getTreeItem` function returns a `vscode::TreeItem` object from a node.
+The `children` property in nodes is used to define the children of the node. The `treeItem` propert is required and is used to define the tree item of the node. It should be a `vscode::TreeItem` object, or a promise that resolves to a `vscode::TreeItem` object.
+
+If you want to trigger an update based on some reactive values that aren't tracked in `treeData`, you can pass them to the `watchSource` option.
 
 ::: details About `reactive::createSingletonComposable`
 `reactive::createSingletonComposable` is a helper function to create a singleton composable. It will only create the composable once and return the same instance every time it is called.

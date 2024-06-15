@@ -1,26 +1,29 @@
-import type { MaybeRefOrGetter } from '@reactive-vscode/reactivity'
+import type { MaybeRefOrGetter, WatchSource } from '@reactive-vscode/reactivity'
 import { toValue, watch } from '@reactive-vscode/reactivity'
-import type { TreeDataProvider, TreeView, TreeViewOptions, ViewBadge } from 'vscode'
-import { EventEmitter, window } from 'vscode'
+import type { TreeDataProvider, TreeItem, TreeView, TreeViewOptions, ViewBadge } from 'vscode'
+import { window } from 'vscode'
 import { createKeyedComposable } from '../utils'
 import { useDisposable } from './useDisposable'
+import { useEventEmitter } from './useEventEmitter'
 import { useViewBadge } from './useViewBadge'
 import { useViewTitle } from './useViewTitle'
 
 export interface TreeViewNode {
   readonly children?: this[]
+  readonly treeItem: TreeItem | Thenable<TreeItem>
 }
 
 export type UseTreeViewOptions<T> =
-  | (
-    & Omit<TreeViewOptions<T>, 'treeDataProvider'>
-    & Pick<TreeDataProvider<T>, 'getTreeItem' | 'resolveTreeItem'>
-    & {
-      title?: MaybeRefOrGetter<string | undefined>
-      badge?: MaybeRefOrGetter<ViewBadge | undefined>
-    }
-  )
-  | TreeDataProvider<T>['getTreeItem']
+  & Omit<TreeViewOptions<T>, 'treeDataProvider'>
+  & Pick<TreeDataProvider<T>, 'resolveTreeItem'>
+  & {
+    title?: MaybeRefOrGetter<string | undefined>
+    badge?: MaybeRefOrGetter<ViewBadge | undefined>
+    /**
+     * Additional watch source to trigger a change event. Useful when `treeItem` is a promise.
+     */
+    watchSource?: WatchSource<any>
+  }
 
 /**
  * Register a tree view. See `vscode::window.createTreeView`.
@@ -31,22 +34,24 @@ export const useTreeView = createKeyedComposable(
   <T extends TreeViewNode>(
     viewId: string,
     treeData: MaybeRefOrGetter<T[]>,
-    options: UseTreeViewOptions<T>,
+    options?: UseTreeViewOptions<T>,
   ): TreeView<T> => {
-    const normalizedOptions = typeof options === 'function' ? { getTreeItem: options } : options
-    const changeEventEmitter = new EventEmitter<void>()
+    const changeEventEmitter = useEventEmitter<void>()
 
     watch(treeData, () => changeEventEmitter.fire())
+
+    if (options?.watchSource)
+      watch(options.watchSource, () => changeEventEmitter.fire())
 
     const childrenToParentMap = new WeakMap<T, T>()
 
     const view = useDisposable(window.createTreeView(viewId, {
-      ...normalizedOptions,
+      ...options,
       treeDataProvider: {
-        ...normalizedOptions,
+        ...options,
         onDidChangeTreeData: changeEventEmitter.event,
         getTreeItem(node: T) {
-          return normalizedOptions.getTreeItem(node)
+          return node.treeItem
         },
         getChildren(node?: T) {
           if (node) {
@@ -61,11 +66,11 @@ export const useTreeView = createKeyedComposable(
       },
     }))
 
-    if (normalizedOptions?.title)
-      useViewTitle(view, normalizedOptions.title)
+    if (options?.title)
+      useViewTitle(view, options.title)
 
-    if (normalizedOptions?.badge)
-      useViewBadge(view, normalizedOptions.badge)
+    if (options?.badge)
+      useViewBadge(view, options.badge)
 
     return view
   },
