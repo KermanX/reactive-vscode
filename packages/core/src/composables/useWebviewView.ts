@@ -1,5 +1,5 @@
 import type { MaybeRefOrGetter } from '@reactive-vscode/reactivity'
-import { shallowRef, toValue, watchEffect } from '@reactive-vscode/reactivity'
+import { ref, shallowRef, toValue, watchEffect } from '@reactive-vscode/reactivity'
 import type { ViewBadge, WebviewOptions, WebviewView } from 'vscode'
 import { window } from 'vscode'
 import { createKeyedComposable } from '../utils'
@@ -45,9 +45,15 @@ export const useWebviewView = createKeyedComposable(
       },
     ))
 
+    const forceRefreshId = ref(0)
+
+    function forceRefresh() {
+      forceRefreshId.value++
+    }
+
     watchEffect(() => {
       if (view.value)
-        view.value.webview.html = toValue(html)
+        view.value.webview.html = `${toValue(html)}<!--${forceRefreshId.value}-->`
     })
 
     if (options?.webviewOptions) {
@@ -68,7 +74,7 @@ export const useWebviewView = createKeyedComposable(
       return view.value?.webview.postMessage(message)
     }
 
-    return { view, context, postMessage }
+    return { view, context, postMessage, forceRefresh }
   },
   viewId => viewId,
 )
