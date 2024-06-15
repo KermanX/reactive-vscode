@@ -1,3 +1,5 @@
+// Ported from https://github.com/antfu/vscode-vite/blob/main/src/terminal.ts
+
 import type { ComputedRef, Ref } from '@reactive-vscode/reactivity'
 import { onScopeDispose, ref } from '@reactive-vscode/reactivity'
 import type { ExtensionTerminalOptions, Terminal, TerminalOptions, TerminalState } from 'vscode'
@@ -34,11 +36,11 @@ export function useControlledTerminal(...args: any[]): UseControlledTerminalRetu
     return terminal.value = window.createTerminal(...args)
   }
 
-  async function sendText(text: string) {
+  function sendText(text: string) {
     ensureTerminal().sendText(text)
   }
 
-  async function show() {
+  function show() {
     ensureTerminal().show()
   }
 
