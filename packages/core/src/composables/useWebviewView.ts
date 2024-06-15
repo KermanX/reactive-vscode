@@ -7,7 +7,8 @@ import { useDisposable } from './useDisposable'
 import { useViewBadge } from './useViewBadge'
 import { useViewTitle } from './useViewTitle'
 
-type WebviewRegisterOptions = Parameters<typeof window.registerWebviewViewProvider>[2] & {
+interface WebviewRegisterOptions {
+  retainContextWhenHidden?: boolean
   onDidReceiveMessage?: (message: any) => void
   webviewOptions?: MaybeRefOrGetter<WebviewOptions>
   title?: MaybeRefOrGetter<string | undefined>
@@ -27,14 +28,22 @@ export const useWebviewView = createKeyedComposable(
   ) => {
     const view = shallowRef<WebviewView>()
     const context = shallowRef<unknown>()
-    useDisposable(window.registerWebviewViewProvider(viewId, {
-      resolveWebviewView(viewArg, contextArg) {
-        view.value = viewArg
-        context.value = contextArg
-        if (options?.onDidReceiveMessage)
-          viewArg.webview.onDidReceiveMessage(options.onDidReceiveMessage)
+    useDisposable(window.registerWebviewViewProvider(
+      viewId,
+      {
+        resolveWebviewView(viewArg, contextArg) {
+          view.value = viewArg
+          context.value = contextArg
+          if (options?.onDidReceiveMessage)
+            viewArg.webview.onDidReceiveMessage(options.onDidReceiveMessage)
+        },
       },
-    }, options))
+      {
+        webviewOptions: {
+          retainContextWhenHidden: options?.retainContextWhenHidden,
+        },
+      },
+    ))
 
     watchEffect(() => {
       if (view.value)
