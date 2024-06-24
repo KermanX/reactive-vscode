@@ -1,3 +1,4 @@
+import path from 'node:path'
 import { defineConfig } from 'vite'
 import Dts from 'vite-plugin-dts'
 
@@ -21,6 +22,7 @@ export default defineConfig({
         './shim.d.ts',
       ],
       rollupTypes: true,
+      bundledPackages: ['@vue/reactivity', '@vue/shared'],
     }),
   ],
   build: {
@@ -29,8 +31,6 @@ export default defineConfig({
       formats: ['es'],
       fileName: 'index',
     },
-    rollupOptions: {
-      external: ['vscode', '@reactive-vscode/reactivity'],
-    },
+    minify: false,
   },
 })
