@@ -25,7 +25,7 @@ async function main() {
 
   const cwd = process.cwd()
 
-  let displayName = process.argv.slice(2).filter(s => /^[\w- ]+$/.test(s)).map(s => s.trim()).join(' ') || 'Your Extension'
+  let displayName = process.argv.slice(2).filter(s => /^[\w\- ]+$/.test(s)).map(s => s.trim()).join(' ') || 'Your Extension'
   let identifier = ''
   let targetDir = ''
 
