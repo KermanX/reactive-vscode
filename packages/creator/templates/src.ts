@@ -1,9 +1,8 @@
 export default (identifier: string, displayName: string) => ({
-  extension: `import { defineExtension, useCommand, useIsDarkTheme, useLogger, watchEffect } from 'reactive-vscode'
+  extension: `import { defineExtension, useCommand, useIsDarkTheme, watchEffect } from 'reactive-vscode'
 import { window } from 'vscode'
 import { message } from './configs'
-
-const logger = useLogger('${displayName}')
+import { logger } from './utils'
 
 export = defineExtension(() => {
   logger.info('Extension Activated')
@@ -23,5 +22,9 @@ export = defineExtension(() => {
 export const { message } = defineConfigs('${identifier}', {
   message: 'string',
 })
+`,
+  utils: `import { defineLogger } from 'reactive-vscode'
+
+export const logger = defineLogger('${displayName}')
 `,
 })

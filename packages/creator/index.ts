@@ -84,8 +84,8 @@ async function main() {
 
   fs.mkdirSync('src')
   const srcCode = tSrc(identifier, displayName)
-  fs.writeFileSync('src/extension.ts', srcCode.extension)
-  fs.writeFileSync('src/configs.ts', srcCode.configs)
+  for (const [name, code] of Object.entries(srcCode))
+    fs.writeFileSync(`src/${name}.ts`, code)
 
   fs.mkdirSync('.vscode')
   fs.writeFileSync('.vscode/launch.json', tLaunch)
