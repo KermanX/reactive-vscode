@@ -21,6 +21,11 @@ export default defineConfig({
         './shim.d.ts',
       ],
       rollupTypes: true,
+      beforeWriteFile(_, content) {
+        return {
+          content: content.replaceAll('\'@vue/reactivity\'', '\'@reactive-vscode/reactivity\''),
+        }
+      },
     }),
   ],
   build: {
