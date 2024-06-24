@@ -1,7 +1,7 @@
 {
   "name": "reactive-vscode",
   "type": "module",
-  "version": "0.2.0-beta.2",
+  "version": "0.2.0-beta.3",
   "description": "Develop VSCode extension with Vue Reactivity API",
   "author": "_Kerman <kermanx@qq.com>",
   "license": "MIT",
