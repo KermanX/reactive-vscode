@@ -1,4 +1,5 @@
-export default (identifier: string, displayName: string, coreVersion: string) => `{
+export default (publisher: string, identifier: string, displayName: string, coreVersion: string) => `{
+  "publisher": "${publisher}",
   "name": "${identifier}",
   "displayName": "${displayName}",
   "type": "module",

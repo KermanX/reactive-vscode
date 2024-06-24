@@ -26,6 +26,7 @@ async function main() {
   const cwd = process.cwd()
 
   let displayName = process.argv.slice(2).filter(s => /^[\w\- ]+$/.test(s)).map(s => s.trim()).join(' ') || 'Your Extension'
+  let publisher = ''
   let identifier = ''
   let targetDir = ''
 
@@ -34,17 +35,25 @@ async function main() {
       {
         name: 'displayName',
         type: 'text',
-        message: 'What\'s the name of your extension?',
+        message: 'What\'s the display name of your extension?',
         initial: displayName,
         onState: state => displayName = state.value || displayName,
       },
       {
         name: 'identifier',
         type: 'text',
-        message: 'What\'s the identifier of your extension?',
+        message: 'What\'s the package name of your extension?',
         initial: () => identifier = toValidPackageName(displayName),
         validate: id => isValidPackageName(id) || 'Invalid package.json name',
         onState: state => identifier = state.value || identifier,
+      },
+      {
+        name: 'publisher',
+        type: 'text',
+        message: 'What\'s your publisher name?',
+        initial: publisher,
+        validate: pub => isValidPackageName(pub) || 'Invalid publisher name',
+        onState: state => publisher = state.value || publisher,
       },
       {
         name: 'targetDir',
@@ -75,12 +84,12 @@ async function main() {
   fs.mkdirSync(root, { recursive: true })
   process.chdir(root)
 
-  fs.writeFileSync('package.json', tPackage(identifier, displayName, `^${corePackage.version}`))
+  fs.writeFileSync('package.json', tPackage(publisher, identifier, displayName, `^${corePackage.version}`))
   fs.writeFileSync('tsconfig.json', tTsconfig)
   fs.writeFileSync('.gitignore', tGitignore)
   fs.writeFileSync('.vscodeignore', tVscodeignore)
   fs.writeFileSync('tsup.config.ts', tTsupConfig)
-  fs.writeFileSync('README.md', tReadme(displayName))
+  fs.writeFileSync('README.md', tReadme(publisher, identifier, displayName))
 
   fs.mkdirSync('src')
   const srcCode = tSrc(identifier, displayName)
