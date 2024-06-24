@@ -1,6 +1,7 @@
+import type { OutputChannel } from 'vscode'
 import { useOutputChannel } from '../composables/useOutputChannel'
 
-function defaultGetPrefix(type: string) {
+export function getDefaultLoggerPrefix(type: string) {
   const date = new Date()
   const year = String(date.getFullYear()).padStart(4, '0')
   const month = String(date.getMonth() + 1).padStart(2, '0')
@@ -12,16 +13,21 @@ function defaultGetPrefix(type: string) {
   return `${year}-${month}-${day} ${hour}:${minute}:${second}.${millisecond} [${type}] `
 }
 
+export interface UseLoggerOptions {
+  outputChannel?: OutputChannel
+  getPrefix?: ((type: string) => string) | null
+}
+
 /**
  * Creates a logger that writes to the output channel.
  *
  * @category view
  */
-export function useLogger(name: string, getPrefix = defaultGetPrefix) {
-  const outputChannel = useOutputChannel(name)
+export function useLogger(name: string, options: UseLoggerOptions = {}) {
+  const outputChannel = options.outputChannel ?? useOutputChannel(name)
 
   const createLoggerFunc = (type: string) => (...message: any[]) => {
-    outputChannel.appendLine(getPrefix(type) + message.join(' '))
+    outputChannel.appendLine((options.getPrefix?.(type) ?? '') + message.join(' '))
   }
 
   return {
