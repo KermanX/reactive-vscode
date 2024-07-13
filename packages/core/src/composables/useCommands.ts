@@ -7,6 +7,8 @@ import { useCommand } from './useCommand'
  * @category commands
  */
 export function useCommands(commands: Partial<Commands>) {
-  for (const [command, callback] of Object.entries(commands))
-    callback && useCommand(command, callback)
+  for (const [command, callback] of Object.entries(commands)) {
+    if (callback)
+      useCommand(command, callback)
+  }
 }

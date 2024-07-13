@@ -88,8 +88,8 @@ async function run() {
     ...utils.map(getUtilMetadata),
   ])
   const metadata: Metadata = {
-    functions: functions.filter(fn => fn != null),
-    categories: Array.from(new Set(functions.map(f => f?.category).filter(fn => fn != null))).sort(),
+    functions: functions.filter(fn => fn != null) as FunctionMetadata[],
+    categories: Array.from(new Set(functions.map(f => f?.category).filter(fn => fn != null) as string[])).sort(),
   }
   await fs.writeFile(JSON_OUT, JSON.stringify(metadata, null, 2))
   await fs.writeFile(JS_OUT, `export const metadata = ${JSON.stringify(metadata, null, 2)}`)
