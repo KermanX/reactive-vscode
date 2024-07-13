@@ -7,6 +7,11 @@ import { onActivate } from './onActivate'
 import type { Nullable } from './types'
 
 export interface ConfigRef<T> extends WritableComputedRef<T> {
+  /**
+   * Write the configuration value to the workspace.
+   *
+   * @see https://code.visualstudio.com/api/references/vscode-api#WorkspaceConfiguration.update
+   */
   update: (value: T, configurationTarget?: ConfigurationTarget | boolean | null, overrideInLanguage?: boolean) => Promise<void>
 }
 
@@ -37,7 +42,7 @@ type ParseConfigType<C extends ConfigTypeRaw<any>> =
  * @internal
  */
 export type ParseConfigTypeOptions<C extends ConfigTypeOptions> = {
-  [K in keyof C]: ParseConfigType<C[K]>
+  -readonly [K in keyof C]: ParseConfigType<C[K]>
 }
 
 type ToConfigRefs<C extends object> = {

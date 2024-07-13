@@ -6,6 +6,11 @@ import { defineConfigs } from './defineConfigs'
 import type { Nullable } from './types'
 
 export type ConfigObject<C extends object> = ShallowReactive<C & {
+  /**
+   * Write the configuration value to the workspace.
+   *
+   * @see https://code.visualstudio.com/api/references/vscode-api#WorkspaceConfiguration.update
+   */
   $update: (key: keyof C, value: C[keyof C], configurationTarget?: Nullable<ConfigurationTarget>, overrideInLanguage?: boolean) => Promise<void>
 }>
 
