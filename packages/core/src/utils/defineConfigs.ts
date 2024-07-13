@@ -1,12 +1,12 @@
-import type { ShallowRef } from '@reactive-vscode/reactivity'
-import { shallowRef } from '@reactive-vscode/reactivity'
+import type { WritableComputedRef } from '@reactive-vscode/reactivity'
+import { computed, shallowRef } from '@reactive-vscode/reactivity'
 import type { ConfigurationScope, ConfigurationTarget } from 'vscode'
 import { workspace } from 'vscode'
 import { useDisposable } from '../composables'
 import { onActivate } from './onActivate'
 import type { Nullable } from './types'
 
-export interface ConfigRef<T> extends ShallowRef<T> {
+export interface ConfigRef<T> extends WritableComputedRef<T> {
   update: (value: T, configurationTarget?: ConfigurationTarget | boolean | null, overrideInLanguage?: boolean) => Promise<void>
 }
 
@@ -57,7 +57,14 @@ export function defineConfigs(section: string, configs: object, scope?: Nullable
   const workspaceConfig = workspace.getConfiguration(section, scope)
 
   function createConfigRef<T>(key: string, value: T): ConfigRef<T> {
-    const ref = shallowRef(value) as unknown as ConfigRef<T>
+    const data = shallowRef(value)
+    const ref = computed({
+      get: () => data.value,
+      set: (value) => {
+        data.value = value
+        workspaceConfig.update(key, value)
+      },
+    }) as ConfigRef<T>
     ref.update = async (value, configurationTarget, overrideInLanguage) => {
       await workspaceConfig.update(key, value, configurationTarget, overrideInLanguage)
       ref.value = value
