@@ -5,9 +5,70 @@
 [![License][license-src]][license-href]
 
 ![Header](./docs/public/header.png)
+
 **Develop VSCode extension with Vue Reactivity API**
 
-[**Documentation**](https://kermanx.github.io/reactive-vscode/) | [**Why reactive-vscode**](https://kermanx.github.io/reactive-vscode/guide/why) | [**Functions**](https://kermanx.github.io/reactive-vscode/functions/) | [**Examples**](https://kermanx.github.io/reactive-vscode/examples/)
+- [**Documentation**](https://kermanx.github.io/reactive-vscode/)
+- [**Why reactive-vscode**](https://kermanx.github.io/reactive-vscode/guide/why)
+- [**All Functions**](https://kermanx.github.io/reactive-vscode/functions/)
+
+### Counter Example
+
+```ts
+import { defineExtension, ref, useCommands, useStatusBarItem } from 'reactive-vscode'
+import { StatusBarAlignment } from 'vscode'
+
+export = defineExtension(() => {
+  const counter = ref(0)
+
+  useStatusBarItem({
+    alignment: StatusBarAlignment.Right,
+    priority: 100,
+    text: () => `$(megaphone) Hello*${counter.value}`,
+  })
+
+  useCommands({
+    'extension.sayHello': () => counter.value++,
+    'extension.sayGoodbye': () => counter.value--,
+  })
+})
+```
+
+<details>
+<summary> Implementation with original VSCode API </summary>
+
+```ts
+import type { ExtensionContext } from 'vscode'
+import { StatusBarAlignment, commands, window } from 'vscode'
+
+export function activate(extensionContext: ExtensionContext) {
+  let counter = 0
+
+  const item = window.createStatusBarItem(StatusBarAlignment.Right, 100)
+
+  function updateStatusBar() {
+    item.text = `$(megaphone) Hello*${counter}`
+    item.show()
+  }
+
+  updateStatusBar()
+
+  extensionContext.subscriptions.push(
+    commands.registerCommand('extension.sayHello', () => {
+      counter++
+      updateStatusBar()
+    }),
+    commands.registerCommand('extension.sayGoodbye', () => {
+      counter--
+      updateStatusBar()
+    }),
+  )
+}
+```
+
+</details>
+
+[More examples](https://kermanx.github.io/reactive-vscode/examples/).
 
 ## License
 
