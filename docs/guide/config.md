@@ -32,7 +32,9 @@ Visit the [official documentation](https://code.visualstudio.com/api/references/
 
 ## Use in Extension
 
-To use the settings in the extension, you can use the `reactive::defineConfigs` function to define the configuration. The following code is corresponding to the above configuration.
+To use the settings in the extension, you can use the `reactive::defineConfigs` or `reactive::defineConfigObject` function to define the configuration. The following examples are corresponding to the above configuration.
+
+### As Refs
 
 ```ts
 import { defineConfigs } from 'reactive-vscode'
@@ -45,8 +47,9 @@ const { enable, greeting } = defineConfigs('your-extension', {
 
 Note that you should always set the default value in the manifest file. `reactive::defineConfigs` does not provide default values.
 
-In the above example, `enable` is of type `ConfigRef<boolean>`, which extends `Ref<boolean>`. Note that setting `enable.value` will not update the configuration. You should use `enable.update` instead.
+In the above example, `enable` is of type `ConfigRef<boolean>`, which extends `Ref<boolean>`.
 
+<!-- eslint-disable import/first -->
 ```ts
 import { defineConfigs } from 'reactive-vscode'
 
@@ -55,11 +58,67 @@ const { enable, greeting } = defineConfigs('your-extension', {
   greeting: [String, null],
 })
 // ---cut---
-// This will not update the configuration. Only the value in the memory is changed.
-enable.value = false
+import { ConfigurationTarget } from 'vscode'
 
 // This will write the value back to the configuration.
-enable.update(false)
+enable.value = false
+
+// To pass the rest of the options, you can use the `update` method.
+enable.update(false, ConfigurationTarget.Global)
 ```
 
-The `update` method also accepts `configurationTarget` and `overrideInLanguage` options. Visit the [official documentation](https://code.visualstudio.com/api/references/vscode-api#WorkspaceConfiguration.update) for more information.
+Visit the [official documentation](https://code.visualstudio.com/api/references/vscode-api#WorkspaceConfiguration.update) for more information about the rest of the options.
+
+### As an Object
+
+```ts
+import { defineConfigObject } from 'reactive-vscode'
+
+const config = defineConfigObject('your-extension', {
+  enable: Boolean,
+  greeting: [String, null],
+})
+```
+
+In the above example, `config` is a `vue::ShallowReactive(https://cn.vuejs.org/api/reactivity-advanced.html#shallowreactive)` object.
+
+<!-- eslint-disable import/first -->
+```ts
+import { defineConfigObject } from 'reactive-vscode'
+
+const config = defineConfigObject('your-extension', {
+  enable: Boolean,
+  greeting: [String, null],
+})
+// ---cut---
+import { ConfigurationTarget } from 'vscode'
+
+// This will write the value back to the configuration.
+config.enable = false
+
+// To pass the rest of the options, you can use the `$update` method.
+config.$update('enable', false, ConfigurationTarget.Global)
+```
+
+Visit the [official documentation](https://code.visualstudio.com/api/references/vscode-api#WorkspaceConfiguration.update) for more information about the rest of the options.
+
+## Use with `vscode-ext-gen`
+
+You can also use the [`vscode-ext-gen`](https://github.com/antfu/vscode-ext-gen) to generate the configuration settings. For example:
+
+```ts
+import { defineConfigObject, defineConfigs, reactive, ref } from 'reactive-vscode'
+import { type ScopedConfigKeyTypeMap, scopedConfigs } from './generated-meta'
+
+const { disabled } = defineConfigs<ScopedConfigKeyTypeMap>(
+  scopedConfigs.scope,
+  scopedConfigs.defaults,
+)
+
+// Or
+
+const config = defineConfigObject<ScopedConfigKeyTypeMap>(
+  scopedConfigs.scope,
+  scopedConfigs.defaults,
+)
+```

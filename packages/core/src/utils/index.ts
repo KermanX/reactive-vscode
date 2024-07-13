@@ -1,5 +1,6 @@
 export * from './createKeyedComposable'
 export * from './createSingletonComposable'
+export * from './defineConfigObject'
 export * from './defineConfigs'
 export * from './defineExtension'
 export * from './defineLogger'

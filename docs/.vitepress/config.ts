@@ -132,7 +132,7 @@ export default defineConfig({
           if (!id.endsWith('.md'))
             return
           return code.replace(/`(\w+)::([^(`]+)(\(\S+?\))?`/g, (_, scope, name, link) => {
-            return `<ApiLink scope="${scope}" name="${name}" ${link ? `link="${link}"` : ''}/>`
+            return `<ApiLink scope="${scope}" name="${name}" ${link ? `link="${link.slice(1, -1)}"` : ''}/>`
           })
         },
       },
