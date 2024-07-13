@@ -9,4 +9,7 @@ export default defineConfig({
   external: [
     'vscode',
   ],
+  define: {
+    __DEV__: 'true',
+  },
 })
