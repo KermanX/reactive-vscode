@@ -38,7 +38,9 @@ function toCategoryName(api: string) {
   return api.split('.')[0]
 }
 
-async function getComposableMetadata(filename: string): Promise<FunctionMetadata> {
+async function getComposableMetadata(filename: string): Promise<FunctionMetadata | undefined> {
+  if (filename.startsWith('_'))
+    return
   const tsPath = resolve(DIR_COMPOSABLES, filename)
   const name = basename(filename, '.ts')
   const ts = await fs.readFile(tsPath, 'utf-8')
@@ -58,7 +60,9 @@ async function getComposableMetadata(filename: string): Promise<FunctionMetadata
   }
 }
 
-async function getUtilMetadata(filename: string): Promise<FunctionMetadata> {
+async function getUtilMetadata(filename: string): Promise<FunctionMetadata | undefined> {
+  if (filename.startsWith('_'))
+    return
   const tsPath = resolve(DIR_UTILS, filename)
   const name = basename(filename, '.ts')
   const ts = await fs.readFile(tsPath, 'utf-8')
@@ -84,8 +88,8 @@ async function run() {
     ...utils.map(getUtilMetadata),
   ])
   const metadata: Metadata = {
-    functions,
-    categories: Array.from(new Set(functions.map(f => f.category!).filter(Boolean))).sort(),
+    functions: functions.filter(fn => fn != null),
+    categories: Array.from(new Set(functions.map(f => f?.category).filter(fn => fn != null))).sort(),
   }
   await fs.writeFile(JSON_OUT, JSON.stringify(metadata, null, 2))
   await fs.writeFile(JS_OUT, `export const metadata = ${JSON.stringify(metadata, null, 2)}`)
