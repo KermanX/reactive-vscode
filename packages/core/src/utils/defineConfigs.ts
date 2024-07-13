@@ -14,39 +14,46 @@ const ConfigTypeSymbol = Symbol('ConfigType')
 export interface ConfigType<T> extends ObjectConstructor {
   [ConfigTypeSymbol]: T
 }
-type ConfigTypeSingle<T> = string | typeof String | typeof Number | typeof Boolean | typeof Array | typeof Object | null | ConfigType<T>
+type ConfigTypeSingle<T> = typeof String | typeof Number | typeof Boolean | typeof Array | typeof Object | null | ConfigType<T>
 type ConfigTypeRaw<T> = ConfigTypeSingle<T> | ConfigTypeSingle<T>[]
-type ConfigTypeOptions = Record<string, ConfigTypeRaw<any>>
+
+/**
+ * @internal
+ */
+export type ConfigTypeOptions = Record<string, ConfigTypeRaw<any>>
 
 type ParseConfigType<C extends ConfigTypeRaw<any>> =
-  C extends string ? (
-    C extends 'string' ? string :
-      C extends 'number' ? number :
-        C extends 'boolean' ? boolean :
-          C extends 'null' ? null :
-            C extends 'integer' ? number :
-              C extends 'array' ? any[] :
-                C extends 'object' ? Record<string | number, any> : never
-  )
-    : C extends (infer C1)[] ? (C1 extends ConfigTypeSingle<any> ? ParseConfigType<C1> : never)
-      : C extends ConfigType<infer T> ? T : (
-        C extends typeof String ? string :
-          C extends typeof Number ? number :
-            C extends typeof Boolean ? boolean :
-              C extends typeof Array ? any[] :
-                C extends typeof Object ? Record<string | number, any> :
-                  C extends null ? null : never
-      )
-type ParseConfigTypeOptions<C extends ConfigTypeOptions> = {
-  [K in keyof C]: ConfigRef<ParseConfigType<C[K]>>
+  C extends (infer C1)[] ? (C1 extends ConfigTypeSingle<any> ? ParseConfigType<C1> : never)
+    : C extends ConfigType<infer T> ? T : (
+      C extends typeof String ? string :
+        C extends typeof Number ? number :
+          C extends typeof Boolean ? boolean :
+            C extends typeof Array ? any[] :
+              C extends typeof Object ? Record<string | number, any> :
+                C extends null ? null : never
+    )
+
+/**
+ * @internal
+ */
+export type ParseConfigTypeOptions<C extends ConfigTypeOptions> = {
+  [K in keyof C]: ParseConfigType<C[K]>
+}
+
+type ToConfigRefs<C extends object> = {
+  [K in keyof C]: ConfigRef<C[K]>
 }
 
 /**
  * Define configurations of an extension. See `vscode::workspace.getConfiguration`.
  *
+ * You can use this function with [vscode-ext-gen](https://github.com/antfu/vscode-ext-gen).
+ *
  * @category lifecycle
  */
-export function defineConfigs<const C extends ConfigTypeOptions>(section: string, configs: C, scope?: Nullable<ConfigurationScope>): ParseConfigTypeOptions<C> {
+export function defineConfigs<const C extends ConfigTypeOptions>(section: string, configs: C, scope?: Nullable<ConfigurationScope>): ToConfigRefs<ParseConfigTypeOptions<C>>
+export function defineConfigs<C extends object>(section: string, configs: C, scope?: Nullable<ConfigurationScope>): ToConfigRefs<C>
+export function defineConfigs(section: string, configs: object, scope?: Nullable<ConfigurationScope>) {
   const workspaceConfig = workspace.getConfiguration(section, scope)
 
   function createConfigRef<T>(key: string, value: T): ConfigRef<T> {
@@ -62,7 +69,7 @@ export function defineConfigs<const C extends ConfigTypeOptions>(section: string
     Object.keys(configs).map((key) => {
       return [key, createConfigRef(key, workspaceConfig.get(key))]
     }),
-  ) as ParseConfigTypeOptions<C>
+  )
 
   onActivate(() => {
     useDisposable(workspace.onDidChangeConfiguration((e) => {
