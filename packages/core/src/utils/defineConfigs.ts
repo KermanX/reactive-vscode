@@ -13,6 +13,10 @@ export interface ConfigRef<T> extends WritableComputedRef<T> {
    * @see https://code.visualstudio.com/api/references/vscode-api#WorkspaceConfiguration.update
    */
   update: (value: T, configurationTarget?: ConfigurationTarget | boolean | null, overrideInLanguage?: boolean) => Promise<void>
+  /**
+   * Set the value without updating the workspace.
+   */
+  set: (value: T) => void
 }
 
 const ConfigTypeSymbol = Symbol('ConfigType')
@@ -74,6 +78,9 @@ export function defineConfigs(section: string, configs: object, scope?: Nullable
       await workspaceConfig.update(key, value, configurationTarget, overrideInLanguage)
       ref.value = value
     }
+    ref.set = (value) => {
+      data.value = value
+    }
     return ref
   }
 
@@ -90,7 +97,7 @@ export function defineConfigs(section: string, configs: object, scope?: Nullable
       const newWorkspaceConfig = workspace.getConfiguration(section)
       for (const key in configs) {
         if (e.affectsConfiguration(`${section}.${key}`))
-          configRefs[key].value = newWorkspaceConfig.get(key) as any
+          configRefs[key].set(newWorkspaceConfig.get(key) as any)
       }
     }))
   })

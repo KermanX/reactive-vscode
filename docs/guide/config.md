@@ -65,6 +65,9 @@ enable.value = false
 
 // To pass the rest of the options, you can use the `update` method.
 enable.update(false, ConfigurationTarget.Global)
+
+// Only set the ref value without writing back to the configuration.
+enable.set(false)
 ```
 
 Visit the [official documentation](https://code.visualstudio.com/api/references/vscode-api#WorkspaceConfiguration.update) for more information about the rest of the options.
@@ -98,6 +101,9 @@ config.enable = false
 
 // To pass the rest of the options, you can use the `$update` method.
 config.$update('enable', false, ConfigurationTarget.Global)
+
+// Only set the ref value without writing back to the configuration.
+config.$set('enable', false)
 ```
 
 Visit the [official documentation](https://code.visualstudio.com/api/references/vscode-api#WorkspaceConfiguration.update) for more information about the rest of the options.

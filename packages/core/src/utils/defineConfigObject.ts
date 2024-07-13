@@ -12,6 +12,10 @@ export type ConfigObject<C extends object> = ShallowReactive<C & {
    * @see https://code.visualstudio.com/api/references/vscode-api#WorkspaceConfiguration.update
    */
   $update: (key: keyof C, value: C[keyof C], configurationTarget?: Nullable<ConfigurationTarget>, overrideInLanguage?: boolean) => Promise<void>
+  /**
+   * Set the value without updating the workspace.
+   */
+  $set: (key: keyof C, value: C[keyof C]) => void
 }>
 
 /**
@@ -30,6 +34,9 @@ export function defineConfigObject(section: string, configs: Record<string, unkn
     ...configRefs,
     $update(key, value, configurationTarget, overrideInLanguage) {
       return configRefs[key].update(value, configurationTarget, overrideInLanguage)
+    },
+    $set(key, value) {
+      return configRefs[key].set(value)
     },
   }) satisfies ConfigObject<typeof configs>
 }
