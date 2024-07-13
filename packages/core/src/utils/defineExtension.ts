@@ -15,13 +15,13 @@ export const extensionScope = effectScope()
  *
  * @category lifecycle
  */
-export function defineExtension(setup: () => void) {
+export function defineExtension<T>(setup: () => T) {
   return {
     activate: (extCtx: ExtensionContext) => {
       extensionContext.value = extCtx
-      extensionScope.run(() => {
+      return extensionScope.run(() => {
         activateCbs.map(fn => fn(extCtx))
-        setup()
+        return setup()
       })
     },
     deactivate: () => {
