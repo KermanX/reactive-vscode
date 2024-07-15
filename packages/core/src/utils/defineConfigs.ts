@@ -60,10 +60,11 @@ type ToConfigRefs<C extends object> = {
  *
  * @category lifecycle
  */
-export function defineConfigs<const C extends ConfigTypeOptions>(section: string, configs: C, scope?: Nullable<ConfigurationScope>): ToConfigRefs<ParseConfigTypeOptions<C>>
-export function defineConfigs<C extends object>(section: string, configs: C, scope?: Nullable<ConfigurationScope>): ToConfigRefs<C>
-export function defineConfigs(section: string, configs: object, scope?: Nullable<ConfigurationScope>) {
-  const workspaceConfig = workspace.getConfiguration(section, scope)
+export function defineConfigs<const C extends ConfigTypeOptions>(section: Nullable<string>, configs: C, scope?: Nullable<ConfigurationScope>): ToConfigRefs<ParseConfigTypeOptions<C>>
+export function defineConfigs<C extends object>(section: Nullable<string>, configs: C, scope?: Nullable<ConfigurationScope>): ToConfigRefs<C>
+export function defineConfigs(section: Nullable<string>, configs: object, scope?: Nullable<ConfigurationScope>) {
+  const isTopLevel = !section
+  const workspaceConfig = workspace.getConfiguration(isTopLevel ? undefined : section, scope)
 
   function createConfigRef<T>(key: string, value: T): ConfigRef<T> {
     const data = shallowRef(value)
@@ -91,15 +92,25 @@ export function defineConfigs(section: string, configs: object, scope?: Nullable
   )
 
   onActivate(() => {
-    useDisposable(workspace.onDidChangeConfiguration((e) => {
-      if (!e.affectsConfiguration(section))
-        return
-      const newWorkspaceConfig = workspace.getConfiguration(section)
-      for (const key in configs) {
-        if (e.affectsConfiguration(`${section}.${key}`))
-          configRefs[key].set(newWorkspaceConfig.get(key) as any)
-      }
-    }))
+    useDisposable(workspace.onDidChangeConfiguration(
+      isTopLevel
+        ? (e) => {
+            const newWorkspaceConfig = workspace.getConfiguration()
+            for (const key in configs) {
+              if (e.affectsConfiguration(key))
+                configRefs[key].set(newWorkspaceConfig.get(key) as any)
+            }
+          }
+        : (e) => {
+            if (!e.affectsConfiguration(section))
+              return
+            const newWorkspaceConfig = workspace.getConfiguration(section)
+            for (const key in configs) {
+              if (e.affectsConfiguration(`${section}.${key}`))
+                configRefs[key].set(newWorkspaceConfig.get(key) as any)
+            }
+          },
+    ))
   })
 
   return configRefs

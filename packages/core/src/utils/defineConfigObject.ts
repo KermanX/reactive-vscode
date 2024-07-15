@@ -25,9 +25,9 @@ export type ConfigObject<C extends object> = ShallowReactive<C & {
  *
  * @category lifecycle
  */
-export function defineConfigObject<const C extends ConfigTypeOptions>(section: string, configs: C, scope?: Nullable<ConfigurationScope>): ConfigObject<ParseConfigTypeOptions<C>>
-export function defineConfigObject<C extends object>(section: string, configs: C, scope?: Nullable<ConfigurationScope>): ConfigObject<C>
-export function defineConfigObject(section: string, configs: Record<string, unknown>, scope?: Nullable<ConfigurationScope>) {
+export function defineConfigObject<const C extends ConfigTypeOptions>(section: Nullable<string>, configs: C, scope?: Nullable<ConfigurationScope>): ConfigObject<ParseConfigTypeOptions<C>>
+export function defineConfigObject<C extends object>(section: Nullable<string>, configs: C, scope?: Nullable<ConfigurationScope>): ConfigObject<C>
+export function defineConfigObject(section: Nullable<string>, configs: Record<string, unknown>, scope?: Nullable<ConfigurationScope>) {
   const configRefs = defineConfigs(section, configs, scope)
 
   return shallowReactive({
