@@ -26,9 +26,6 @@ export interface ConfigType<T> extends ObjectConstructor {
 type ConfigTypeSingle<T> = typeof String | typeof Number | typeof Boolean | typeof Array | typeof Object | null | ConfigType<T>
 type ConfigTypeRaw<T> = ConfigTypeSingle<T> | ConfigTypeSingle<T>[]
 
-/**
- * @internal
- */
 export type ConfigTypeOptions = Record<string, ConfigTypeRaw<any>>
 
 type ParseConfigType<C extends ConfigTypeRaw<any>> =
@@ -42,9 +39,6 @@ type ParseConfigType<C extends ConfigTypeRaw<any>> =
                 C extends null ? null : never
     )
 
-/**
- * @internal
- */
 export type ParseConfigTypeOptions<C extends ConfigTypeOptions> = {
   -readonly [K in keyof C]: ParseConfigType<C[K]>
 }
