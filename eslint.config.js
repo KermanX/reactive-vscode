@@ -12,6 +12,7 @@ export default antfu(
     rules: {
       'node/no-exports-assign': 'off',
       'no-restricted-syntax': 'off',
+      'style/lines-between-class-members': 'off',
     },
   },
 )
