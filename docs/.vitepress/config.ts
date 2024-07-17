@@ -146,6 +146,11 @@ export default defineConfig({
         twoslashOptions: {
           compilerOptions: {
             module: 200, // ModuleKind.Preserve,
+            paths: {
+              'reactive-vscode': [
+                resolve(__dirname, '../node_modules/reactive-vscode/dist/index.d.ts'),
+              ],
+            },
           },
           vfsRoot: resolve(__dirname, '../snippets'),
         },
