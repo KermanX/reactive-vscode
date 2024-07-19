@@ -7,7 +7,7 @@ export function createState<T>(initial: T) {
     eventEmitter,
     update(newVal: T) {
       this.value = newVal
-      this.fire()
+      eventEmitter.fire(newVal)
     },
     event: eventEmitter.event,
   }

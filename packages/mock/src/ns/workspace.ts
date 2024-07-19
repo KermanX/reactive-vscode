@@ -6,6 +6,7 @@ import type { WorkspaceNS } from '../types'
 import { Unimplemented } from '../utils/unimplemented'
 import { TextDocument } from '../internal/TextDocument'
 import { TextDocumentSaveReason } from '../enum/TextDocumentSaveReason'
+import { WorkspaceConfiguration } from '../internal/WorkspaceConfiguration'
 import type { MockVscode } from '.'
 
 export function createMockWorkspace(_context: MockVscode) {
@@ -151,6 +152,49 @@ export function createMockWorkspace(_context: MockVscode) {
 
     _onDidSaveTextDocument = new EventEmitter<TextDocument>()
     onDidSaveTextDocument = this._onDidSaveTextDocument.event
+
+    _onWillCreateFiles = new EventEmitter<vscode.FileWillCreateEvent>()
+    onWillCreateFiles = this._onWillCreateFiles.event
+
+    _onDidCreateFiles = new EventEmitter<vscode.FileCreateEvent>()
+    onDidCreateFiles = this._onDidCreateFiles.event
+
+    _onWillDeleteFiles = new EventEmitter<vscode.FileWillDeleteEvent>()
+    onWillDeleteFiles = this._onWillDeleteFiles.event
+
+    _onDidDeleteFiles = new EventEmitter<vscode.FileDeleteEvent>()
+    onDidDeleteFiles = this._onDidDeleteFiles.event
+
+    _onWillRenameFiles = new EventEmitter<vscode.FileWillRenameEvent>()
+    onWillRenameFiles = this._onWillRenameFiles.event
+
+    _onDidRenameFiles = new EventEmitter<vscode.FileRenameEvent>()
+    onDidRenameFiles = this._onDidRenameFiles.event
+
+    _workspaceConfiguration = _init.workspaceConfiguration
+    getConfiguration = vi.fn((section?: string, _scope?: vscode.ConfigurationScope | null): WorkspaceConfiguration => {
+      let obj = this._workspaceConfiguration
+      for (const key of section?.split('.') ?? []) {
+        if (!(key in obj))
+          return new WorkspaceConfiguration(_context, {}, section)
+        obj = obj[key]
+      }
+      return new WorkspaceConfiguration(_context, obj, section)
+    })
+
+    _onDidChangeConfiguration = new EventEmitter<vscode.ConfigurationChangeEvent>()
+    onDidChangeConfiguration = this._onDidChangeConfiguration.event
+
+    _isTrusted = _init.isTrusted
+    _trust = () => {
+      this._isTrusted = true
+      this._onDidGrantWorkspaceTrust.fire()
+    }
+    get isTrusted() {
+      return this._isTrusted
+    }
+    _onDidGrantWorkspaceTrust = new EventEmitter<void>()
+    onDidGrantWorkspaceTrust = this._onDidGrantWorkspaceTrust.event
   })()
 }
 
@@ -163,6 +207,8 @@ export const defaultWorkspaceInitConfig = {
     name: 'workspace',
     index: 0,
   }] as vscode.WorkspaceFolder[],
+  workspaceConfiguration: {} as any,
+  isTrusted: true,
 }
 
 export type MockWorkspace = ReturnType<typeof createMockWorkspace>

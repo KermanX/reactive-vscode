@@ -9,7 +9,7 @@ export class EventEmitter<T> extends Disposable implements vscode.EventEmitter<T
 
   _listeners = new Set<(e: T) => any>()
 
-  event: vscode.Event<T> = vi.fn((listener, thisArgs, disposables) => {
+  event = vi.fn<vscode.Event<T>>((listener, thisArgs, disposables) => {
     const cb = (e: T) => listener.call(thisArgs, e)
     this._listeners.add(cb)
     const disposable = new Disposable(() => this._listeners.delete(cb))

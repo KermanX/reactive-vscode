@@ -1,11 +1,12 @@
 import type vscode from 'vscode'
-
+import { vi } from 'vitest'
 import { EventEmitter } from '../class/EventEmitter'
 import { TextDocument } from '../internal/TextDocument'
 import { TextEditor } from '../internal/TextEditor'
 import type { WindowNS } from '../types'
 import { createState } from '../utils/state'
 import { ColorThemeKind } from '../enum/ColorThemeKind'
+import { Unimplemented } from '../utils/unimplemented'
 import type { MockVscode } from '.'
 
 export function createMockWindow(_context: MockVscode) {
@@ -60,12 +61,33 @@ export function createMockWindow(_context: MockVscode) {
       return editor
     }
 
+    showInformationMessage = vi.fn((..._args: any) => Unimplemented('showInformationMessage'))
+    showWarningMessage = vi.fn((..._args: any) => Unimplemented('showInformationMessage'))
+    showErrorMessage = vi.fn((..._args: any) => Unimplemented('showInformationMessage'))
+    showQuickPick = vi.fn((..._args: any) => Unimplemented('showQuickPick'))
+    showWorkspaceFolderPick = vi.fn((..._args: any) => Unimplemented('showWorkspaceFolderPick'))
+    showOpenDialog = vi.fn((..._args: any) => Unimplemented('showOpenDialog'))
+    showSaveDialog = vi.fn((..._args: any) => Unimplemented('showSaveDialog'))
+    showInputBox = vi.fn((..._args: any) => Unimplemented('showInputBox'))
+    createQuickPick = TODO
+    createInputBox = TODO
+    createStatusBarItem = TODO
+    createOutputChannel = TODO
+    createWebviewPanel = TODO
+    registerWebviewPanelSerializer = TODO
+    setStatusBarMessage = TODO
+    withScmProgress = TODO
+    withProgress = TODO
+    createTerminal = TODO
+    registerTreeDataProvider = TODO
+    createTreeView = TODO
+    registerUriHandler = TODO
+    registerWebviewViewProvider = TODO
+    registerCustomEditorProvider = TODO
+
     _windowState = createState(_init.state)
-    get windowState(): vscode.WindowState {
+    get state(): vscode.WindowState {
       return this._windowState.value
-    }
-    set windowState(value: vscode.WindowState) {
-      this._windowState.update(value)
     }
     _onDidChangeWindowState = this._windowState.eventEmitter
     onDidChangeWindowState = this._windowState.event

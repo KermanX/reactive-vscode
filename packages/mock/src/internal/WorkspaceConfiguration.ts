@@ -1,9 +1,10 @@
 import type vscode from 'vscode'
 import { vi } from 'vitest'
 import { Unimplemented } from '../utils/unimplemented'
+import type { MockVscode } from '../ns'
 
 export class WorkspaceConfiguration implements vscode.WorkspaceConfiguration {
-  constructor(public _data: any) {
+  constructor(public _context: MockVscode, public _data: any, public _baseSection?: string) {
   }
 
   get = vi.fn(<T>(section: string, defaultValue?: T): T | undefined => {
@@ -39,5 +40,10 @@ export class WorkspaceConfiguration implements vscode.WorkspaceConfiguration {
       obj = obj[key]
     }
     obj[keys[keys.length - 1]] = value
+    this._context.workspace._onDidChangeConfiguration.fire({
+      affectsConfiguration: vi.fn((check: string, _resource?: vscode.Uri) => {
+        return (this._baseSection ? `${this._baseSection}.` : `${section}`).startsWith(check)
+      }),
+    })
   })
 }
