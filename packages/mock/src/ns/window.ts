@@ -69,21 +69,21 @@ export function createMockWindow(_context: MockVscode) {
     showOpenDialog = vi.fn((..._args: any) => Unimplemented('showOpenDialog'))
     showSaveDialog = vi.fn((..._args: any) => Unimplemented('showSaveDialog'))
     showInputBox = vi.fn((..._args: any) => Unimplemented('showInputBox'))
-    createQuickPick = TODO
-    createInputBox = TODO
-    createStatusBarItem = TODO
-    createOutputChannel = TODO
-    createWebviewPanel = TODO
-    registerWebviewPanelSerializer = TODO
-    setStatusBarMessage = TODO
-    withScmProgress = TODO
-    withProgress = TODO
-    createTerminal = TODO
-    registerTreeDataProvider = TODO
-    createTreeView = TODO
-    registerUriHandler = TODO
-    registerWebviewViewProvider = TODO
-    registerCustomEditorProvider = TODO
+    createQuickPick = Unimplemented('TODO')
+    createInputBox = Unimplemented('TODO')
+    createStatusBarItem = Unimplemented('TODO')
+    createOutputChannel = Unimplemented('TODO')
+    createWebviewPanel = Unimplemented('TODO')
+    registerWebviewPanelSerializer = Unimplemented('TODO')
+    setStatusBarMessage = Unimplemented('TODO')
+    withScmProgress = Unimplemented('TODO')
+    withProgress = Unimplemented('TODO')
+    createTerminal = Unimplemented('TODO')
+    registerTreeDataProvider = Unimplemented('TODO')
+    createTreeView = Unimplemented('TODO')
+    registerUriHandler = Unimplemented('TODO')
+    registerWebviewViewProvider = Unimplemented('TODO')
+    registerCustomEditorProvider = Unimplemented('TODO')
 
     _windowState = createState(_init.state)
     get state(): vscode.WindowState {
