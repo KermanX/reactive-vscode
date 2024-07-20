@@ -5,6 +5,7 @@ import { useDisposable } from './useDisposable'
 
 /**
  * @reactive `extensions.all`
+ * @category extension
  */
 export const useAllExtensions = createSingletonComposable(() => {
   const allExtensions = shallowRef(extensions.all)
