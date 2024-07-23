@@ -22,7 +22,7 @@ jobs:
         run: pnpm install
 
       - name: Build
-        run: pnpm --filter ./packages/* build
+        run: pnpm --filter './packages/*' build
 
       - run: pnpx pkg-pr-new publish './packages/*'
         env:
