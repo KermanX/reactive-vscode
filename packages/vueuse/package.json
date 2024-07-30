@@ -1,7 +1,7 @@
 {
   "name": "@reactive-vscode/vueuse",
   "type": "module",
-  "version": "0.2.0-beta.8",
+  "version": "0.2.0-beta.9",
   "description": "Useful VueUse utilities for VSCode extension development",
   "author": "_Kerman <kermanx@qq.com>",
   "license": "MIT",
