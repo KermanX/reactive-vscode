@@ -32,6 +32,7 @@ export function useFsWatcher(
     for (const [pattern, watcher] of watchers) {
       if (!newPatterns.includes(pattern)) {
         watcher.dispose()
+        watchers.delete(pattern)
       }
     }
     for (const pattern of newPatterns) {
@@ -53,6 +54,7 @@ export function useFsWatcher(
     for (const watcher of watchers.values()) {
       watcher.dispose()
     }
+    watchers.clear()
   })
 
   return {
