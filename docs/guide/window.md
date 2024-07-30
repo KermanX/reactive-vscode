@@ -62,3 +62,21 @@ export = defineExtension(() => {
   })
 })
 ```
+
+## Watch File System Changes
+
+The `reactive::useFsWatcher` composable can be used to watch file system changes:
+
+```ts {4}
+import { computed, defineExtension, useFsWatcher, watchEffect } from 'reactive-vscode'
+
+export = defineExtension(() => {
+  const filesToWatch = computed(() => ['**/*.md', '**/*.txt'])
+  const watcher = useFsWatcher(filesToWatch)
+  watcher.onDidChange((uri) => {
+    console.log('File changed:', uri)
+  })
+})
+```
+
+Note that you can pass one of an array of patterns to watch for changes in the file system. Multiple VSCode watchers are created for each pattern.
