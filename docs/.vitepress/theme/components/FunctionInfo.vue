@@ -27,8 +27,7 @@ const link = computed(() => withBase(`/functions\#category=${encodeURIComponent(
         Original API
       </div>
       <div>
-        <span class="i-vscode-icons:file-type-vscode mb-.5 mr-1" />
-        <a :href="`https://code.visualstudio.com/api/references/vscode-api#${info.original}`" target="_blank">
+        <a class="api-link scope-vscode ml--1" :href="`https://code.visualstudio.com/api/references/vscode-api#${info.original}`" target="_blank">
           {{ info.original }}
         </a>
       </div>
