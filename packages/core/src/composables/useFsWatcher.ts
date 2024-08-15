@@ -1,5 +1,5 @@
 import type { MaybeRefOrGetter, ShallowReactive } from '@reactive-vscode/reactivity'
-import { onScopeDispose, shallowReactive, toValue, watchEffect } from '@reactive-vscode/reactivity'
+import { computed, onScopeDispose, shallowReactive, toValue, watch, watchEffect } from '@reactive-vscode/reactivity'
 import type { Event, FileSystemWatcher, GlobPattern, Uri } from 'vscode'
 import { workspace } from 'vscode'
 import type { MaybeNullableRefOrGetter } from '../utils'
@@ -26,13 +26,17 @@ export function useFsWatcher(
   const changeEmitter = useEventEmitter<Uri>()
   const deleteEmitter = useEventEmitter<Uri>()
 
-  watchEffect(() => {
+  const normalizedPatterns = computed(() => {
     const globPatternValue = toValue(globPattern)
-    const newPatterns = Array.isArray(globPatternValue)
+    return Array.isArray(globPatternValue)
       ? globPatternValue
       : globPatternValue instanceof Set
         ? Array.from(globPatternValue)
         : [globPatternValue]
+  })
+
+  function updateWatchers() {
+    const newPatterns = normalizedPatterns.value
     for (const [pattern, watcher] of watchers) {
       if (!newPatterns.includes(pattern)) {
         watcher.dispose()
@@ -52,14 +56,21 @@ export function useFsWatcher(
         w.onDidDelete(deleteEmitter.fire)
       }
     }
-  })
+  }
 
-  onScopeDispose(() => {
+  function clearWatchers() {
     for (const watcher of watchers.values()) {
       watcher.dispose()
     }
     watchers.clear()
+  }
+
+  watch(normalizedPatterns, updateWatchers)
+  watch([ignoreCreateEvents, ignoreChangeEvents, ignoreDeleteEvents], () => {
+    clearWatchers()
+    updateWatchers()
   })
+  onScopeDispose(clearWatchers)
 
   return {
     watchers,
