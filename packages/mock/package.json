@@ -1,7 +1,7 @@
 {
   "name": "@reactive-vscode/mock",
   "type": "module",
-  "version": "0.2.0-beta.9",
+  "version": "0.2.0",
   "description": "Mock VSCode API for testing",
   "author": "_Kerman <kermanx@qq.com>",
   "license": "MIT",
