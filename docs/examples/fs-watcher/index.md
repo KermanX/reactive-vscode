@@ -2,9 +2,9 @@
 outline: false
 ---
 
-# Theme Detector
+# FS Watcher
 
-Detects the user's theme, and show a message accordingly.
+Watch a dynamic set of files via the VSCode Watcher API.
 
 <ExampleFunctions :fns="[
   'useFsWatcher',
