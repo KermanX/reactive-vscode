@@ -16,7 +16,7 @@ export interface UseFSWatcher {
  * @reactive `workspace.createFileSystemWatcher`
  */
 export function useFsWatcher(
-  globPattern: MaybeRefOrGetter<GlobPattern | GlobPattern[]>,
+  globPattern: MaybeRefOrGetter<GlobPattern | readonly GlobPattern[] | ReadonlySet<GlobPattern>>,
   ignoreCreateEvents?: MaybeNullableRefOrGetter<boolean>,
   ignoreChangeEvents?: MaybeNullableRefOrGetter<boolean>,
   ignoreDeleteEvents?: MaybeNullableRefOrGetter<boolean>,
@@ -28,7 +28,11 @@ export function useFsWatcher(
 
   watchEffect(() => {
     const globPatternValue = toValue(globPattern)
-    const newPatterns = Array.isArray(globPatternValue) ? globPatternValue : [globPatternValue]
+    const newPatterns = Array.isArray(globPatternValue)
+      ? globPatternValue
+      : globPatternValue instanceof Set
+        ? Array.from(globPatternValue)
+        : [globPatternValue]
     for (const [pattern, watcher] of watchers) {
       if (!newPatterns.includes(pattern)) {
         watcher.dispose()
