@@ -9,3 +9,5 @@ For each example, there are two implementations that achieve the same goal. The 
 - [Editor Decoration](./editor-decoration/index) - A simple example that adds decorations to the active editor depending on the configuration.
 
 - [Theme Detector](./theme-detector/index) - Detects the user's theme, and show a message accordingly.
+
+- [FS Watcher](./fs-watcher/index) - Watches dynamic multiple directories via VSCode Watcher API.

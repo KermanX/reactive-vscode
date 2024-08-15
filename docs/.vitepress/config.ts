@@ -59,6 +59,7 @@ export default defineConfig({
             { text: 'Hello Counter', link: '/examples/hello-counter/' },
             { text: 'Editor Decoration', link: '/examples/editor-decoration/' },
             { text: 'Theme Detector', link: '/examples/theme-detector/' },
+            { text: 'FS Watcher', link: '/examples/fs-watcher/' },
           ],
         },
       ],
