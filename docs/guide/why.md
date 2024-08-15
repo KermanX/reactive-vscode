@@ -16,7 +16,7 @@ The official API is event-based, which means you have to listen to events to wat
 
 ### The Disposables
 
-Disposables are everywhere in a VSCode extension. You have to store all of them to `context.subscriptions`, or dispose them manually.
+Disposables are everywhere in a VSCode extension. You have to store all of them to `vscode::ExtensionContext.subscriptions`, or dispose them manually.
 
 ### When to Initialize
 
@@ -50,7 +50,7 @@ More examples [here](../examples/){target="_blank"}.
 
 ## FAQ
 
-### Why use `npm::@vue/runtime-core` internally?
+### Vue without DOM and components?
 
 This library is built on top of `npm::@vue/reactivity`, and ported some code from `npm::@vue/runtime-core` (See [the `./packages/core/src/reactivity` directory](https://github.com/KermanX/reactive-vscode/blob/main/packages/core/src/reactivity)).
 
