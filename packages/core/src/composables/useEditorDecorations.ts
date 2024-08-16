@@ -1,8 +1,20 @@
 import type { MaybeRef, MaybeRefOrGetter } from '@reactive-vscode/reactivity'
 import { toValue, watchEffect } from '@reactive-vscode/reactivity'
-import type { DecorationOptions, DecorationRenderOptions, Range, TextEditor, TextEditorDecorationType } from 'vscode'
-import { window } from 'vscode'
+import type { DecorationOptions, DecorationRenderOptions, Disposable, Range, TextEditor, TextEditorDecorationType } from 'vscode'
+import { window, workspace } from 'vscode'
 import type { Nullable } from '../utils/types'
+import { useDisposable, useDisposableFn } from './useDisposable'
+
+export interface UseEditorDecorationsOptions {
+  /**
+   * The triggers to update the decorations.
+   *
+   * @default ['effect', 'documentChanged']
+   */
+  triggersOn?: ('effect' | 'documentChanged')[]
+
+  // TODO: support throttle, debounce?
+}
 
 /**
  * Reactively set decorations on the given editor. See `vscode::TextEditor.setDecorations`.
@@ -12,11 +24,19 @@ import type { Nullable } from '../utils/types'
 export function useEditorDecorations(
   editor: MaybeRefOrGetter<Nullable<TextEditor>>,
   decorationTypeOrOptions: TextEditorDecorationType | DecorationRenderOptions,
-  rangesOrOptions: MaybeRef<readonly Range[] | readonly DecorationOptions[]> | ((editor: TextEditor) => readonly Range[] | readonly DecorationOptions[]),
+  // TODO: support async function?
+  decorations: MaybeRef<readonly Range[] | readonly DecorationOptions[]> | ((editor: TextEditor) => readonly Range[] | readonly DecorationOptions[]),
+  options: UseEditorDecorationsOptions = {},
 ) {
+  const {
+    triggersOn = ['effect', 'documentChanged'],
+  } = options
+
   const decorationType = 'key' in decorationTypeOrOptions
     ? decorationTypeOrOptions
     : window.createTextEditorDecorationType(decorationTypeOrOptions)
+
+  useDisposable(decorationType)
 
   const trigger = () => {
     const _editor = toValue(editor)
@@ -24,23 +44,28 @@ export function useEditorDecorations(
     if (_editor) {
       _editor.setDecorations(
         decorationType,
-        typeof rangesOrOptions === 'function'
-          ? rangesOrOptions(_editor)
-          : toValue(rangesOrOptions),
+        typeof decorations === 'function'
+          ? decorations(_editor)
+          : toValue(decorations),
       )
     }
   }
 
-  const stop = watchEffect(trigger)
+  if (triggersOn.includes('effect')) {
+    useDisposableFn(
+      watchEffect(trigger),
+    )
+  }
+
+  if (triggersOn.includes('documentChanged')) {
+    useDisposable(workspace.onDidChangeTextDocument((e) => {
+      if (e.document === toValue(editor)?.document) {
+        trigger()
+      }
+    }))
+  }
 
   return {
-    /**
-     * Dispose the decoration type.
-     */
-    dispose() {
-      stop()
-      decorationType.dispose()
-    },
     /**
      * Manually trigger the decoration update.
      */

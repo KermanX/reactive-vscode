@@ -15,3 +15,16 @@ export function useDisposable<T extends Disposable>(disposable: T): T {
 
   return disposable
 }
+
+/**
+ * Creates a disposable from a function, and register it to the current scope.
+ *
+ * @example ```ts
+ * useDisposableFn(watchEffect(() => { }))
+ * ```
+ *
+ * @category lifecycle
+ */
+export function useDisposableFn(fn: () => void): Disposable {
+  return useDisposable({ dispose: fn })
+}
