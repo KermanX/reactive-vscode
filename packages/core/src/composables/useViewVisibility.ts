@@ -27,6 +27,6 @@ export function useViewVisibility(view: MaybeNullableRefOrGetter<ViewWithVisibil
 
   watchEffect(update)
 
-  // Visiblility should be readonly
+  // Visibility should be readonly
   return computed(() => !!visible.value)
 }

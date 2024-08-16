@@ -12,6 +12,17 @@
 - [**Why reactive-vscode**](https://kermanx.github.io/reactive-vscode/guide/why)
 - [**All Functions**](https://kermanx.github.io/reactive-vscode/functions/)
 
+### Project Status
+
+Currently, most of the VSCode APIs are covered, and this project has been used in:
+
+- [Slidev for VSCode <sub><sub>![downloads](https://img.shields.io/visual-studio-marketplace/d/antfu.slidev.svg)</sub></sub>](https://github.com/slidevjs/slidev/tree/main/packages/vscode)
+- [Iconify IntelliSense <sub><sub>![downloads](https://img.shields.io/visual-studio-marketplace/d/antfu.iconify.svg)</sub></sub>](https://github.com/antfu/vscode-iconify)
+
+The [documentation](https://kermanx.github.io/reactive-vscode/) is complete, and the [VueUse integration](https://kermanx.github.io/reactive-vscode/guide/vueuse.html) is also available.
+
+However, the project is still in beta and may have minor API changes. If you encounter any problems, please feel free to [open an issue](https://github.com/KermanX/reactive-vscode/issues/new).
+
 ### Counter Example
 
 ```ts
@@ -70,11 +81,13 @@ export function activate(extensionContext: ExtensionContext) {
 
 [More examples](https://kermanx.github.io/reactive-vscode/examples/).
 
-## License
+### License
 
 [MIT](./LICENSE) License © 2024-PRESENT [_Kerman](https://github.com/KermanX)
 
 Source code in [the `./packages/reactivity` directory](https://github.com/KermanX/reactive-vscode/blob/main/packages/core/src/reactivity) is ported from [`@vue/runtime-core`](https://github.com/vuejs/core/blob/main/packages/runtime-core). Licensed under a [MIT License](https://github.com/vueuse/vueuse/blob/main/LICENSE).
+
+Source code in [the `./packages/mock` directory](https://github.com/KermanX/reactive-vscode/blob/main/packages/core/src/mock) references the implementation of [`VSCode`](https://github.com/microsoft/vscode). Licensed under a [MIT License](https://github.com/microsoft/vscode/blob/main/LICENSE.txt).
 
 The logo <img src="https://kermanx.github.io/reactive-vscode/logo.svg" width="14"> is modified from [Vue Reactity Artworks](https://github.com/vue-reactivity/art). Licensed under a [Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License](https://creativecommons.org/licenses/by-nc-sa/4.0/).
 

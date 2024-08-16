@@ -3,5 +3,8 @@
   "compilerOptions": {
     "module": "Preserve",
     "strict": true
-  }
+  },
+  "exclude": [
+    "test"
+  ]
 }

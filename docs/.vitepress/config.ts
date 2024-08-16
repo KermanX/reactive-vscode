@@ -59,6 +59,7 @@ export default defineConfig({
             { text: 'Hello Counter', link: '/examples/hello-counter/' },
             { text: 'Editor Decoration', link: '/examples/editor-decoration/' },
             { text: 'Theme Detector', link: '/examples/theme-detector/' },
+            { text: 'FS Watcher', link: '/examples/fs-watcher/' },
           ],
         },
       ],
@@ -146,6 +147,11 @@ export default defineConfig({
         twoslashOptions: {
           compilerOptions: {
             module: 200, // ModuleKind.Preserve,
+            paths: {
+              'reactive-vscode': [
+                resolve(__dirname, '../node_modules/reactive-vscode/dist/index.d.ts'),
+              ],
+            },
           },
           vfsRoot: resolve(__dirname, '../snippets'),
         },
