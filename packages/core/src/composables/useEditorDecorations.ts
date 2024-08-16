@@ -34,9 +34,7 @@ export function useEditorDecorations(
 
   const decorationType = 'key' in decorationTypeOrOptions
     ? decorationTypeOrOptions
-    : window.createTextEditorDecorationType(decorationTypeOrOptions)
-
-  useDisposable(decorationType)
+    : useDisposable(window.createTextEditorDecorationType(decorationTypeOrOptions))
 
   const trigger = () => {
     const _editor = toValue(editor)
