@@ -1,4 +1,4 @@
-import type { MaybeRef, MaybeRefOrGetter, WatchSource } from '@reactive-vscode/reactivity'
+import type { MaybeRef, MaybeRefOrGetter } from '@reactive-vscode/reactivity'
 import { toValue, watch, watchEffect } from '@reactive-vscode/reactivity'
 import type { DecorationOptions, DecorationRenderOptions, Range, TextEditor, TextEditorDecorationType } from 'vscode'
 import { window } from 'vscode'
