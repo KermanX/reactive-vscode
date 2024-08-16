@@ -38,15 +38,15 @@ export function useEditorDecorations(
 
   const trigger = () => {
     const _editor = toValue(editor)
+    if (!_editor)
+      return
 
-    if (_editor) {
-      _editor.setDecorations(
-        decorationType,
-        typeof decorations === 'function'
-          ? decorations(_editor)
-          : toValue(decorations),
-      )
-    }
+    _editor.setDecorations(
+      decorationType,
+      typeof decorations === 'function'
+        ? decorations(_editor)
+        : toValue(decorations),
+    )
   }
 
   if (triggersOn.includes('effect')) {
