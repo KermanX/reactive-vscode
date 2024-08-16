@@ -1,6 +1,6 @@
 import type { MaybeRef, MaybeRefOrGetter } from '@reactive-vscode/reactivity'
 import { toValue, watchEffect } from '@reactive-vscode/reactivity'
-import type { DecorationOptions, DecorationRenderOptions, Disposable, Range, TextEditor, TextEditorDecorationType } from 'vscode'
+import type { DecorationOptions, DecorationRenderOptions, Range, TextEditor, TextEditorDecorationType } from 'vscode'
 import { window, workspace } from 'vscode'
 import type { Nullable } from '../utils/types'
 import { useDisposable, useDisposableFn } from './useDisposable'
