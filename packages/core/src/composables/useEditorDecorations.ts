@@ -3,7 +3,7 @@ import { toValue, watchEffect } from '@reactive-vscode/reactivity'
 import type { DecorationOptions, DecorationRenderOptions, Range, TextEditor, TextEditorDecorationType } from 'vscode'
 import { window, workspace } from 'vscode'
 import type { Nullable } from '../utils/types'
-import { useDisposable, useDisposableFn } from './useDisposable'
+import { useDisposable } from './useDisposable'
 
 export interface UseEditorDecorationsOptions {
   /**
@@ -50,9 +50,7 @@ export function useEditorDecorations(
   }
 
   if (triggersOn.includes('effect')) {
-    useDisposableFn(
-      watchEffect(trigger),
-    )
+    watchEffect(trigger)
   }
 
   if (triggersOn.includes('documentChanged')) {
