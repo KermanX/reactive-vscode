@@ -1,9 +1,10 @@
-import type { MaybeRef, MaybeRefOrGetter } from '@reactive-vscode/reactivity'
-import { toValue, watchEffect } from '@reactive-vscode/reactivity'
+import type { MaybeRef, MaybeRefOrGetter, WatchSource } from '@reactive-vscode/reactivity'
+import { toValue, watch, watchEffect } from '@reactive-vscode/reactivity'
 import type { DecorationOptions, DecorationRenderOptions, Range, TextEditor, TextEditorDecorationType } from 'vscode'
-import { window, workspace } from 'vscode'
-import type { Nullable } from '../utils/types'
+import { window } from 'vscode'
+import type { Awaitable, Nullable } from '../utils/types'
 import { useDisposable } from './useDisposable'
+import { useDocumentText } from './useDocumentText'
 
 export interface UseEditorDecorationsOptions {
   /**
@@ -11,9 +12,9 @@ export interface UseEditorDecorationsOptions {
    *
    * @default ['effect', 'documentChanged']
    */
-  triggersOn?: ('effect' | 'documentChanged')[]
+  triggersOn?: ('effect' | 'documentChanged' | WatchSource)[]
 
-  // TODO: support throttle, debounce?
+  // TODO: support throttle
 }
 
 /**
@@ -24,8 +25,9 @@ export interface UseEditorDecorationsOptions {
 export function useEditorDecorations(
   editor: MaybeRefOrGetter<Nullable<TextEditor>>,
   decorationTypeOrOptions: TextEditorDecorationType | DecorationRenderOptions,
-  // TODO: support async function?
-  decorations: MaybeRef<readonly Range[] | readonly DecorationOptions[]> | ((editor: TextEditor) => readonly Range[] | readonly DecorationOptions[]),
+  decorations:
+    | MaybeRef<readonly Range[] | readonly DecorationOptions[]>
+    | ((editor: TextEditor) => Awaitable<readonly Range[] | readonly DecorationOptions[]>),
   options: UseEditorDecorationsOptions = {},
 ) {
   const {
@@ -36,35 +38,39 @@ export function useEditorDecorations(
     ? decorationTypeOrOptions
     : useDisposable(window.createTextEditorDecorationType(decorationTypeOrOptions))
 
-  const trigger = () => {
-    const _editor = toValue(editor)
-    if (!_editor)
+  const update = async () => {
+    const editorValue = toValue(editor)
+    if (!editorValue)
       return
 
-    _editor.setDecorations(
+    editorValue.setDecorations(
       decorationType,
       typeof decorations === 'function'
-        ? decorations(_editor)
+        ? await decorations(editorValue)
         : toValue(decorations),
     )
   }
 
-  if (triggersOn.includes('effect')) {
-    watchEffect(trigger)
-  }
-
-  if (triggersOn.includes('documentChanged')) {
-    useDisposable(workspace.onDidChangeTextDocument((e) => {
-      if (e.document === toValue(editor)?.document) {
-        trigger()
-      }
-    }))
+  for (const watchSource of triggersOn) {
+    if (typeof watchSource !== 'string') {
+      watch(watchSource, update)
+    }
+    else if (watchSource === 'effect') {
+      watchEffect(update)
+    }
+    else if (watchSource === 'documentChanged') {
+      const text = useDocumentText(() => toValue(editor)?.document)
+      watch(text, update)
+    }
+    else {
+      throw new TypeError(`Invalid watch source: ${watchSource}`)
+    }
   }
 
   return {
     /**
      * Manually trigger the decoration update.
      */
-    trigger,
+    update,
   }
 }
