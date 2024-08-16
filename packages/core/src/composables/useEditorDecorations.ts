@@ -12,9 +12,7 @@ export interface UseEditorDecorationsOptions {
    *
    * @default ['effect', 'documentChanged']
    */
-  triggersOn?: ('effect' | 'documentChanged' | WatchSource)[]
-
-  // TODO: support throttle
+  updateOn?: ('effect' | 'documentChanged')[]
 }
 
 /**
@@ -31,7 +29,7 @@ export function useEditorDecorations(
   options: UseEditorDecorationsOptions = {},
 ) {
   const {
-    triggersOn = ['effect', 'documentChanged'],
+    updateOn = ['effect', 'documentChanged'],
   } = options
 
   const decorationType = 'key' in decorationTypeOrOptions
@@ -51,20 +49,18 @@ export function useEditorDecorations(
     )
   }
 
-  for (const watchSource of triggersOn) {
-    if (typeof watchSource !== 'string') {
-      watch(watchSource, update)
-    }
-    else if (watchSource === 'effect') {
-      watchEffect(update)
-    }
-    else if (watchSource === 'documentChanged') {
-      const text = useDocumentText(() => toValue(editor)?.document)
-      watch(text, update)
-    }
-    else {
-      throw new TypeError(`Invalid watch source: ${watchSource}`)
-    }
+  const documentText = updateOn.includes('documentChanged')
+    ? useDocumentText(() => toValue(editor)?.document)
+    : null
+
+  if (updateOn.includes('effect')) {
+    watchEffect(async () => {
+      void documentText?.value
+      await update()
+    })
+  }
+  else if (documentText) {
+    watch(documentText, update)
   }
 
   return {
