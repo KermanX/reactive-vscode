@@ -108,7 +108,7 @@ export = defineExtension(() => {
   useEditorDecorations(
     editor,
     { backgroundColor: 'red' }, // Or created decoration type
-    () => [/* Dynamic caculated ranges */] // Or Ref/Computed
+    () => [/* Dynamic calculated ranges */] // Or Ref/Computed
   )
 })
 ```
