@@ -68,6 +68,9 @@ importers:
       '@iconify-json/carbon':
         specifier: ^1.1.34
         version: 1.1.34
+      '@iconify-json/logos':
+        specifier: ^1.1.44
+        version: 1.1.44
       '@iconify-json/vscode-icons':
         specifier: ^1.1.34
         version: 1.1.34
@@ -907,6 +910,9 @@ packages:
 
   '@iconify-json/carbon@1.1.34':
     resolution: {integrity: sha512-azvhc5HP+CilSrzSEfP4MezsG5n4tj+vIJLADhqCbFM1BOAmyDe/K1lTL9GLDluybsCvSqb15+6AIRb1jtKhpQ==}
+
+  '@iconify-json/logos@1.1.44':
+    resolution: {integrity: sha512-sIc355/sSq4GihU4eFTDVbXoeg2rZD3yH6tNOJTNouDu9Fx259BSWH+XEEQwm/YImDIllcGqmJuNBjAu4UVs2g==}
 
   '@iconify-json/vscode-icons@1.1.34':
     resolution: {integrity: sha512-aBNizvBp+I1r1Fs5YUhFqLPmw8nY8PBe0N8hov9Ri1KdEqILILOMT5k+3Vvk0koEMLENyLbOTYtOVf0/KU4HiA==}
@@ -4680,6 +4686,10 @@ snapshots:
   '@humanwhocodes/retry@0.3.0': {}
 
   '@iconify-json/carbon@1.1.34':
+    dependencies:
+      '@iconify/types': 2.0.0
+
+  '@iconify-json/logos@1.1.44':
     dependencies:
       '@iconify/types': 2.0.0
 

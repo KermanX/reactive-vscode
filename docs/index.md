@@ -32,6 +32,10 @@ features:
   - icon: ⚡
     title: Fully tree shakeable
     details: Only take what you want
+  - icon: <span class="i-logos-vueuse"></span>
+    title: VueUse Integration
+    details: A Collection of Vue composition utilities
+    link: /guide/vueuse
 ---
 
 <script setup>
