@@ -89,6 +89,6 @@ yarn dev
 
 ::: info [Twoslash](https://twoslash.netlify.app/) powered docs!
 
-You can hover the tokens in code blocks to see the type definitions for some uncovered functions.
+You can hover the tokens in code blocks to inspect their types. This is especially useful for details not covered in the docs.
 
 :::

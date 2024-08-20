@@ -11,6 +11,7 @@
 - [**Documentation**](https://kermanx.github.io/reactive-vscode/)
 - [**Why reactive-vscode**](https://kermanx.github.io/reactive-vscode/guide/why)
 - [**All Functions**](https://kermanx.github.io/reactive-vscode/functions/)
+- [**Examples**](https://kermanx.github.io/reactive-vscode/examples/)
 
 ### Project Status
 
