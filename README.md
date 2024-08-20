@@ -4,7 +4,7 @@
 [![npm downloads][npm-downloads-src]][npm-downloads-href]
 [![License][license-src]][license-href]
 
-![Header](./docs/public/header.png)
+<img src="./docs/public/header.png" width="60%" />
 
 **Develop VSCode extension with Vue Reactivity API**
 
