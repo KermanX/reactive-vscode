@@ -66,10 +66,17 @@ export function useFsWatcher(
   }
 
   watch(normalizedPatterns, updateWatchers)
-  watch([ignoreCreateEvents, ignoreChangeEvents, ignoreDeleteEvents], () => {
-    clearWatchers()
-    updateWatchers()
-  })
+  watch(
+    () => [
+      toValue(ignoreCreateEvents),
+      toValue(ignoreChangeEvents),
+      toValue(ignoreDeleteEvents),
+    ],
+    () => {
+      clearWatchers()
+      updateWatchers()
+    },
+  )
   onScopeDispose(clearWatchers)
 
   return {
