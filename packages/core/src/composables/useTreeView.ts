@@ -1,7 +1,8 @@
-import type { MaybeRefOrGetter, WatchSource } from '@reactive-vscode/reactivity'
+import type { MaybeRefOrGetter } from '@reactive-vscode/reactivity'
 import { toValue, watch } from '@reactive-vscode/reactivity'
 import type { TreeDataProvider, TreeItem, TreeView, TreeViewOptions, ViewBadge } from 'vscode'
 import { window } from 'vscode'
+import type { AnyWatchSource } from '../utils'
 import { createKeyedComposable } from '../utils'
 import { useDisposable } from './useDisposable'
 import { useEventEmitter } from './useEventEmitter'
@@ -22,7 +23,7 @@ export type UseTreeViewOptions<T> =
     /**
      * Additional watch source to trigger a change event. Useful when `treeItem` is a promise.
      */
-    watchSource?: WatchSource<any>
+    watchSource?: AnyWatchSource
   }
 
 /**
