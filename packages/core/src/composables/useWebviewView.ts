@@ -1,13 +1,13 @@
 import type { MaybeRefOrGetter } from '@reactive-vscode/reactivity'
 import { ref, shallowRef, toValue, watchEffect } from '@reactive-vscode/reactivity'
-import type { ViewBadge, WebviewOptions, WebviewView } from 'vscode'
+import type { ViewBadge, WebviewOptions, WebviewView, WebviewViewResolveContext } from 'vscode'
 import { window } from 'vscode'
 import { createKeyedComposable } from '../utils'
 import { useDisposable } from './useDisposable'
 import { useViewBadge } from './useViewBadge'
 import { useViewTitle } from './useViewTitle'
 
-interface WebviewRegisterOptions {
+export interface WebviewViewRegisterOptions {
   retainContextWhenHidden?: boolean
   onDidReceiveMessage?: (message: any) => void
   webviewOptions?: MaybeRefOrGetter<WebviewOptions>
@@ -24,10 +24,10 @@ export const useWebviewView = createKeyedComposable(
   (
     viewId: string,
     html: MaybeRefOrGetter<string>,
-    options?: WebviewRegisterOptions,
+    options?: WebviewViewRegisterOptions,
   ) => {
     const view = shallowRef<WebviewView>()
-    const context = shallowRef<unknown>()
+    const context = shallowRef<WebviewViewResolveContext>()
     useDisposable(window.registerWebviewViewProvider(
       viewId,
       {

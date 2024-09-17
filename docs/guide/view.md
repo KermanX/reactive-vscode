@@ -77,3 +77,5 @@ Here is an example of a webview:
 <<< @/snippets/webviewView.ts
 
 The time to call `useDemoWebviewView` is the same as the tree view in the previous section.
+
+There is also `reactive::useWebviewPanel` composable to create a webview panel. The usage is similar to `reactive::useWebviewView`.
