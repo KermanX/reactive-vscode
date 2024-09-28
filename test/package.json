@@ -6,8 +6,8 @@
   },
   "devDependencies": {
     "reactive-vscode": "workspace:*",
-    "typescript": "^5.4.5",
-    "vite": "^5.2.12",
+    "typescript": "^5.6.2",
+    "vite": "^5.4.8",
     "vitest": "^1.6.0"
   }
 }
