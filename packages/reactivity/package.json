@@ -1,7 +1,7 @@
 {
   "name": "@reactive-vscode/reactivity",
   "type": "module",
-  "version": "0.2.3",
+  "version": "0.2.4",
   "description": "Full Vue Reactivity API without DOM",
   "author": "_Kerman <kermanx@qq.com>",
   "license": "MIT",
