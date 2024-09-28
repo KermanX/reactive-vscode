@@ -33,6 +33,9 @@ export function useTerminal(...args: any[]): UseTerminalReturn {
     get exitStatus() {
       return terminal.exitStatus
     },
+    get shellIntegration() {
+      return terminal.shellIntegration
+    },
     sendText: terminal.sendText.bind(terminal),
     show: terminal.show.bind(terminal),
     hide: terminal.hide.bind(terminal),

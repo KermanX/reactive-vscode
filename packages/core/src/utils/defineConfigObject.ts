@@ -33,10 +33,10 @@ export function defineConfigObject(section: Nullable<string>, configs: Record<st
 
   return reactive({
     ...configRefs,
-    $update(key, value, configurationTarget, overrideInLanguage) {
+    $update(key: string, value: any, configurationTarget: any, overrideInLanguage: any) {
       return configRefs[key].update(value, configurationTarget, overrideInLanguage)
     },
-    $set(key, value) {
+    $set(key: string, value: any) {
       return configRefs[key].set(value)
     },
   }) satisfies ConfigObject<typeof configs>
