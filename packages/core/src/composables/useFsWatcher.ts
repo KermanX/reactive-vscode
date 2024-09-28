@@ -54,6 +54,7 @@ export function useFsWatcher(
         w.onDidCreate(createEmitter.fire)
         w.onDidChange(changeEmitter.fire)
         w.onDidDelete(deleteEmitter.fire)
+        watchers.set(pattern, w)
       }
     }
   }
