@@ -4,14 +4,14 @@ import { commands } from 'vscode'
 
 export function useVscodeContext<T>(
   name: string,
-  value: ComputedRef<T> | (() => T),
-  shouldUpdate?: MaybeRefOrGetter<boolean>,
-): ComputedRef<T>
-export function useVscodeContext<T>(
-  name: string,
   value: WritableComputedRef<T>,
   shouldUpdate?: MaybeRefOrGetter<boolean>,
 ): WritableComputedRef<T>
+export function useVscodeContext<T>(
+  name: string,
+  value: ComputedRef<T> | (() => T),
+  shouldUpdate?: MaybeRefOrGetter<boolean>,
+): ComputedRef<T>
 export function useVscodeContext<T>(
   name: string,
   value: MaybeRef<T>,
