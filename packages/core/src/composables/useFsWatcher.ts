@@ -66,6 +66,8 @@ export function useFsWatcher(
     watchers.clear()
   }
 
+  updateWatchers()
+
   watch(normalizedPatterns, updateWatchers)
   watch(
     () => [
