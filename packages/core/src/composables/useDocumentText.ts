@@ -1,6 +1,6 @@
 import type { MaybeRefOrGetter } from '@reactive-vscode/reactivity'
-import { shallowRef, toValue, watchEffect } from '@reactive-vscode/reactivity'
 import type { TextDocument } from 'vscode'
+import { shallowRef, toValue, watchEffect } from '@reactive-vscode/reactivity'
 import { workspace } from 'vscode'
 import { useDisposable } from './useDisposable'
 

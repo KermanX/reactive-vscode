@@ -1,6 +1,6 @@
 import type { MaybeRefOrGetter } from '@reactive-vscode/reactivity'
-import { toValue, watchEffect } from '@reactive-vscode/reactivity'
 import type { StatusBarAlignment, StatusBarItem } from 'vscode'
+import { toValue, watchEffect } from '@reactive-vscode/reactivity'
 import { window } from 'vscode'
 import { useDisposable } from './useDisposable'
 

@@ -1,8 +1,8 @@
 // Ported from https://github.com/antfu/vscode-vite/blob/main/src/terminal.ts
 
 import type { ComputedRef, Ref } from '@reactive-vscode/reactivity'
-import { onScopeDispose, ref } from '@reactive-vscode/reactivity'
 import type { ExtensionTerminalOptions, Terminal, TerminalOptions, TerminalState } from 'vscode'
+import { onScopeDispose, ref } from '@reactive-vscode/reactivity'
 import { window } from 'vscode'
 import { useTerminalState } from './useTerminalState'
 

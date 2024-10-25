@@ -1,5 +1,5 @@
 import type { ExtensionContext } from 'vscode'
-import { StatusBarAlignment, commands, window } from 'vscode'
+import { commands, StatusBarAlignment, window } from 'vscode'
 
 export function activate(extensionContext: ExtensionContext) {
   let counter = 0

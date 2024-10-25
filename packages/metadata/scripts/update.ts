@@ -1,10 +1,10 @@
+import type { FunctionMetadata, Metadata } from '../index.d.ts'
+import { existsSync } from 'node:fs'
 import fs from 'node:fs/promises'
 import { basename, resolve } from 'node:path'
 import { fileURLToPath } from 'node:url'
-import { existsSync } from 'node:fs'
 import fg from 'fast-glob'
 import Git from 'simple-git'
-import type { FunctionMetadata, Metadata } from '../index.d.ts'
 
 const __dirname = fileURLToPath(new URL('.', import.meta.url))
 
@@ -93,7 +93,7 @@ async function run() {
   }
   await fs.writeFile(JSON_OUT, JSON.stringify(metadata, null, 2))
   await fs.writeFile(JS_OUT, `export const metadata = ${JSON.stringify(metadata, null, 2)}`)
-  // eslint-disable-next-line no-console
+
   console.log('Metadata updated')
 }
 

@@ -1,5 +1,5 @@
-import { commands } from 'vscode'
 import type { Commands } from '../utils'
+import { commands } from 'vscode'
 import { useDisposable } from './useDisposable'
 
 /**

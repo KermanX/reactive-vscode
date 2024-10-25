@@ -1,9 +1,9 @@
 import type { UnwrapNestedRefs } from '@reactive-vscode/reactivity'
-import { reactive } from '@reactive-vscode/reactivity'
 import type { ConfigurationScope, ConfigurationTarget } from 'vscode'
 import type { ConfigTypeOptions, ParseConfigTypeOptions } from './defineConfigs'
-import { defineConfigs } from './defineConfigs'
 import type { Nullable } from './types'
+import { reactive } from '@reactive-vscode/reactivity'
+import { defineConfigs } from './defineConfigs'
 
 export type ConfigObject<C extends object> = UnwrapNestedRefs<C> & {
   /**

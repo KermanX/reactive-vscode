@@ -1,6 +1,6 @@
-import { describe, expectTypeOf, it } from 'vitest'
 import type { ConfigType } from 'reactive-vscode'
 import { defineConfigObject } from 'reactive-vscode'
+import { describe, expectTypeOf, it } from 'vitest'
 
 describe('keyedComposable', () => {
   it.skip('should have correct type', () => {

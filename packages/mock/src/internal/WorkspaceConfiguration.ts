@@ -1,7 +1,7 @@
 import type vscode from 'vscode'
+import type { MockVscode } from '../ns'
 import { vi } from 'vitest'
 import { Unimplemented } from '../utils/unimplemented'
-import type { MockVscode } from '../ns'
 
 export class WorkspaceConfiguration implements vscode.WorkspaceConfiguration {
   constructor(public _context: MockVscode, public _data: any, public _baseSection?: string) {

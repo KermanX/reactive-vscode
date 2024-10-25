@@ -1,7 +1,7 @@
 import type { MaybeRefOrGetter } from '@reactive-vscode/reactivity'
-import { toValue, watchEffect } from '@reactive-vscode/reactivity'
 import type { TreeView, WebviewView } from 'vscode'
 import type { Nullable } from '../utils/types'
+import { toValue, watchEffect } from '@reactive-vscode/reactivity'
 
 type ViewWithTitle = Pick<TreeView<unknown> | WebviewView, 'title'>
 

@@ -1,7 +1,7 @@
 import type { MaybeRefOrGetter } from '@reactive-vscode/reactivity'
-import { computed } from '@reactive-vscode/reactivity'
 import type { TextEditor, TextEditorSelectionChangeKind } from 'vscode'
 import type { MaybeNullableRefOrGetter } from '../utils'
+import { computed } from '@reactive-vscode/reactivity'
 import { useTextEditorSelections } from './useTextEditorSelections'
 
 /**

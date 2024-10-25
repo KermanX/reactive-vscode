@@ -1,13 +1,13 @@
-import { vi } from 'vitest'
 import type vscode from 'vscode'
+import type { MockVscode } from '.'
+import type { WorkspaceNS } from '../types'
+import { vi } from 'vitest'
 import { EventEmitter } from '../class/EventEmitter'
 import { Uri } from '../class/Uri'
-import type { WorkspaceNS } from '../types'
-import { Unimplemented } from '../utils/unimplemented'
-import { TextDocument } from '../internal/TextDocument'
 import { TextDocumentSaveReason } from '../enum/TextDocumentSaveReason'
+import { TextDocument } from '../internal/TextDocument'
 import { WorkspaceConfiguration } from '../internal/WorkspaceConfiguration'
-import type { MockVscode } from '.'
+import { Unimplemented } from '../utils/unimplemented'
 
 export function createMockWorkspace(_context: MockVscode) {
   const _init = _context._config.init.workspace

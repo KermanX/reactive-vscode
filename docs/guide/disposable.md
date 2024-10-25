@@ -5,8 +5,8 @@ Although most of the VSCode API is covered by <ReactiveVscode />, sometimes you 
 `reactive::useDisposable` accepts a disposable object and automatically disposes it when the current effect scope is disposed (e.g., when the extension is deactivated, if `vscode::useDisposable` is called in the extension's setup function). `reactive::useDisposable` returns the disposable object itself as is.
 
 ```ts
-import { defineExtension, useDisposable } from 'reactive-vscode'
 import type { TextDocument } from 'vscode'
+import { defineExtension, useDisposable } from 'reactive-vscode'
 import { languages } from 'vscode'
 
 export = defineExtension(() => {

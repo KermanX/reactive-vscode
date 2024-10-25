@@ -1,8 +1,8 @@
 <script setup lang="ts">
-import { useTimeAgo } from '@vueuse/core'
-import { computed } from 'vue'
 import { metadata } from '@reactive-vscode/metadata'
+import { useTimeAgo } from '@vueuse/core'
 import { withBase } from 'vitepress'
+import { computed } from 'vue'
 
 const props = defineProps<{ name: string }>()
 const info = computed(() => metadata.functions.find(i => i.name === props.name)!)

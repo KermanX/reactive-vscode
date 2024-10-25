@@ -1,7 +1,7 @@
-import { computed, shallowRef, toValue, watch } from '@reactive-vscode/reactivity'
 import type { Terminal } from 'vscode'
-import { window } from 'vscode'
 import type { MaybeNullableRefOrGetter } from '../utils'
+import { computed, shallowRef, toValue, watch } from '@reactive-vscode/reactivity'
+import { window } from 'vscode'
 import { useDisposable } from './useDisposable'
 
 /**

@@ -1,6 +1,6 @@
-import { computed } from '@reactive-vscode/reactivity'
 import type { NotebookEditor } from 'vscode'
 import type { MaybeNullableRefOrGetter } from '../utils'
+import { computed } from '@reactive-vscode/reactivity'
 import { useNotebookEditorSelections } from './useNotebookEditorSelections'
 
 /**

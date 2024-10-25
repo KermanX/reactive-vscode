@@ -1,6 +1,6 @@
 import type vscode from 'vscode'
-import { vi } from 'vitest'
 import type { TextDocument } from './TextDocument'
+import { vi } from 'vitest'
 
 export class TextEditorEdit implements vscode.TextEditorEdit {
   constructor(public _document: TextDocument) {}

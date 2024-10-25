@@ -1,7 +1,7 @@
 import type vscode from 'vscode'
-import { vi } from 'vitest'
 import type { MockVscode } from '../ns/index'
 import type { TextDocument } from './TextDocument'
+import { vi } from 'vitest'
 import { TextEditorEdit } from './TextEditorEdit'
 
 export class TextEditor implements vscode.TextEditor {

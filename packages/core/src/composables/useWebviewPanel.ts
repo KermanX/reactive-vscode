@@ -1,6 +1,6 @@
 import type { MaybeRefOrGetter } from '@reactive-vscode/reactivity'
-import { ref, shallowRef, toValue, watchEffect } from '@reactive-vscode/reactivity'
 import type { WebviewOptions } from 'vscode'
+import { ref, shallowRef, toValue, watchEffect } from '@reactive-vscode/reactivity'
 import { window } from 'vscode'
 import { useDisposable } from './useDisposable'
 import { useViewTitle } from './useViewTitle'

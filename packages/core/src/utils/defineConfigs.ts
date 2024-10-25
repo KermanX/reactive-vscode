@@ -1,10 +1,10 @@
 import type { WritableComputedRef } from '@reactive-vscode/reactivity'
-import { computed, shallowRef } from '@reactive-vscode/reactivity'
 import type { ConfigurationScope, ConfigurationTarget } from 'vscode'
+import type { Nullable } from './types'
+import { computed, shallowRef } from '@reactive-vscode/reactivity'
 import { workspace } from 'vscode'
 import { useDisposable } from '../composables'
 import { onActivate } from './onActivate'
-import type { Nullable } from './types'
 
 export interface ConfigRef<T> extends WritableComputedRef<T> {
   /**

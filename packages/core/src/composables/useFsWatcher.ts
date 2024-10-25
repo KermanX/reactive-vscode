@@ -1,8 +1,8 @@
 import type { MaybeRefOrGetter, ShallowReactive } from '@reactive-vscode/reactivity'
-import { computed, onScopeDispose, shallowReactive, toValue, watch } from '@reactive-vscode/reactivity'
 import type { Event, FileSystemWatcher, GlobPattern, Uri } from 'vscode'
-import { workspace } from 'vscode'
 import type { MaybeNullableRefOrGetter } from '../utils'
+import { computed, onScopeDispose, shallowReactive, toValue, watch } from '@reactive-vscode/reactivity'
+import { workspace } from 'vscode'
 import { useEventEmitter } from './useEventEmitter'
 
 export interface UseFSWatcher {

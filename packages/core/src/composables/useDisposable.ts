@@ -1,5 +1,5 @@
-import { getCurrentScope } from '@reactive-vscode/reactivity'
 import type { Disposable } from 'vscode'
+import { getCurrentScope } from '@reactive-vscode/reactivity'
 import { extensionScope } from '../utils'
 
 /**

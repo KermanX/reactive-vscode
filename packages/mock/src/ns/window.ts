@@ -1,13 +1,13 @@
 import type vscode from 'vscode'
+import type { MockVscode } from '.'
+import type { WindowNS } from '../types'
 import { vi } from 'vitest'
 import { EventEmitter } from '../class/EventEmitter'
+import { ColorThemeKind } from '../enum/ColorThemeKind'
 import { TextDocument } from '../internal/TextDocument'
 import { TextEditor } from '../internal/TextEditor'
-import type { WindowNS } from '../types'
 import { createState } from '../utils/state'
-import { ColorThemeKind } from '../enum/ColorThemeKind'
 import { Unimplemented } from '../utils/unimplemented'
-import type { MockVscode } from '.'
 
 export function createMockWindow(_context: MockVscode) {
   const _init = _context._config.init.window

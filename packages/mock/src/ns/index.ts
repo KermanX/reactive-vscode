@@ -1,12 +1,12 @@
-import * as enums from '../enum'
-import * as classes from '../class'
 import type { ExtensionContext } from '../internal/ExtensionContext'
-import { createExtensionContext } from '../internal/ExtensionContext'
 import type { RawConfig, ResolvedConfig } from '../options'
-import { resolveConfig } from '../options'
 import type { MockWindow } from './window'
-import { createMockWindow } from './window'
 import type { MockWorkspace } from './workspace'
+import * as classes from '../class'
+import * as enums from '../enum'
+import { createExtensionContext } from '../internal/ExtensionContext'
+import { resolveConfig } from '../options'
+import { createMockWindow } from './window'
 import { createMockWorkspace } from './workspace'
 
 type ExposedEnums = typeof enums

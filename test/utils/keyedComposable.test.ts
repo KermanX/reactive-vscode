@@ -1,5 +1,5 @@
-import { describe, expect, it, vi } from 'vitest'
 import { createKeyedComposable, effectScope } from 'reactive-vscode'
+import { describe, expect, it, vi } from 'vitest'
 
 const fnImpl = (a: number) => ({ a })
 

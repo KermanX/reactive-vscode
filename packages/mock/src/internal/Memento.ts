@@ -1,5 +1,5 @@
-import { vi } from 'vitest'
 import type vscode from 'vscode'
+import { vi } from 'vitest'
 
 export class Memento implements vscode.Memento {
   constructor(public _getData: () => any) {}

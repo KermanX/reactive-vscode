@@ -1,5 +1,5 @@
-import { computed, shallowRef } from '@reactive-vscode/reactivity'
 import type { UseLoggerOptions } from '../composables'
+import { computed, shallowRef } from '@reactive-vscode/reactivity'
 import { useLogger } from '../composables'
 import { onActivate } from './onActivate'
 

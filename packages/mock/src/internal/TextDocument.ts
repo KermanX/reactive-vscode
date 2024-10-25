@@ -1,8 +1,8 @@
 import type vscode from 'vscode'
+import type { MockVscode } from '../ns/index'
 import { Position } from '../class/Position'
 import { Range } from '../class/Range'
 import { EndOfLine } from '../enum/EndOfLine'
-import type { MockVscode } from '../ns/index'
 import { Unimplemented } from '../utils/unimplemented'
 
 export class TextDocument implements vscode.TextDocument {
