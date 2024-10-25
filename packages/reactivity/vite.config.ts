@@ -1,4 +1,3 @@
-import path from 'node:path'
 import { defineConfig } from 'vite'
 import Dts from 'vite-plugin-dts'
 
@@ -28,7 +27,7 @@ export default defineConfig({
   build: {
     lib: {
       entry: 'src/index.ts',
-      formats: ['es'],
+      formats: ['es', 'cjs'],
       fileName: 'index',
     },
     minify: false,
