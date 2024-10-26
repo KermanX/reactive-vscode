@@ -114,16 +114,9 @@ You can also use the [`vscode-ext-gen`](https://github.com/antfu/vscode-ext-gen)
 
 ```ts
 import { defineConfigObject, defineConfigs, reactive, ref } from 'reactive-vscode'
-import { type ScopedConfigKeyTypeMap, scopedConfigs } from './generated-meta'
+import { type NestedScopedConfigs, scopedConfigs } from './generated-meta'
 
-const { disabled } = defineConfigs<ScopedConfigKeyTypeMap>(
-  scopedConfigs.scope,
-  scopedConfigs.defaults,
-)
-
-// Or
-
-const config = defineConfigObject<ScopedConfigKeyTypeMap>(
+const config = defineConfigObject<NestedScopedConfigs>(
   scopedConfigs.scope,
   scopedConfigs.defaults,
 )
