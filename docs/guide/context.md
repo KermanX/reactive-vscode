@@ -16,4 +16,4 @@ export = defineExtension(() => {
 
 Note that `contextA` and `contextB` are `ref`s, which means you can set them later, and the context will be updated accordingly. `contextC` is a `computed` value, which means it will be updated automatically when `contextA` changes.
 
-For more information about when clause contexts, please refer to the [official documentation](https://code.visualstudio.com/api/references/when-clause-contexts).
+For more information on `when` clause contexts, please refer to the [official documentation](https://code.visualstudio.com/api/references/when-clause-contexts).

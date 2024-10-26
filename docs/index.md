@@ -31,7 +31,7 @@ features:
     details: Most of the VSCode APIs included
   - icon: ⚡
     title: Fully tree shakeable
-    details: Only take what you want
+    details: Only use what you want
   - icon: <span class="i-logos-vueuse"></span>
     title: VueUse Integration
     details: A Collection of Vue composition utilities

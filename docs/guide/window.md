@@ -79,4 +79,4 @@ export = defineExtension(() => {
 })
 ```
 
-Note that you can pass one of an array of patterns to watch for changes in the file system. Multiple VSCode watchers are created for each pattern.
+Note that you can pass an array of patterns to watch for changes in the file system. Multiple VSCode watchers will be created for each pattern.
