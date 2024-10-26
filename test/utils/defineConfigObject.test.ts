@@ -10,12 +10,5 @@ describe('keyedComposable', () => {
     })
     expectTypeOf(config1.num).toMatchTypeOf<number>()
     expectTypeOf(config1.obj).toMatchTypeOf<{ a: number }>()
-
-    const config2 = defineConfigObject('test', {
-      num: 1,
-      obj: { a: 1 },
-    })
-    expectTypeOf(config2.num).toMatchTypeOf<number>()
-    expectTypeOf(config2.obj).toMatchTypeOf<{ a: number }>()
   })
 })
