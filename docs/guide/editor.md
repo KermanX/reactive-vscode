@@ -1,5 +1,12 @@
+# Editor and Document
+
+## Document
+
+The `reactive::useDocumentText` composable can be used to get the text of the document.
+
+```ts
 import type { ExtensionContext } from 'vscode'
-/* eslint-disable import/first */
+
 import { computed, defineExtension, ref, useActiveTextEditor, useDocumentText, watchEffect } from 'reactive-vscode'
 
 export = defineExtension(() => {
@@ -36,7 +43,7 @@ See `vscode::TextEditor.setDecorations` for more information. To create a decora
 
 ## Editor Selections
 
-The following 4 composable can be used to **get and set** the selections of editors.
+The following 4 composables can be used to **get and set** the selections of editors.
 
 - `reactive::useTextEditorSelections` - All selections in the text editor.
 - `reactive::useTextEditorSelection` - The primary selection in the text editor.
@@ -47,7 +54,7 @@ See their docs for more information. Note that `reactive::useTextEditorSelection
 
 ## Editor Viewport
 
-The following 3 composable can be used to **get** the viewport information of editors.
+The following 3 composables can be used to **get** the viewport information of editors.
 
 - `reactive::useTextEditorViewColumn` - The view column of the text editor.
 - `reactive::useTextEditorVisibleRanges` - The visible ranges of the text editor.

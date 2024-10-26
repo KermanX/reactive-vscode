@@ -2,7 +2,7 @@
 
 Commands trigger actions. Commands expose functionality to users, bind to actions in VS Code's UI, and implement internal logic.
 
-There are some [built-in commands](https://code.visualstudio.com/api/references/commands) in VS Code, and you can also define your own commands.
+There are some [built-in commands](https://code.visualstudio.com/api/references/commands) in VSCode, and you can also define your own commands.
 
 ## Define in Manifest <NonProprietary />
 

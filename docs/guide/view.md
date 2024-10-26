@@ -56,7 +56,7 @@ export = defineExtension(() => {
 })
 ```
 
-The `children` property in nodes is used to define the children of the node. The `treeItem` propert is required and is used to define the tree item of the node. It should be a `vscode::TreeItem` object, or a promise that resolves to a `vscode::TreeItem` object.
+The `children` property in nodes is used to define the children of the node. The `treeItem` property is required and is used to define the tree item of the node. It should be a `vscode::TreeItem` object, or a promise that resolves to a `vscode::TreeItem` object.
 
 If you want to trigger an update based on some reactive values that aren't tracked in `treeData`, you can pass them to the `watchSource` option.
 
@@ -65,7 +65,7 @@ If you want to trigger an update based on some reactive values that aren't track
 :::
 
 ::: warning
-For the above example, `useDemoTreeView` should **not** be called top-level in the module, because the extension context is not available at that time. Instead, you should **always** call it in the `setup` function.
+For the above example, `useDemoTreeView` should **not** be called at the top-level in the module, because the extension context is not available at that time. Instead, you should **always** call it in the `setup` function.
 :::
 
 ## Register Webview
