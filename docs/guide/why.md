@@ -16,11 +16,11 @@ The official API is event-based, which means you have to listen to events to wat
 
 ### The Disposables
 
-Disposables are everywhere in a VSCode extension. You have to store all of them to `vscode::ExtensionContext.subscriptions`, or dispose them manually.
+Disposables are everywhere in a VSCode extension. You have to store all of them in `vscode::ExtensionContext.subscriptions`, or dispose them manually.
 
 ### When to Initialize
 
-Views in a VSCode extension are created lazily. If you want to access a view instance, you have to store it, and even listen to a event which is fired when the view is created.
+Views in a VSCode extension are created lazily. If you want to access a view instance, you have to store it, and even listen to an event which is fired when the view is created.
 
 ### Want to use Vue
 

@@ -1,8 +1,8 @@
 # Events
 
-Although most of the VSCode API is covered by <ReactiveVscode />, sometimes you still need to create or listen original [VSCode events](https://code.visualstudio.com/api/references/vscode-api#events).
+Although most of the VSCode APIs are covered by <ReactiveVscode />, sometimes you still need to create or listen to the primitive  [VSCode events](https://code.visualstudio.com/api/references/vscode-api#events).
 
-`reactive::useEvent` converts an raw event to a auto-disposed event:
+`reactive::useEvent` converts a raw event to an auto-disposed event:
 
 ```ts
 import { defineExtension, useEvent } from 'reactive-vscode'
@@ -18,7 +18,7 @@ export = defineExtension(() => {
 })
 ```
 
-`reactive::useEventEmitter` creates a frindly event emitter, which still extends `vscode::EventEmitter`:
+`reactive::useEventEmitter` creates a friendly event emitter which still extends `vscode::EventEmitter`:
 
 <!-- eslint-disable import/first -->
 ```ts
