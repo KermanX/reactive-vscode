@@ -17,12 +17,13 @@
 
 Currently, most of the VSCode APIs are covered, and this project has been used in:
 
+- [Vue - Official <sub><sub>![downloads](https://img.shields.io/visual-studio-marketplace/d/Vue.volar.svg)</sub></sub>](https://github.com/vuejs/language-tools)
 - [Slidev for VSCode <sub><sub>![downloads](https://img.shields.io/visual-studio-marketplace/d/antfu.slidev.svg)</sub></sub>](https://github.com/slidevjs/slidev/tree/main/packages/vscode)
 - [Iconify IntelliSense <sub><sub>![downloads](https://img.shields.io/visual-studio-marketplace/d/antfu.iconify.svg)</sub></sub>](https://github.com/antfu/vscode-iconify)
 
 The [documentation](https://kermanx.github.io/reactive-vscode/) is complete, and the [VueUse integration](https://kermanx.github.io/reactive-vscode/guide/vueuse.html) is also available.
 
-However, the project is still in beta and may have minor API changes. If you encounter any problems, please feel free to [open an issue](https://github.com/KermanX/reactive-vscode/issues/new).
+However, the project is still in its 0.x and may have minor API changes. If you encounter any problems, please feel free to [open an issue](https://github.com/KermanX/reactive-vscode/issues/new).
 
 ### Counter Example
 
