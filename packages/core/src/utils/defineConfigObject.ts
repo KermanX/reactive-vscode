@@ -1,7 +1,7 @@
-import type { UnwrapNestedRefs } from '@reactive-vscode/reactivity'
 import type { ConfigurationScope, ConfigurationTarget } from 'vscode'
 import type { ConfigTypeOptions, ParseConfigTypeOptions } from './defineConfigs'
 import type { Nullable } from './types'
+import { reactive, type UnwrapNestedRefs } from '@reactive-vscode/reactivity'
 import { defineConfigs } from './defineConfigs'
 
 export type ConfigObject<C extends object> = UnwrapNestedRefs<C> & {
@@ -31,14 +31,14 @@ export function defineConfigObject(section: Nullable<string>, configs: Record<st
   const configRefs = defineConfigs(section, configs, scope)
 
   const nestedKeys: any = {}
-  const rawData: any = {
+  const rawData: any = reactive({
     $update(key: string, value: any, configurationTarget: any, overrideInLanguage: any) {
       return configRefs[key].update(value, configurationTarget, overrideInLanguage)
     },
     $set(key: string, value: any) {
       return configRefs[key].set(value)
     },
-  }
+  })
   for (const key in configs) {
     const path = key.split('.')
     let prefix = ''
