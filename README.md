@@ -91,7 +91,7 @@ Source code in [the `./packages/reactivity` directory](https://github.com/Kerman
 
 Source code in [the `./packages/mock` directory](https://github.com/KermanX/reactive-vscode/blob/main/packages/core/src/mock) references the implementation of [`VSCode`](https://github.com/microsoft/vscode). Licensed under a [MIT License](https://github.com/microsoft/vscode/blob/main/LICENSE.txt).
 
-The logo <img src="https://kermanx.github.io/reactive-vscode/logo.svg" width="14"> is modified from [Vue Reactity Artworks](https://github.com/vue-reactivity/art). Licensed under a [Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License](https://creativecommons.org/licenses/by-nc-sa/4.0/).
+The logo <img src="https://kermanx.github.io/reactive-vscode/logo.svg" width="14"> is modified from [Vue Reactivity Artworks](https://github.com/vue-reactivity/art). Licensed under a [Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License](https://creativecommons.org/licenses/by-nc-sa/4.0/).
 
 Part of the docs website is ported from [VueUse](https://github.com/vueuse/vueuse). Licensed under a [MIT License](https://github.com/vueuse/vueuse/blob/main/LICENSE).
 
