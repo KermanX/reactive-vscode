@@ -1,7 +1,8 @@
+import type { UnwrapNestedRefs } from '@reactive-vscode/reactivity'
 import type { ConfigurationScope, ConfigurationTarget } from 'vscode'
 import type { ConfigTypeOptions, ParseConfigTypeOptions } from './defineConfigs'
 import type { Nullable } from './types'
-import { reactive, type UnwrapNestedRefs } from '@reactive-vscode/reactivity'
+import { shallowReactive } from '@reactive-vscode/reactivity'
 import { defineConfigs } from './defineConfigs'
 
 export type ConfigObject<C extends object> = UnwrapNestedRefs<C> & {
@@ -31,7 +32,7 @@ export function defineConfigObject(section: Nullable<string>, configs: Record<st
   const configRefs = defineConfigs(section, configs, scope)
 
   const nestedKeys: any = {}
-  const rawData: any = reactive({
+  const rawData: any = shallowReactive({
     $update(key: string, value: any, configurationTarget: any, overrideInLanguage: any) {
       return configRefs[key].update(value, configurationTarget, overrideInLanguage)
     },
@@ -51,7 +52,7 @@ export function defineConfigObject(section: Nullable<string>, configs: Record<st
         targetData = targetData[p]
       }
       else {
-        const innerData = {}
+        const innerData = shallowReactive({})
         Object.defineProperty(targetData, p, {
           enumerable: true,
           get() {
