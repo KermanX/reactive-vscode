@@ -9,7 +9,7 @@ import {
   watch as baseWatch,
 } from '@vue/reactivity'
 import { type SchedulerJob, SchedulerJobFlags, queueJob } from './scheduler'
-import { EMPTY_OBJ, NOOP, extend, isFunction, isString } from '@vue/shared'
+import { EMPTY_OBJ, extend, isFunction } from '@vue/shared'
 import { callWithAsyncErrorHandling } from './errorHandling'
 import { warn } from './warning'
 
@@ -152,7 +152,7 @@ function doWatch(
 
   // @ts-expect-error internal typedef
   baseWatchOptions.call = (fn, type, args) =>
-    callWithAsyncErrorHandling(fn, type, args)
+    callWithAsyncErrorHandling(fn, null, type, args)
 
   // scheduler
   let isPre = false
