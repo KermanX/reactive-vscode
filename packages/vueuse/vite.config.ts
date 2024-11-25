@@ -28,14 +28,14 @@ export default defineConfig({
       bundledPackages: ['@vueuse/core', '@vueuse/shared'],
       beforeWriteFile(_, content) {
         return {
-          content: content.replaceAll('\'vue-demi\'', '\'@reactive-vscode/reactivity\''),
+          content: content.replaceAll('\'vue\'', '\'@reactive-vscode/reactivity\''),
         }
       },
     }),
   ],
   resolve: {
     alias: {
-      'vue-demi': path.resolve(__dirname, './src/vue-demi.ts'),
+      vue: path.resolve(__dirname, './src/vue-replacement.ts'),
     },
   },
   build: {
