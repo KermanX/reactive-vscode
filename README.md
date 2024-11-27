@@ -87,7 +87,7 @@ export function activate(extensionContext: ExtensionContext) {
 
 [MIT](./LICENSE) License © 2024-PRESENT [_Kerman](https://github.com/KermanX)
 
-Source code in [the `./packages/reactivity` directory](https://github.com/KermanX/reactive-vscode/blob/main/packages/core/src/reactivity) is ported from [`@vue/runtime-core`](https://github.com/vuejs/core/blob/main/packages/runtime-core). Licensed under a [MIT License](https://github.com/vueuse/vueuse/blob/main/LICENSE).
+Source code in [the `./packages/reactivity` directory](https://github.com/KermanX/reactive-vscode/blob/main/packages/reactivity) is ported from [`@vue/runtime-core`](https://github.com/vuejs/core/blob/main/packages/runtime-core). Licensed under a [MIT License](https://github.com/vueuse/vueuse/blob/main/LICENSE).
 
 Source code in [the `./packages/mock` directory](https://github.com/KermanX/reactive-vscode/blob/main/packages/core/src/mock) references the implementation of [`VSCode`](https://github.com/microsoft/vscode). Licensed under a [MIT License](https://github.com/microsoft/vscode/blob/main/LICENSE.txt).
 

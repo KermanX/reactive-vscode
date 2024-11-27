@@ -52,7 +52,7 @@ More examples [here](../examples/){target="_blank"}.
 
 ### Vue without DOM and components?
 
-This library is built on top of `npm::@vue/reactivity`, and ported some code from `npm::@vue/runtime-core` (See [the `./packages/core/src/reactivity` directory](https://github.com/KermanX/reactive-vscode/blob/main/packages/core/src/reactivity)).
+This library is built on top of `npm::@vue/reactivity`, and ported some code from `npm::@vue/runtime-core` (See [the `./packages/reactivity` directory](https://github.com/KermanX/reactive-vscode/tree/main/packages/reactivity)).
 
 The size of the minimal extension built with this library is about 12KB.
 
