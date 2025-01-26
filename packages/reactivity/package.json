@@ -36,9 +36,9 @@
   "devDependencies": {
     "@vue/reactivity": "^3.5.13",
     "@vue/shared": "^3.5.13",
-    "typescript": "^5.7.2",
-    "vite": "^5.4.11",
-    "vite-plugin-dts": "^4.3.0"
+    "typescript": "^5.7.3",
+    "vite": "^5.4.14",
+    "vite-plugin-dts": "^4.5.0"
   },
   "publishConfig": {
     "exports": {

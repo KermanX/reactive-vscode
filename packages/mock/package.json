@@ -34,11 +34,11 @@
     "prepublishOnly": "pnpm typecheck"
   },
   "dependencies": {
-    "vitest": "^2.1.5",
+    "vitest": "^2.1.8",
     "vscode-uri": "^3.0.8"
   },
   "devDependencies": {
-    "@types/vscode": "^1.95.0",
-    "typescript": "^5.7.2"
+    "@types/vscode": "^1.96.0",
+    "typescript": "^5.7.3"
   }
 }
