@@ -15,6 +15,7 @@ export interface UseStatusBarItemOptions {
   backgroundColor?: MaybeRefOrGetter<StatusBarItem['backgroundColor']>
   command?: MaybeRefOrGetter<StatusBarItem['command']>
   accessibilityInformation?: MaybeRefOrGetter<StatusBarItem['accessibilityInformation']>
+  visible?: MaybeRefOrGetter<boolean>
 }
 
 /**
@@ -40,6 +41,17 @@ export function useStatusBarItem(options: UseStatusBarItemOptions): StatusBarIte
     'command',
     'accessibilityInformation',
   ].forEach(reactivelySet)
+
+  if (options.visible != null) {
+    watchEffect(() => {
+      if (toValue(options.visible)) {
+        item.show()
+      }
+      else {
+        item.hide()
+      }
+    })
+  }
 
   return item
 }
