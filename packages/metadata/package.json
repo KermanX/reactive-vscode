@@ -1,7 +1,7 @@
 {
   "name": "@reactive-vscode/metadata",
   "type": "module",
-  "version": "0.2.11",
+  "version": "0.2.12",
   "description": "Metadata for reactive-vscode",
   "author": "_Kerman <kermanx@qq.com>",
   "license": "MIT",
