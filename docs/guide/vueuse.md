@@ -37,4 +37,4 @@ export = defineExtension(() => {
 
 ## Available Functions
 
-Every VueUse function that is compatible with the Node.js environment and doesn't require Vue's rendering API is available in this package. Check it out [`packages/vueuse/src/index.ts`](https://github.com/KermanX/reactive-vscode/blob/main/packages/vueuse/src/index.ts) for the full list.
+Every VueUse function that is compatible with the Node.js environment and doesn't require Vue's rendering API is available in this package. Check it out [`packages/vueuse/src/index.ts`](https://github.com/kermanx/reactive-vscode/blob/main/packages/vueuse/src/index.ts) for the full list.

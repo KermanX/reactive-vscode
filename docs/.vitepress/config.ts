@@ -66,7 +66,7 @@ export default defineConfig({
     },
 
     socialLinks: [
-      { icon: 'github', link: 'https://github.com/KermanX/reactive-vscode' },
+      { icon: 'github', link: 'https://github.com/kermanx/reactive-vscode' },
       { icon: 'discord', link: 'https://discord.gg/8YNDMA5Hcq' },
     ],
 

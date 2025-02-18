@@ -5,12 +5,12 @@
   "description": "Metadata for reactive-vscode",
   "author": "_Kerman <kermanx@qq.com>",
   "license": "MIT",
-  "homepage": "https://github.com/KermanX/reactive-vscode#readme",
+  "homepage": "https://github.com/kermanx/reactive-vscode#readme",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/KermanX/reactive-vscode.git"
+    "url": "git+https://github.com/kermanx/reactive-vscode.git"
   },
-  "bugs": "https://github.com/KermanX/reactive-vscode/issues",
+  "bugs": "https://github.com/kermanx/reactive-vscode/issues",
   "keywords": [
     "reactive-vscode",
     "metadata"

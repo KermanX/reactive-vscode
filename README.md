@@ -23,7 +23,7 @@ Currently, most of the VSCode APIs are covered, and this project has been used i
 
 The [documentation](https://kermanx.github.io/reactive-vscode/) is complete, and the [VueUse integration](https://kermanx.github.io/reactive-vscode/guide/vueuse.html) is also available.
 
-However, the project is still in its 0.x and may have minor API changes. If you encounter any problems, please feel free to [open an issue](https://github.com/KermanX/reactive-vscode/issues/new).
+However, the project is still in its 0.x and may have minor API changes. If you encounter any problems, please feel free to [open an issue](https://github.com/kermanx/reactive-vscode/issues/new).
 
 ### Counter Example
 
@@ -85,11 +85,11 @@ export function activate(extensionContext: ExtensionContext) {
 
 ### License
 
-[MIT](./LICENSE) License © 2024-PRESENT [_Kerman](https://github.com/KermanX)
+[MIT](./LICENSE) License © 2024-PRESENT [_Kerman](https://github.com/kermanx)
 
-Source code in [the `./packages/reactivity` directory](https://github.com/KermanX/reactive-vscode/blob/main/packages/reactivity) is ported from [`@vue/runtime-core`](https://github.com/vuejs/core/blob/main/packages/runtime-core). Licensed under a [MIT License](https://github.com/vueuse/vueuse/blob/main/LICENSE).
+Source code in [the `./packages/reactivity` directory](https://github.com/kermanx/reactive-vscode/blob/main/packages/reactivity) is ported from [`@vue/runtime-core`](https://github.com/vuejs/core/blob/main/packages/runtime-core). Licensed under a [MIT License](https://github.com/vueuse/vueuse/blob/main/LICENSE).
 
-Source code in [the `./packages/mock` directory](https://github.com/KermanX/reactive-vscode/blob/main/packages/core/src/mock) references the implementation of [`VSCode`](https://github.com/microsoft/vscode). Licensed under a [MIT License](https://github.com/microsoft/vscode/blob/main/LICENSE.txt).
+Source code in [the `./packages/mock` directory](https://github.com/kermanx/reactive-vscode/blob/main/packages/core/src/mock) references the implementation of [`VSCode`](https://github.com/microsoft/vscode). Licensed under a [MIT License](https://github.com/microsoft/vscode/blob/main/LICENSE.txt).
 
 The logo <img src="https://kermanx.github.io/reactive-vscode/logo.svg" width="14"> is modified from [Vue Reactivity Artworks](https://github.com/vue-reactivity/art). Licensed under a [Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License](https://creativecommons.org/licenses/by-nc-sa/4.0/).
 
@@ -104,6 +104,6 @@ Part of the docs website is ported from [VueUse](https://github.com/vueuse/vueus
 [bundle-src]: https://img.shields.io/bundlephobia/minzip/reactive-vscode?style=flat&colorA=080f12&colorB=1fa669&label=minzip
 [bundle-href]: https://bundlephobia.com/result?p=reactive-vscode
 [license-src]: https://img.shields.io/github/license/KermanX/reactive-vscode.svg?style=flat&colorA=080f12&colorB=1fa669
-[license-href]: https://github.com/KermanX/reactive-vscode/blob/main/LICENSE
+[license-href]: https://github.com/kermanx/reactive-vscode/blob/main/LICENSE
 [jsdocs-src]: https://img.shields.io/badge/jsdocs-reference-080f12?style=flat&colorA=080f12&colorB=1fa669
 [jsdocs-href]: https://www.jsdocs.io/package/reactive-vscode
