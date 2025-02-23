@@ -1,7 +1,7 @@
 import type { MaybeRef, MaybeRefOrGetter } from '@reactive-vscode/reactivity'
 import type { DecorationOptions, DecorationRenderOptions, Range, TextEditor, TextEditorDecorationType } from 'vscode'
 import type { Awaitable, Nullable } from '../utils/types'
-import { toValue, watch, watchEffect } from '@reactive-vscode/reactivity'
+import { computed, toValue, watch, watchEffect } from '@reactive-vscode/reactivity'
 import { window } from 'vscode'
 import { useDisposable } from './useDisposable'
 import { useDocumentText } from './useDocumentText'
@@ -22,7 +22,7 @@ export interface UseEditorDecorationsOptions {
  */
 export function useEditorDecorations(
   editor: MaybeRefOrGetter<Nullable<TextEditor>>,
-  decorationTypeOrOptions: TextEditorDecorationType | DecorationRenderOptions,
+  decorationTypeOrOptions: MaybeRefOrGetter<TextEditorDecorationType | DecorationRenderOptions>,
   decorations:
     | MaybeRef<readonly Range[] | readonly DecorationOptions[]>
     | ((editor: TextEditor) => Awaitable<readonly Range[] | readonly DecorationOptions[]>),
@@ -32,9 +32,15 @@ export function useEditorDecorations(
     updateOn = ['effect', 'documentChanged'],
   } = options
 
-  const decorationType = 'key' in decorationTypeOrOptions
-    ? decorationTypeOrOptions
-    : useDisposable(window.createTextEditorDecorationType(decorationTypeOrOptions))
+  const decorationType = computed<TextEditorDecorationType>(
+    (oldDecorationTypeOrOptions) => {
+      oldDecorationTypeOrOptions?.dispose()
+      const decorationTypeOrOptionsValue = toValue(decorationTypeOrOptions)
+      return 'key' in decorationTypeOrOptionsValue
+        ? decorationTypeOrOptionsValue
+        : useDisposable(window.createTextEditorDecorationType(decorationTypeOrOptionsValue))
+    },
+  )
 
   const update = async () => {
     const editorValue = toValue(editor)
@@ -42,7 +48,7 @@ export function useEditorDecorations(
       return
 
     editorValue.setDecorations(
-      decorationType,
+      decorationType.value,
       typeof decorations === 'function'
         ? await decorations(editorValue)
         : toValue(decorations),
