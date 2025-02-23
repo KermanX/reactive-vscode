@@ -9,7 +9,7 @@ import { useEditorDecorations } from './useEditorDecorations'
  * @category editor
  */
 export function useActiveEditorDecorations(
-  decorationTypeOrOptions: TextEditorDecorationType | DecorationRenderOptions,
+  decorationTypeOrOptions: MaybeRefOrGetter<TextEditorDecorationType | DecorationRenderOptions>,
   rangesOrOptions: MaybeRefOrGetter<readonly Range[] | readonly DecorationOptions[]>,
 ) {
   const activeEditor = useActiveTextEditor()
